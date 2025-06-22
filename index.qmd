@@ -1,0 +1,17 @@
+---
+title: "Welcome"
+listing:
+  contents: "blog/*/*.qmd"  # Only index.qmd files in subdirectories
+  sort: "date desc"
+  type: default
+  fields:
+    - title
+    - description
+    - date
+    - image
+  categories: true    # Show category pills under each post
+  max-items: 3
+---
+
+Welcome to **The Social Science Sofa**.  
+Explore posts, tutorials, and musings from the social science world.

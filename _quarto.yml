@@ -1,0 +1,36 @@
+project:
+  type: website
+
+website:
+  title: "<span class='site-name'>Social Science Sofa | </span> <span class='logo-text'>[___]</span>"
+  navbar:
+    left:
+      - href: blog/index.qmd
+        text: Blog
+      - href: https://r4np.com
+        text: R4NP Book
+        target: _blank
+
+    right:
+      - icon: person-circle
+        href: https://danieldauber.com
+        target: _blank
+      - icon: github
+        href: https://github.com/
+        target: _blank
+      - icon: twitter-x
+        href: https://x.com/daniel_dauber
+        target: _blank
+      - icon: bluesky
+        href: https://bsky.app/profile/danieldauber.bsky.social
+        target: _blank
+      - icon: linkedin
+        href: https://www.linkedin.com/in/danieldauber/
+        target: _blank
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    include-before-body: head.html
+    include-after-body: after_body.html
