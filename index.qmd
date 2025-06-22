@@ -11,6 +11,7 @@ listing:
     - image
   categories: true    # Show category pills under each post
   max-items: 3
+  feed: true
 ---
 
 Welcome to **The Social Science Sofa**.  
