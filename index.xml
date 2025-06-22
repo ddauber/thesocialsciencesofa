@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>&lt;span class=&#39;site-name&#39;&gt;Social Science Sofa | &lt;/span&gt; &lt;span class=&#39;logo-text&#39;&gt;[___]&lt;/span&gt;</title>
+<link>https://thesocialsciencesofa.com/</link>
+<atom:link href="https://thesocialsciencesofa.com/index.xml" rel="self" type="application/rss+xml"/>
+<description>The Social Science Sofa is your cosy corner for data visualisation, R programming, and research insights—where complex ideas recline into clarity.</description>
+<generator>quarto-1.4.549</generator>
+<lastBuildDate>Thu, 19 Jun 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Fourth Post</title>
+  <dc:creator>Daniel Dauber</dc:creator>
+  <link>https://thesocialsciencesofa.com/blog/2025-06-20/fourth_post.html</link>
+  <description><![CDATA[ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;family=Fredoka:wght@300..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Quicksand:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+
+
+<div class="slide-in">
+<p><img src="https://thesocialsciencesofa.com/blog/2025-06-20/image.jpg" alt="MPG vs weight plot" width="100%"></p>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">✍️ Introduction</h2>
+<p>Welcome! This post is a demonstration of how a typical Quarto blog post might look.<br>
+It includes headings, inline formatting, R code, a data visualisation, tables, and more.</p>
+<p>Quarto allows you to write in markdown, embed live code, and include <strong>beautiful, reproducible outputs</strong> — all in one place.</p>
+<p>Whether you’re documenting your research, writing tutorials, or just keeping notes, it gives you the flexibility of code and prose combined.</p>
+</section>
+<section id="lists" class="level2">
+<h2 class="anchored" data-anchor-id="lists">📋 Lists</h2>
+<section id="unordered-list" class="level3">
+<h3 class="anchored" data-anchor-id="unordered-list">Unordered list</h3>
+<ul>
+<li>Quarto supports markdown out of the box<br>
+</li>
+<li>Code can be executed and rendered inline<br>
+</li>
+<li>You can embed LaTeX, HTML, or call external files</li>
+</ul>
+</section>
+<section id="ordered-list" class="level3">
+<h3 class="anchored" data-anchor-id="ordered-list">Ordered list</h3>
+<ol type="1">
+<li>Install R and RStudio<br>
+</li>
+<li>Install Quarto CLI<br>
+</li>
+<li>Start writing posts like this one</li>
+</ol>
+</section>
+</section>
+<section id="a-quote-for-good-measure" class="level2">
+<h2 class="anchored" data-anchor-id="a-quote-for-good-measure">💬 A Quote for Good Measure</h2>
+<blockquote class="blockquote">
+<p>“A picture is worth a thousand words. A good plot is worth even more in R.”<br>
+— You, after adopting Quarto</p>
+</blockquote>
+<hr>
+</section>
+<section id="r-code-and-visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="r-code-and-visualisation">📊 R Code and Visualisation</h2>
+<p>Let’s explore a classic dataset in R: <code>mtcars</code>. Below is a simple scatter plot showing how miles per gallon (<code>mpg</code>) relates to car weight (<code>wt</code>).</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">mtcars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> wt, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> mpg)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#0072B2"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb1-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MPG vs Weight"</span>,</span>
+<span id="cb1-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Weight (1000 lbs)"</span>,</span>
+<span id="cb1-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Miles per Gallon"</span>,</span>
+<span id="cb1-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Figure 1. Scatterplot of fuel efficiency vs car weight using the mtcars dataset."</span></span>
+<span id="cb1-11">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://thesocialsciencesofa.com/blog/2025-06-20/fourth_post_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="slide-in">
+<p>This should slide in from below!</p>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>intro</category>
+  <category>welcome</category>
+  <guid>https://thesocialsciencesofa.com/blog/2025-06-20/fourth_post.html</guid>
+  <pubDate>Thu, 19 Jun 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://thesocialsciencesofa.com/blog/2025-06-20/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Third Post</title>
+  <dc:creator>Daniel Dauber</dc:creator>
+  <link>https://thesocialsciencesofa.com/blog/2025-06-18/third_post.html</link>
+  <description><![CDATA[ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;family=Fredoka:wght@300..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Quicksand:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+
+
+<p>Welcome to the blog! This is the first post.</p>
+
+
+
+ ]]></description>
+  <category>intro</category>
+  <category>welcome</category>
+  <guid>https://thesocialsciencesofa.com/blog/2025-06-18/third_post.html</guid>
+  <pubDate>Tue, 17 Jun 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://thesocialsciencesofa.com/blog/2025-06-18/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Second Post</title>
+  <dc:creator>Daniel Dauber</dc:creator>
+  <link>https://thesocialsciencesofa.com/blog/2025-06-14/second_post.html</link>
+  <description><![CDATA[ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;family=Fredoka:wght@300..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Quicksand:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+
+
+<p>Welcome to the blog! This is the first post.</p>
+
+
+
+ ]]></description>
+  <category>intro</category>
+  <category>welcome</category>
+  <guid>https://thesocialsciencesofa.com/blog/2025-06-14/second_post.html</guid>
+  <pubDate>Fri, 13 Jun 2025 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>First Post</title>
+  <dc:creator>Daniel Dauber</dc:creator>
+  <link>https://thesocialsciencesofa.com/blog/2025-06-10/first_post.html</link>
+  <description><![CDATA[ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;family=Fredoka:wght@300..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Quicksand:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+
+
+<p>Welcome to the blog! This is the first post.</p>
+
+
+
+ ]]></description>
+  <category>intro</category>
+  <category>welcome</category>
+  <guid>https://thesocialsciencesofa.com/blog/2025-06-10/first_post.html</guid>
+  <pubDate>Mon, 09 Jun 2025 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
