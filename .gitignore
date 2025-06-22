@@ -7,7 +7,6 @@
 _site/
 _freeze/
 
-*.html
 *.pdf
 *.docx
 .DS_Store
