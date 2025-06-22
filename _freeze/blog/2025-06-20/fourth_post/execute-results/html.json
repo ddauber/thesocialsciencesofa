@@ -1,0 +1,17 @@
+{
+  "hash": "fc5adb40b9d53618e458201189945deb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Fourth Post\"\ndescription: \"When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.\"\nauthor: \"Daniel Dauber\"\ndate: 2025-06-20\ncategories: [intro, welcome]\ndraft: false\nimage: \"image.jpg\"\n---\n\n\n::: slide-in\n<img src=\"image.jpg\" alt=\"MPG vs weight plot\" width=\"100%\">\n:::\n\n## ✍️ Introduction\n\nWelcome! This post is a demonstration of how a typical Quarto blog post might look.\\\nIt includes headings, inline formatting, R code, a data visualisation, tables, and more.\n\nQuarto allows you to write in markdown, embed live code, and include **beautiful, reproducible outputs** — all in one place.\n\nWhether you're documenting your research, writing tutorials, or just keeping notes, it gives you the flexibility of code and prose combined.\n\n## 📋 Lists\n\n### Unordered list\n\n-   Quarto supports markdown out of the box\\\n-   Code can be executed and rendered inline\\\n-   You can embed LaTeX, HTML, or call external files\n\n### Ordered list\n\n1.  Install R and RStudio\\\n2.  Install Quarto CLI\\\n3.  Start writing posts like this one\n\n## 💬 A Quote for Good Measure\n\n> “A picture is worth a thousand words. A good plot is worth even more in R.”\\\n> — You, after adopting Quarto\n\n------------------------------------------------------------------------\n\n\n\n## 📊 R Code and Visualisation\n\nLet’s explore a classic dataset in R: `mtcars`. Below is a simple scatter plot showing how miles per gallon (`mpg`) relates to car weight (`wt`).\n\n\n::: {.cell .slide-in}\n\n```{.r .cell-code}\nlibrary(ggplot2)\n\nmtcars |>\nggplot(aes(x = wt, y = mpg)) +\n  geom_point(color = \"#0072B2\", size = 3) +\n  labs(\n    title = \"MPG vs Weight\",\n    x = \"Weight (1000 lbs)\",\n    y = \"Miles per Gallon\",\n    caption = \"Figure 1. Scatterplot of fuel efficiency vs car weight using the mtcars dataset.\"\n  ) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![](fourth_post_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n::: {.slide-in}\nThis should slide in from below!\n:::",
+    "supporting": [
+      "fourth_post_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,6 +1,9 @@
 project:
   type: website
 
+execute:
+  freeze: auto
+
 website:
   title: "<span class='site-name'>Social Science Sofa | </span> <span class='logo-text'>[___]</span>"
   navbar:
