@@ -27,6 +27,7 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/danieldauber/
         target: _blank
+  google-analytics: "G-T3MQH2G66G"
 
 format:
   html:
