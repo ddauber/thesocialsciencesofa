@@ -46,3 +46,6 @@ format:
       - social.html
     include-before-body: head.html
     include-after-body: after_body.html
+
+resources:
+  - favicon/social_card.png
