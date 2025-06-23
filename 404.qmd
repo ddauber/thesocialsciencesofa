@@ -1,0 +1,14 @@
+---
+title: "Page Not Found"
+format: html
+---
+
+# 404 – Lost in the Sofa Cushions
+
+It looks like this page has slipped between the cushions of the Social Science Sofa. Don’t worry—it happens to the best of us!
+
+Maybe try the [homepage](/), or put your feet up and browse [recent posts](/blog/).
+
+------------------------------------------------------------------------
+
+*(If you keep finding dust bunnies, let us know!)* 🛋️

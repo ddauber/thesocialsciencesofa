@@ -10,3 +10,4 @@ _site/
 *.docx
 .DS_Store
 *.log
+assets/

@@ -41,5 +41,6 @@ format:
   html:
     theme: cosmo
     css: styles.css
+    include-in-header: favicon.html
     include-before-body: head.html
     include-after-body: after_body.html
