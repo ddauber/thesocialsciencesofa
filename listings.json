@@ -1,20 +1,14 @@
 [
   {
-    "listing": "/blog/index.html",
+    "listing": "/index.html",
     "items": [
-      "/blog/2025-06-20/fourth_post.html",
-      "/blog/2025-06-18/third_post.html",
-      "/blog/2025-06-14/second_post.html",
-      "/blog/2025-06-10/first_post.html"
+      "/blog/2025-06-30/multi-dimensional-gt-tables-r.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/blog/index.html",
     "items": [
-      "/blog/2025-06-20/fourth_post.html",
-      "/blog/2025-06-18/third_post.html",
-      "/blog/2025-06-14/second_post.html",
-      "/blog/2025-06-10/first_post.html"
+      "/blog/2025-06-30/multi-dimensional-gt-tables-r.html"
     ]
   }
 ]
