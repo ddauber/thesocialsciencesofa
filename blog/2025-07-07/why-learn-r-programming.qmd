@@ -1,0 +1,151 @@
+---
+title: "Taming Multi-Dimensional Tables with `gt`"
+description: ""
+author: "Daniel Dauber"
+date: 2025-06-30
+categories: [R, research methods, programming, social sciences]
+draft: true
+image: "multi-dimensional-gt-tables-r.jpg"
+---
+
+::: slide-in
+<img src="multi-dimensional-gt-tables-r.jpg" alt="MPG vs weight plot" width="100%">
+:::
+
+Picture this: You're knee-deep in your latest research project, wrestling with data that refuses to behave, when a colleague mentions they've just automated their entire analysis pipeline and created interactive visualisations that would make *The Economist* jealous. Meanwhile, you're still clicking through your favourite statistics software menus wondering if there's a better way.
+
+There is. And it's probably not what you think.
+
+The secret weapon isn't a fancy new statistical method or expensive software. It's learning to speak the language of computers – specifically, learning a programming language like R. Before you roll your eyes and mutter "I'm a researcher, not a programmer," hear me out.
+
+## The Uncomfortable Truth About Modern Research
+
+Let's be honest: the research landscape is changing faster than a politician's promises. New analytical methods emerge monthly, data sets grow larger and more complex, and the pressure to produce reproducible, transparent research has never been higher.
+
+Yet many of us are still using the same tools we learned in graduate school, clicking through the same menu systems, and wondering why our research feels... limited.
+
+Don't get me wrong – there's nothing inherently wrong with traditional statistical software. SPSS, Stata, and their cousins have served researchers well for decades. But here's the thing: they're like driving a reliable family saloon when you could be piloting a sports car.
+
+## Why Most Researchers Avoid Programming (And Why They're Wrong)
+
+The resistance is understandable. Learning a programming language feels like learning Ancient Greek when you just want to analyse your survey data. It's intimidating, time-consuming, and frankly, most of us didn't sign up for a computer science degree.
+
+But here's what nobody tells you: **you don't need to become a programmer to benefit from programming.**
+
+Think of it like learning to drive. You don't need to understand internal combustion engines to get from point A to point B. Similarly, you don't need to become the next coding wizard to dramatically improve your research capabilities.
+
+## The Hidden Benefits Nobody Mentions
+
+### 1. Your Analytical Toolbox Becomes Infinite
+
+Traditional software is like shopping at a small corner shop – you get the basics, but selection is limited. Programming languages like R are like having access to the world's largest free supermarket.
+
+Need to run a cutting-edge machine learning algorithm published last week? There's probably an R package for that. Want to try a new visualisation technique you saw in *Nature*? Someone's likely coded it up and shared it freely.
+
+The R ecosystem contains almost 38,000 packages on CRAN alone (at the time of writing this blog), covering everything from social network analysis to text mining to geospatial statistics. It's like having thousands of statistical consultants working for you, for free, 24/7.
+
+```{r}
+#| label: r-packages-on-cran
+#| echo: true
+#| class: slide-in
+
+options(repos = c(CRAN = "https://cran.r-project.org"))
+
+length(available.packages())
+```
+
+Let me share a story from when I was still beginning to learn R:
+
+I once attended a brilliant guest talk where the researchers had downloaded and coded over 200 tweets for a content analysis study. It was meticulous, careful work and the findings were genuinely impressive. Hpwever, when I asked how they scraped and cleaned the Twitter (now X) data, their response was: “Oh, we just did it manually.”
+
+I was stunned. That must have taken weeks. At the time, I had just learned how to pull down over half a million tweets for a separate project with a few lines of code.
+
+I wasn’t smarter. I just had a better toolbox. Programming didn’t just save me time, but it let me focus on the fun part: analysing the data and making sense of it.
+
+### 2. It Rewires Your Brain (In a Good Way)
+
+Here's something they don't teach in methodology courses: programming fundamentally changes how you think about problems.
+
+Programming languages are ruthlessly logical. Write unclear code, and your computer will politely refuse to cooperate. This forces you to break complex problems into smaller, manageable pieces – a skill that transfers beautifully to research design.
+
+I've noticed this with my own students. Those who learn programming often become better at:
+- **Conceptual thinking**: Breaking complex theories into testable components
+- **Abstract reasoning**: Moving from specific observations to general principles
+- **Problem decomposition**: Tackling large research questions systematically
+
+It's like cross-training for your brain. You come for the data analysis, but you leave with enhanced cognitive abilities.
+
+### 3. You See Patterns Others Miss
+
+When you're not limited by pre-built menu options, you start exploring your data differently. You ask questions that wouldn't occur to you in traditional software because the tools to answer them are suddenly available.
+
+**Example from my own research:** While analysing survey data about relationship satisfaction, I noticed an interesting pattern in the response times (how long people took to answer questions). Traditional software would never have prompted me to look at this temporal data, but with programming tools, it became a natural extension of the analysis. Those response patterns ended up revealing insights about question sensitivity that changed how we interpreted the results.
+
+### 4. Your Research Becomes Bulletproof
+
+Reproducibility crisis, anyone? When your entire analysis exists as code, reproducing your results becomes trivial. No more "I think I clicked this menu option, but I can't remember which settings I used."
+
+Every step of your analysis is documented, shareable, and verifiable. Your future self (and your collaborators) will thank you when you need to revisit the analysis six months later.
+
+### 5. The Compound Interest Effect
+
+Here's the kicker: once you learn one programming language, learning others becomes exponentially easier. The core concepts – variables, functions, loops, data structures – are universal.
+
+Start with R for statistics, then maybe Python for machine learning, JavaScript for web-based visualisations, or SQL for database management. Each new language builds on the foundation of the previous ones.
+
+It's like learning Romance languages – once you understand Latin roots, Italian, Spanish, and French become much more accessible.
+
+## But What About the Learning Curve?
+
+Let's address the elephant in the room: learning programming takes time and effort. There's no sugar-coating this.
+
+But here's the perspective shift that helped me: **you're not learning programming for programming's sake. You're learning it to become a better researcher.**
+
+Every hour you invest in learning R is an hour that will pay dividends across every future project. It's not overhead – it's infrastructure.
+
+And honestly? The learning curve isn't as steep as you think. You don't need to master every aspect of a programming language to benefit from it. Learning enough R to clean data, run basic analyses, and create visualisations might take a few focused weeks. Learning enough to revolutionise your research might take a few months.
+
+Compare that to the time you'd spend manually manipulating data in spreadsheets over the course of your career, and the investment becomes a no-brainer.
+
+## The Social Science Resistance
+
+Programming languages remain surprisingly uncommon in many social science fields. While our colleagues in psychology and economics have largely embraced R and Python, other disciplines lag behind.
+
+This presents an opportunity. Being one of the first in your field to adopt these tools can give you a significant competitive advantage. You'll be able to:
+- Tackle research questions others can't
+- Analyse data types others avoid
+- Produce more compelling visualisations
+- Collaborate more easily with interdisciplinary teams
+
+## Starting Your Journey: Practical Steps
+
+If I've convinced you to take the plunge, here's how to begin:
+
+**1. Choose Your First Language Wisely**
+For social science researchers, R is typically the best starting point. It's designed for statistics, has a huge community, and excels at the tasks you'll do most often.
+
+**2. Embrace the Beginner's Mindset**
+You will feel stupid at first. Your code will break. You'll spend hours debugging what turns out to be a missing comma. This is normal and temporary.
+
+**3. Start Small, Think Big**
+Begin with simple tasks you already do. Import a dataset. Calculate some descriptive statistics. Create a basic plot. Build confidence before attempting anything fancy.
+
+**4. Join the Community**
+The R community is remarkably welcoming. Follow #RStats on X, join R User Groups like [RStudio Community](https://community.rstudio.com) [TidyTuesday](https://www.tidytuesday.com) and [R-Ladies](https://rladies.org), and participate in other online forums deducated to R. Programming isn't a solitary activity – it's deeply social.
+
+**5. Focus on Your Research**
+Don't get caught up in becoming a "real programmer." Learn what you need to advance your research, then learn more when you need it.
+
+## The Bottom Line
+
+Learning a programming language won't make you a computer scientist, but it will make you a more capable, creative, and confident researcher.
+
+In an era where data is everywhere and analytical methods evolve rapidly, the ability to adapt your tools to your questions (rather than adapting your questions to your tools) is invaluable.
+
+The researchers who thrive in the coming decades won't necessarily be those with the most domain expertise – they'll be those who can combine domain expertise with computational thinking.
+
+Your future research self is waiting. The only question is: are you ready to meet them?
+
+---
+
+**Ready to start your programming journey?** Check out [R for Non-Programmers](https://r4np.com) for a gentle introduction designed specifically for researchers who want to harness the power of programming without the computer science degree.
