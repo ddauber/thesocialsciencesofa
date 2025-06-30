@@ -26,6 +26,9 @@
 
 
 
+<div class="slide-in">
+<p><img src="https://thesocialsciencesofa.com/blog/2025-06-30/multi-dimensional-gt-tables-r.jpg" alt="MPG vs weight plot" width="100%"></p>
+</div>
 <p>Creating beautiful tables in R has never been easier thanks to the <a href="https://gt.rstudio.com/"><code>gt</code> package</a>. But what happens when your “simple” table suddenly needs three dimensions? That’s when things get interesting – and by interesting, I mean frustratingly complex.</p>
 <p>Today, we’ll walk through creating a multi-dimensional table that displays relationship status by gender across different countries. We’ll start simple and work our way up to the challenges that make you question your life choices (and then solve them, of course).</p>
 <section id="meet-the-gt-package" class="level2">
@@ -38,7 +41,7 @@
 <h2 class="anchored" data-anchor-id="our-data-world-values-survey">Our Data: World Values Survey</h2>
 <p>We’ll be working with data from the World Values Survey (WVS), which contains responses from people across different countries about their values and demographics. The <code>wvs_nona</code> dataset is a cleaned version where missing values have been removed (hence “nona” = no NAs).</p>
 <p>If you want to follow along, you can get the dataset from the <a href="https://github.com/yourrepo/r4np"><code>r4np</code> package</a>:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Install if you haven't already</span></span>
@@ -94,7 +97,7 @@ font-style: inherit;">head</span>(wvs_nona)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="step-1-the-innocent-beginning">Step 1: The Innocent Beginning</h2>
 <p>Let’s start with what seems like a straightforward task: create a table showing the count of married, separated, and divorced people by gender across countries.</p>
 <p>First, we need to count the combinations of our three variables:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create our base data</span></span>
@@ -143,7 +146,7 @@ font-style: inherit;">head</span>(table_data)</span></code></pre></div>
 <p>The <code>count()</code> function is doing the heavy lifting here. It groups by the three variables we specify and counts how many observations fall into each combination. The <code>filter()</code> step narrows our focus to just three relationship statuses – we’re keeping the analysis manageable.</p>
 <p>This gives us a “long” format dataset where each row represents one combination of country, gender, and relationship status, with the count in the <code>n</code> column.</p>
 <p>Now we need to reshape this data to make it suitable for a table. We want countries as rows and the gender-relationship combinations as columns:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Reshape for table format</span></span>
@@ -190,7 +193,7 @@ font-style: inherit;">head</span>(wide_data)</span></code></pre></div>
 </ul>
 <p>The result is columns with names like <code>female_married</code>, <code>male_divorced</code>, etc. R automatically combines the values from <code>gender</code> and <code>relationship_status</code> with an underscore.</p>
 <p>Now let’s create our first GT table:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Our first attempt</span></span>
@@ -221,23 +224,23 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
 <span id="cb9-8"></span>
 <span id="cb9-9">basic_table</span></code></pre></div>
 <div class="cell-output-display">
-<div id="nzfczgowmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nzfczgowmq table {
+<div id="ualuxbdyfa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ualuxbdyfa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nzfczgowmq thead, #nzfczgowmq tbody, #nzfczgowmq tfoot, #nzfczgowmq tr, #nzfczgowmq td, #nzfczgowmq th {
+#ualuxbdyfa thead, #ualuxbdyfa tbody, #ualuxbdyfa tfoot, #ualuxbdyfa tr, #ualuxbdyfa td, #ualuxbdyfa th {
   border-style: none;
 }
 
-#nzfczgowmq p {
+#ualuxbdyfa p {
   margin: 0;
   padding: 0;
 }
 
-#nzfczgowmq .gt_table {
+#ualuxbdyfa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -263,12 +266,12 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-left-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_caption {
+#ualuxbdyfa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nzfczgowmq .gt_title {
+#ualuxbdyfa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -280,7 +283,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-width: 0;
 }
 
-#nzfczgowmq .gt_subtitle {
+#ualuxbdyfa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -292,7 +295,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-top-width: 0;
 }
 
-#nzfczgowmq .gt_heading {
+#ualuxbdyfa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -304,13 +307,13 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_bottom_border {
+#ualuxbdyfa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_col_headings {
+#ualuxbdyfa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -325,7 +328,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_col_heading {
+#ualuxbdyfa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -345,7 +348,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   overflow-x: hidden;
 }
 
-#nzfczgowmq .gt_column_spanner_outer {
+#ualuxbdyfa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -357,15 +360,15 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 4px;
 }
 
-#nzfczgowmq .gt_column_spanner_outer:first-child {
+#ualuxbdyfa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nzfczgowmq .gt_column_spanner_outer:last-child {
+#ualuxbdyfa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nzfczgowmq .gt_column_spanner {
+#ualuxbdyfa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -377,11 +380,11 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   width: 100%;
 }
 
-#nzfczgowmq .gt_spanner_row {
+#ualuxbdyfa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nzfczgowmq .gt_group_heading {
+#ualuxbdyfa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -407,7 +410,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   text-align: left;
 }
 
-#nzfczgowmq .gt_empty_group_heading {
+#ualuxbdyfa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -422,15 +425,15 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   vertical-align: middle;
 }
 
-#nzfczgowmq .gt_from_md > :first-child {
+#ualuxbdyfa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nzfczgowmq .gt_from_md > :last-child {
+#ualuxbdyfa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nzfczgowmq .gt_row {
+#ualuxbdyfa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -449,7 +452,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   overflow-x: hidden;
 }
 
-#nzfczgowmq .gt_stub {
+#ualuxbdyfa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -462,7 +465,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_stub_row_group {
+#ualuxbdyfa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -476,15 +479,15 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   vertical-align: top;
 }
 
-#nzfczgowmq .gt_row_group_first td {
+#ualuxbdyfa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nzfczgowmq .gt_row_group_first th {
+#ualuxbdyfa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nzfczgowmq .gt_summary_row {
+#ualuxbdyfa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -494,16 +497,16 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_first_summary_row {
+#ualuxbdyfa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_first_summary_row.thick {
+#ualuxbdyfa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nzfczgowmq .gt_last_summary_row {
+#ualuxbdyfa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -513,7 +516,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_grand_summary_row {
+#ualuxbdyfa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -523,7 +526,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_first_grand_summary_row {
+#ualuxbdyfa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -533,7 +536,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-top-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_last_grand_summary_row_top {
+#ualuxbdyfa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -543,11 +546,11 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_striped {
+#ualuxbdyfa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nzfczgowmq .gt_table_body {
+#ualuxbdyfa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -556,7 +559,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_footnotes {
+#ualuxbdyfa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -570,7 +573,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_footnote {
+#ualuxbdyfa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -579,7 +582,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_sourcenotes {
+#ualuxbdyfa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -593,7 +596,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_sourcenote {
+#ualuxbdyfa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -601,72 +604,72 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_left {
+#ualuxbdyfa .gt_left {
   text-align: left;
 }
 
-#nzfczgowmq .gt_center {
+#ualuxbdyfa .gt_center {
   text-align: center;
 }
 
-#nzfczgowmq .gt_right {
+#ualuxbdyfa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nzfczgowmq .gt_font_normal {
+#ualuxbdyfa .gt_font_normal {
   font-weight: normal;
 }
 
-#nzfczgowmq .gt_font_bold {
+#ualuxbdyfa .gt_font_bold {
   font-weight: bold;
 }
 
-#nzfczgowmq .gt_font_italic {
+#ualuxbdyfa .gt_font_italic {
   font-style: italic;
 }
 
-#nzfczgowmq .gt_super {
+#ualuxbdyfa .gt_super {
   font-size: 65%;
 }
 
-#nzfczgowmq .gt_footnote_marks {
+#ualuxbdyfa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nzfczgowmq .gt_asterisk {
+#ualuxbdyfa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nzfczgowmq .gt_indent_1 {
+#ualuxbdyfa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nzfczgowmq .gt_indent_2 {
+#ualuxbdyfa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nzfczgowmq .gt_indent_3 {
+#ualuxbdyfa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nzfczgowmq .gt_indent_4 {
+#ualuxbdyfa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nzfczgowmq .gt_indent_5 {
+#ualuxbdyfa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nzfczgowmq .katex-display {
+#ualuxbdyfa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nzfczgowmq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ualuxbdyfa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -756,7 +759,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
 <h2 class="anchored" data-anchor-id="step-2-the-plot-thickens">Step 2: The Plot Thickens</h2>
 <p>Our basic table works, but it’s not exactly reader-friendly. Those column names like <code>female_married</code> are functional but ugly. We want to group them under gender headers with clean sub-labels.</p>
 <p>“No problem,” you think, “I’ll just use <code>tab_spanner_delim()</code>!”</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Attempt with tab_spanner_delim()</span></span>
@@ -796,23 +799,23 @@ font-style: inherit;">"_"</span>)</span>
 <span id="cb10-9"></span>
 <span id="cb10-10">spanners_attempt</span></code></pre></div>
 <div class="cell-output-display">
-<div id="wukhwfxugx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wukhwfxugx table {
+<div id="nwmojxwmez" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nwmojxwmez table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wukhwfxugx thead, #wukhwfxugx tbody, #wukhwfxugx tfoot, #wukhwfxugx tr, #wukhwfxugx td, #wukhwfxugx th {
+#nwmojxwmez thead, #nwmojxwmez tbody, #nwmojxwmez tfoot, #nwmojxwmez tr, #nwmojxwmez td, #nwmojxwmez th {
   border-style: none;
 }
 
-#wukhwfxugx p {
+#nwmojxwmez p {
   margin: 0;
   padding: 0;
 }
 
-#wukhwfxugx .gt_table {
+#nwmojxwmez .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -838,12 +841,12 @@ font-style: inherit;">"_"</span>)</span>
   border-left-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_caption {
+#nwmojxwmez .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wukhwfxugx .gt_title {
+#nwmojxwmez .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -855,7 +858,7 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-width: 0;
 }
 
-#wukhwfxugx .gt_subtitle {
+#nwmojxwmez .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -867,7 +870,7 @@ font-style: inherit;">"_"</span>)</span>
   border-top-width: 0;
 }
 
-#wukhwfxugx .gt_heading {
+#nwmojxwmez .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -879,13 +882,13 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_bottom_border {
+#nwmojxwmez .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_col_headings {
+#nwmojxwmez .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -900,7 +903,7 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_col_heading {
+#nwmojxwmez .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -920,7 +923,7 @@ font-style: inherit;">"_"</span>)</span>
   overflow-x: hidden;
 }
 
-#wukhwfxugx .gt_column_spanner_outer {
+#nwmojxwmez .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -932,15 +935,15 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 4px;
 }
 
-#wukhwfxugx .gt_column_spanner_outer:first-child {
+#nwmojxwmez .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wukhwfxugx .gt_column_spanner_outer:last-child {
+#nwmojxwmez .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wukhwfxugx .gt_column_spanner {
+#nwmojxwmez .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -952,11 +955,11 @@ font-style: inherit;">"_"</span>)</span>
   width: 100%;
 }
 
-#wukhwfxugx .gt_spanner_row {
+#nwmojxwmez .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wukhwfxugx .gt_group_heading {
+#nwmojxwmez .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -982,7 +985,7 @@ font-style: inherit;">"_"</span>)</span>
   text-align: left;
 }
 
-#wukhwfxugx .gt_empty_group_heading {
+#nwmojxwmez .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -997,15 +1000,15 @@ font-style: inherit;">"_"</span>)</span>
   vertical-align: middle;
 }
 
-#wukhwfxugx .gt_from_md > :first-child {
+#nwmojxwmez .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wukhwfxugx .gt_from_md > :last-child {
+#nwmojxwmez .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wukhwfxugx .gt_row {
+#nwmojxwmez .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1024,7 +1027,7 @@ font-style: inherit;">"_"</span>)</span>
   overflow-x: hidden;
 }
 
-#wukhwfxugx .gt_stub {
+#nwmojxwmez .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1037,7 +1040,7 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_stub_row_group {
+#nwmojxwmez .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1051,15 +1054,15 @@ font-style: inherit;">"_"</span>)</span>
   vertical-align: top;
 }
 
-#wukhwfxugx .gt_row_group_first td {
+#nwmojxwmez .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wukhwfxugx .gt_row_group_first th {
+#nwmojxwmez .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wukhwfxugx .gt_summary_row {
+#nwmojxwmez .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1069,16 +1072,16 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_first_summary_row {
+#nwmojxwmez .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_first_summary_row.thick {
+#nwmojxwmez .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wukhwfxugx .gt_last_summary_row {
+#nwmojxwmez .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1088,7 +1091,7 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_grand_summary_row {
+#nwmojxwmez .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1098,7 +1101,7 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_first_grand_summary_row {
+#nwmojxwmez .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1108,7 +1111,7 @@ font-style: inherit;">"_"</span>)</span>
   border-top-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_last_grand_summary_row_top {
+#nwmojxwmez .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1118,11 +1121,11 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_striped {
+#nwmojxwmez .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wukhwfxugx .gt_table_body {
+#nwmojxwmez .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1131,7 +1134,7 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_footnotes {
+#nwmojxwmez .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1145,7 +1148,7 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_footnote {
+#nwmojxwmez .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1154,7 +1157,7 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_sourcenotes {
+#nwmojxwmez .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1168,7 +1171,7 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_sourcenote {
+#nwmojxwmez .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1176,72 +1179,72 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_left {
+#nwmojxwmez .gt_left {
   text-align: left;
 }
 
-#wukhwfxugx .gt_center {
+#nwmojxwmez .gt_center {
   text-align: center;
 }
 
-#wukhwfxugx .gt_right {
+#nwmojxwmez .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wukhwfxugx .gt_font_normal {
+#nwmojxwmez .gt_font_normal {
   font-weight: normal;
 }
 
-#wukhwfxugx .gt_font_bold {
+#nwmojxwmez .gt_font_bold {
   font-weight: bold;
 }
 
-#wukhwfxugx .gt_font_italic {
+#nwmojxwmez .gt_font_italic {
   font-style: italic;
 }
 
-#wukhwfxugx .gt_super {
+#nwmojxwmez .gt_super {
   font-size: 65%;
 }
 
-#wukhwfxugx .gt_footnote_marks {
+#nwmojxwmez .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wukhwfxugx .gt_asterisk {
+#nwmojxwmez .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wukhwfxugx .gt_indent_1 {
+#nwmojxwmez .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wukhwfxugx .gt_indent_2 {
+#nwmojxwmez .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wukhwfxugx .gt_indent_3 {
+#nwmojxwmez .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wukhwfxugx .gt_indent_4 {
+#nwmojxwmez .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wukhwfxugx .gt_indent_5 {
+#nwmojxwmez .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wukhwfxugx .katex-display {
+#nwmojxwmez .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wukhwfxugx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nwmojxwmez div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1351,7 +1354,7 @@ male
 <h2 class="anchored" data-anchor-id="step-3-the-manual-labor-solution">Step 3: The Manual Labor Solution</h2>
 <p>This is where GT shows both its power and its complexity. To get full control, we need to manually create our spanners and relabel our columns. It’s more work, but it’s infinitely more flexible.</p>
 <p>Let’s break this down step by step:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># The manual approach - more control, more code</span></span>
@@ -1503,23 +1506,23 @@ font-style: inherit;">"Divorced"</span></span>
 <span id="cb11-33"></span>
 <span id="cb11-34">custom_table</span></code></pre></div>
 <div class="cell-output-display">
-<div id="pnvprtemlu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pnvprtemlu table {
+<div id="obbnoaphed" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#obbnoaphed table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pnvprtemlu thead, #pnvprtemlu tbody, #pnvprtemlu tfoot, #pnvprtemlu tr, #pnvprtemlu td, #pnvprtemlu th {
+#obbnoaphed thead, #obbnoaphed tbody, #obbnoaphed tfoot, #obbnoaphed tr, #obbnoaphed td, #obbnoaphed th {
   border-style: none;
 }
 
-#pnvprtemlu p {
+#obbnoaphed p {
   margin: 0;
   padding: 0;
 }
 
-#pnvprtemlu .gt_table {
+#obbnoaphed .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1545,12 +1548,12 @@ font-style: inherit;">"Divorced"</span></span>
   border-left-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_caption {
+#obbnoaphed .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pnvprtemlu .gt_title {
+#obbnoaphed .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1562,7 +1565,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-width: 0;
 }
 
-#pnvprtemlu .gt_subtitle {
+#obbnoaphed .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1574,7 +1577,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-top-width: 0;
 }
 
-#pnvprtemlu .gt_heading {
+#obbnoaphed .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1586,13 +1589,13 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_bottom_border {
+#obbnoaphed .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_col_headings {
+#obbnoaphed .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1607,7 +1610,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_col_heading {
+#obbnoaphed .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1627,7 +1630,7 @@ font-style: inherit;">"Divorced"</span></span>
   overflow-x: hidden;
 }
 
-#pnvprtemlu .gt_column_spanner_outer {
+#obbnoaphed .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1639,15 +1642,15 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 4px;
 }
 
-#pnvprtemlu .gt_column_spanner_outer:first-child {
+#obbnoaphed .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pnvprtemlu .gt_column_spanner_outer:last-child {
+#obbnoaphed .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pnvprtemlu .gt_column_spanner {
+#obbnoaphed .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1659,11 +1662,11 @@ font-style: inherit;">"Divorced"</span></span>
   width: 100%;
 }
 
-#pnvprtemlu .gt_spanner_row {
+#obbnoaphed .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pnvprtemlu .gt_group_heading {
+#obbnoaphed .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1689,7 +1692,7 @@ font-style: inherit;">"Divorced"</span></span>
   text-align: left;
 }
 
-#pnvprtemlu .gt_empty_group_heading {
+#obbnoaphed .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1704,15 +1707,15 @@ font-style: inherit;">"Divorced"</span></span>
   vertical-align: middle;
 }
 
-#pnvprtemlu .gt_from_md > :first-child {
+#obbnoaphed .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pnvprtemlu .gt_from_md > :last-child {
+#obbnoaphed .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pnvprtemlu .gt_row {
+#obbnoaphed .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1731,7 +1734,7 @@ font-style: inherit;">"Divorced"</span></span>
   overflow-x: hidden;
 }
 
-#pnvprtemlu .gt_stub {
+#obbnoaphed .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1744,7 +1747,7 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_stub_row_group {
+#obbnoaphed .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1758,15 +1761,15 @@ font-style: inherit;">"Divorced"</span></span>
   vertical-align: top;
 }
 
-#pnvprtemlu .gt_row_group_first td {
+#obbnoaphed .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pnvprtemlu .gt_row_group_first th {
+#obbnoaphed .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pnvprtemlu .gt_summary_row {
+#obbnoaphed .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1776,16 +1779,16 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_first_summary_row {
+#obbnoaphed .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_first_summary_row.thick {
+#obbnoaphed .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pnvprtemlu .gt_last_summary_row {
+#obbnoaphed .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1795,7 +1798,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_grand_summary_row {
+#obbnoaphed .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1805,7 +1808,7 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_first_grand_summary_row {
+#obbnoaphed .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1815,7 +1818,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-top-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_last_grand_summary_row_top {
+#obbnoaphed .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1825,11 +1828,11 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_striped {
+#obbnoaphed .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pnvprtemlu .gt_table_body {
+#obbnoaphed .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1838,7 +1841,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_footnotes {
+#obbnoaphed .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1852,7 +1855,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_footnote {
+#obbnoaphed .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1861,7 +1864,7 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_sourcenotes {
+#obbnoaphed .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1875,7 +1878,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_sourcenote {
+#obbnoaphed .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1883,72 +1886,72 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_left {
+#obbnoaphed .gt_left {
   text-align: left;
 }
 
-#pnvprtemlu .gt_center {
+#obbnoaphed .gt_center {
   text-align: center;
 }
 
-#pnvprtemlu .gt_right {
+#obbnoaphed .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pnvprtemlu .gt_font_normal {
+#obbnoaphed .gt_font_normal {
   font-weight: normal;
 }
 
-#pnvprtemlu .gt_font_bold {
+#obbnoaphed .gt_font_bold {
   font-weight: bold;
 }
 
-#pnvprtemlu .gt_font_italic {
+#obbnoaphed .gt_font_italic {
   font-style: italic;
 }
 
-#pnvprtemlu .gt_super {
+#obbnoaphed .gt_super {
   font-size: 65%;
 }
 
-#pnvprtemlu .gt_footnote_marks {
+#obbnoaphed .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pnvprtemlu .gt_asterisk {
+#obbnoaphed .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pnvprtemlu .gt_indent_1 {
+#obbnoaphed .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pnvprtemlu .gt_indent_2 {
+#obbnoaphed .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pnvprtemlu .gt_indent_3 {
+#obbnoaphed .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pnvprtemlu .gt_indent_4 {
+#obbnoaphed .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pnvprtemlu .gt_indent_5 {
+#obbnoaphed .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pnvprtemlu .katex-display {
+#obbnoaphed .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pnvprtemlu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#obbnoaphed div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2057,7 +2060,7 @@ font-style: inherit;">"Divorced"</span></span>
 </div>
 <p>Let’s dissect what’s happening here:</p>
 <p><strong>Step 1: Individual Gender Spanners</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_spanner</span>(</span>
@@ -2080,7 +2083,7 @@ font-style: inherit;">"female_"</span>)</span>
 <p>This creates a spanner (column group) labeled “female” that covers all columns starting with “female_”. The <code>md()</code> function allows us to use markdown formatting – in this case, italics with the asterisks.</p>
 <p>The <code>starts_with()</code> function is a “tidy select” helper that selects columns based on their names. It’s much more reliable than typing out column names manually, especially when your column names follow a pattern.</p>
 <p><strong>Step 2: Overarching Spanner</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_spanner</span>(</span>
@@ -2111,7 +2114,7 @@ font-style: inherit;">"gender"</span></span>
 </div>
 <p>This creates a higher-level spanner that encompasses both gender groups. The <code>columns</code> argument uses a vector of prefixes to select all columns that start with either “female_” or “male_”. The <code>id = "gender"</code> gives this spanner a unique identifier that we could reference later if needed.</p>
 <p><strong>Step 3: Column Label Customisation</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cols_label</span>(</span>
@@ -2157,13 +2160,13 @@ font-style: inherit;">"Divorced"</span></span>
 <li><code>ends_with("married") ~ "Married"</code>: This says “for any column that ends with ‘married’, rename it to ‘Married’”</li>
 </ul>
 <p>This pattern-based renaming is incredibly powerful. Instead of writing:</p>
-<div id="tbl-different-correlations" class="cell quarto-float anchored">
+<div id="tbl-different-correlations" class="cell slide-in quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-different-correlations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1
 </figcaption>
 <div aria-describedby="tbl-different-correlations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="sourceCode cell-code anchored" id="tbl-different-correlations" style="background: #f1f3f5;"><pre class="sourceCode r cell code-with-copy"><code class="sourceCode r"><span id="tbl-different-correlations-1">female_married <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code anchored" id="tbl-different-correlations" style="background: #f1f3f5;"><pre class="sourceCode r cell slide-in code-with-copy"><code class="sourceCode r"><span id="tbl-different-correlations-1">female_married <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -2194,7 +2197,7 @@ font-style: inherit;"># ... and so on</span></span></code></pre></div>
 <section id="step-4-the-na-problem-plot-twist" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-the-na-problem-plot-twist">Step 4: The NA Problem (Plot Twist!)</h2>
 <p>But wait, there’s more! Let’s add a total column to show the sum across relationship statuses:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Adding totals - first attempt</span></span>
@@ -2243,7 +2246,7 @@ font-style: inherit;">"**Total**"</span>))</span>
 <section id="step-5-the-na-solution" class="level2">
 <h2 class="anchored" data-anchor-id="step-5-the-na-solution">Step 5: The NA Solution</h2>
 <p>Let’s fix the NA problem properly:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># The NA fix</span></span>
@@ -2293,7 +2296,7 @@ font-style: inherit;">head</span>(clean_data)</span></code></pre></div>
 </div>
 <p>This code introduces a powerful pattern:</p>
 <p><strong><code>across()</code> for Multiple Column Operations</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="fu" style="color: #4758AB;
@@ -2324,7 +2327,7 @@ font-style: inherit;">0</span>, .)))</span></code></pre></div>
 <section id="step-6-the-full-solution-explained" class="level2">
 <h2 class="anchored" data-anchor-id="step-6-the-full-solution-explained">Step 6: The Full Solution Explained</h2>
 <p>Now let’s put it all together with detailed explanations and a little bit of flair:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Our final, polished table</span></span>
@@ -2604,9 +2607,10 @@ font-style: inherit;">gt_theme_espn</span>()</span>
 <span id="cb18-61"></span>
 <span id="cb18-62">final_table</span></code></pre></div>
 </div>
-<p>Let me explain the final formatting steps:</p>
+<p>Admittedly, this code chunk is a lot more substantial than going with the standard <code>gt</code> table setup, but it certainly looks a lot more audience-ready and accessible</p>
+<p>Let me explain the final formatting steps so you can apply those changes to your own tables as well:</p>
 <p><strong>Visual Enhancement with <code>gt_plt_bar()</code></strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gt_plt_bar</span>(<span class="at" style="color: #657422;
@@ -2615,7 +2619,7 @@ font-style: inherit;">column =</span> total)</span></code></pre></div>
 </div>
 <p>This function from the <code>gtExtras</code> package adds mini bar charts to the total column. It automatically scales the bars based on the values in the column, making it easy to visually compare totals across countries. The bars appear within the table cells themselves.</p>
 <p><strong>Footnotes for Attribution</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tab_footnote</span>(<span class="fu" style="color: #4758AB;
@@ -2626,7 +2630,7 @@ font-style: inherit;">"**Source: **&lt;br&gt;*World Value Survey (2024)*"</span>
 </div>
 <p><code>tab_footnote()</code> adds a footnote to the table. The <code>&lt;br&gt;</code> is HTML for a line break, and again we’re using <code>md()</code> to enable markdown formatting for bold text and italics.</p>
 <p><strong>Theming with <code>gt_theme_espn()</code></strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gt_theme_espn</span>()</span></code></pre></div>
@@ -2675,6 +2679,149 @@ font-style: inherit;">gt_theme_espn</span>()</span></code></pre></div>
   <category>tables</category>
   <guid>https://thesocialsciencesofa.com/blog/2025-06-30/multi-dimensional-gt-tables-r.html</guid>
   <pubDate>Sun, 29 Jun 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://thesocialsciencesofa.com/blog/2025-06-30/multi-dimensional-gt-tables-r.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Fourth Post</title>
+  <dc:creator>Daniel Dauber</dc:creator>
+  <link>https://thesocialsciencesofa.com/blog/2025-06-20/fourth_post.html</link>
+  <description><![CDATA[ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;family=Fredoka:wght@300..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Quicksand:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+
+
+<div class="slide-in">
+<p><img src="https://thesocialsciencesofa.com/blog/2025-06-20/image.jpg" alt="MPG vs weight plot" width="100%"></p>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">✍️ Introduction</h2>
+<p>Welcome! This post is a demonstration of how a typical Quarto blog post might look.<br>
+It includes headings, inline formatting, R code, a data visualisation, tables, and more.</p>
+<p>Quarto allows you to write in markdown, embed live code, and include <strong>beautiful, reproducible outputs</strong> — all in one place.</p>
+<p>Whether you’re documenting your research, writing tutorials, or just keeping notes, it gives you the flexibility of code and prose combined.</p>
+</section>
+<section id="lists" class="level2">
+<h2 class="anchored" data-anchor-id="lists">📋 Lists</h2>
+<section id="unordered-list" class="level3">
+<h3 class="anchored" data-anchor-id="unordered-list">Unordered list</h3>
+<ul>
+<li>Quarto supports markdown out of the box<br>
+</li>
+<li>Code can be executed and rendered inline<br>
+</li>
+<li>You can embed LaTeX, HTML, or call external files</li>
+</ul>
+</section>
+<section id="ordered-list" class="level3">
+<h3 class="anchored" data-anchor-id="ordered-list">Ordered list</h3>
+<ol type="1">
+<li>Install R and RStudio<br>
+</li>
+<li>Install Quarto CLI<br>
+</li>
+<li>Start writing posts like this one</li>
+</ol>
+</section>
+</section>
+<section id="a-quote-for-good-measure" class="level2">
+<h2 class="anchored" data-anchor-id="a-quote-for-good-measure">💬 A Quote for Good Measure</h2>
+<blockquote class="blockquote">
+<p>“A picture is worth a thousand words. A good plot is worth even more in R.”<br>
+— You, after adopting Quarto</p>
+</blockquote>
+<hr>
+</section>
+<section id="r-code-and-visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="r-code-and-visualisation">📊 R Code and Visualisation</h2>
+<p>Let’s explore a classic dataset in R: <code>mtcars</code>. Below is a simple scatter plot showing how miles per gallon (<code>mpg</code>) relates to car weight (<code>wt</code>).</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">mtcars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> wt, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> mpg)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#0072B2"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb1-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MPG vs Weight"</span>,</span>
+<span id="cb1-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Weight (1000 lbs)"</span>,</span>
+<span id="cb1-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Miles per Gallon"</span>,</span>
+<span id="cb1-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Figure 1. Scatterplot of fuel efficiency vs car weight using the mtcars dataset."</span></span>
+<span id="cb1-11">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://thesocialsciencesofa.com/blog/2025-06-20/fourth_post_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="slide-in">
+<p>This should slide in from below!</p>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>intro</category>
+  <category>welcome</category>
+  <guid>https://thesocialsciencesofa.com/blog/2025-06-20/fourth_post.html</guid>
+  <pubDate>Thu, 19 Jun 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://thesocialsciencesofa.com/blog/2025-06-20/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

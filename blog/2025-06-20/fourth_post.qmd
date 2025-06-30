@@ -1,0 +1,70 @@
+---
+title: "Fourth Post"
+description: "When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us."
+author: "Daniel Dauber"
+date: 2025-06-20
+categories: [intro, welcome]
+draft: false
+image: "image.jpg"
+---
+
+::: slide-in
+<img src="image.jpg" alt="MPG vs weight plot" width="100%">
+:::
+
+## ✍️ Introduction
+
+Welcome! This post is a demonstration of how a typical Quarto blog post might look.\
+It includes headings, inline formatting, R code, a data visualisation, tables, and more.
+
+Quarto allows you to write in markdown, embed live code, and include **beautiful, reproducible outputs** — all in one place.
+
+Whether you're documenting your research, writing tutorials, or just keeping notes, it gives you the flexibility of code and prose combined.
+
+## 📋 Lists
+
+### Unordered list
+
+-   Quarto supports markdown out of the box\
+-   Code can be executed and rendered inline\
+-   You can embed LaTeX, HTML, or call external files
+
+### Ordered list
+
+1.  Install R and RStudio\
+2.  Install Quarto CLI\
+3.  Start writing posts like this one
+
+## 💬 A Quote for Good Measure
+
+> “A picture is worth a thousand words. A good plot is worth even more in R.”\
+> — You, after adopting Quarto
+
+------------------------------------------------------------------------
+
+
+
+## 📊 R Code and Visualisation
+
+Let’s explore a classic dataset in R: `mtcars`. Below is a simple scatter plot showing how miles per gallon (`mpg`) relates to car weight (`wt`).
+
+```{r}
+#| classes: slide-in
+
+library(ggplot2)
+
+mtcars |>
+ggplot(aes(x = wt, y = mpg)) +
+  geom_point(color = "#0072B2", size = 3) +
+  labs(
+    title = "MPG vs Weight",
+    x = "Weight (1000 lbs)",
+    y = "Miles per Gallon",
+    caption = "Figure 1. Scatterplot of fuel efficiency vs car weight using the mtcars dataset."
+  ) +
+  theme_minimal()
+```
+
+::: {.slide-in}
+This should slide in from below!
+:::

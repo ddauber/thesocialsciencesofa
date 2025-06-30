@@ -1,14 +1,16 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/blog/index.html",
     "items": [
-      "/blog/2025-06-30/multi-dimensional-gt-tables-r.html"
+      "/blog/2025-06-30/multi-dimensional-gt-tables-r.html",
+      "/blog/2025-06-20/fourth_post.html"
     ]
   },
   {
-    "listing": "/blog/index.html",
+    "listing": "/index.html",
     "items": [
-      "/blog/2025-06-30/multi-dimensional-gt-tables-r.html"
+      "/blog/2025-06-30/multi-dimensional-gt-tables-r.html",
+      "/blog/2025-06-20/fourth_post.html"
     ]
   }
 ]

@@ -255,6 +255,9 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 
 
 
+<div class="slide-in">
+<p><img src="multi-dimensional-gt-tables-r.jpg" alt="MPG vs weight plot" width="100%"></p>
+</div>
 <p>Creating beautiful tables in R has never been easier thanks to the <a href="https://gt.rstudio.com/"><code>gt</code> package</a>. But what happens when your “simple” table suddenly needs three dimensions? That’s when things get interesting – and by interesting, I mean frustratingly complex.</p>
 <p>Today, we’ll walk through creating a multi-dimensional table that displays relationship status by gender across different countries. We’ll start simple and work our way up to the challenges that make you question your life choices (and then solve them, of course).</p>
 <section id="meet-the-gt-package" class="level2">
@@ -267,7 +270,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="our-data-world-values-survey">Our Data: World Values Survey</h2>
 <p>We’ll be working with data from the World Values Survey (WVS), which contains responses from people across different countries about their values and demographics. The <code>wvs_nona</code> dataset is a cleaned version where missing values have been removed (hence “nona” = no NAs).</p>
 <p>If you want to follow along, you can get the dataset from the <a href="https://github.com/yourrepo/r4np"><code>r4np</code> package</a>:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install if you haven't already</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("r4np")</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -307,7 +310,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="step-1-the-innocent-beginning">Step 1: The Innocent Beginning</h2>
 <p>Let’s start with what seems like a straightforward task: create a table showing the count of married, separated, and divorced people by gender across countries.</p>
 <p>First, we need to count the combinations of our three variables:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create our base data</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>table_data <span class="ot">&lt;-</span> wvs_nona <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, country, relationship_status) <span class="sc">%&gt;%</span></span>
@@ -330,7 +333,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <p>The <code>count()</code> function is doing the heavy lifting here. It groups by the three variables we specify and counts how many observations fall into each combination. The <code>filter()</code> step narrows our focus to just three relationship statuses – we’re keeping the analysis manageable.</p>
 <p>This gives us a “long” format dataset where each row represents one combination of country, gender, and relationship status, with the count in the <code>n</code> column.</p>
 <p>Now we need to reshape this data to make it suitable for a table. We want countries as rows and the gender-relationship combinations as columns:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape for table format</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> table_data <span class="sc">%&gt;%</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> country,</span>
@@ -359,7 +362,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 </ul>
 <p>The result is columns with names like <code>female_married</code>, <code>male_divorced</code>, etc. R automatically combines the values from <code>gender</code> and <code>relationship_status</code> with an underscore.</p>
 <p>Now let’s create our first GT table:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our first attempt</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>basic_table <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
@@ -370,23 +373,23 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>basic_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="nzfczgowmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nzfczgowmq table {
+<div id="ualuxbdyfa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ualuxbdyfa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nzfczgowmq thead, #nzfczgowmq tbody, #nzfczgowmq tfoot, #nzfczgowmq tr, #nzfczgowmq td, #nzfczgowmq th {
+#ualuxbdyfa thead, #ualuxbdyfa tbody, #ualuxbdyfa tfoot, #ualuxbdyfa tr, #ualuxbdyfa td, #ualuxbdyfa th {
   border-style: none;
 }
 
-#nzfczgowmq p {
+#ualuxbdyfa p {
   margin: 0;
   padding: 0;
 }
 
-#nzfczgowmq .gt_table {
+#ualuxbdyfa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -412,12 +415,12 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-left-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_caption {
+#ualuxbdyfa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nzfczgowmq .gt_title {
+#ualuxbdyfa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -429,7 +432,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-width: 0;
 }
 
-#nzfczgowmq .gt_subtitle {
+#ualuxbdyfa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -441,7 +444,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-width: 0;
 }
 
-#nzfczgowmq .gt_heading {
+#ualuxbdyfa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -453,13 +456,13 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_bottom_border {
+#ualuxbdyfa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_col_headings {
+#ualuxbdyfa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -474,7 +477,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_col_heading {
+#ualuxbdyfa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -494,7 +497,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#nzfczgowmq .gt_column_spanner_outer {
+#ualuxbdyfa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -506,15 +509,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 4px;
 }
 
-#nzfczgowmq .gt_column_spanner_outer:first-child {
+#ualuxbdyfa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nzfczgowmq .gt_column_spanner_outer:last-child {
+#ualuxbdyfa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nzfczgowmq .gt_column_spanner {
+#ualuxbdyfa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -526,11 +529,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   width: 100%;
 }
 
-#nzfczgowmq .gt_spanner_row {
+#ualuxbdyfa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nzfczgowmq .gt_group_heading {
+#ualuxbdyfa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -556,7 +559,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   text-align: left;
 }
 
-#nzfczgowmq .gt_empty_group_heading {
+#ualuxbdyfa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -571,15 +574,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: middle;
 }
 
-#nzfczgowmq .gt_from_md > :first-child {
+#ualuxbdyfa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nzfczgowmq .gt_from_md > :last-child {
+#ualuxbdyfa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nzfczgowmq .gt_row {
+#ualuxbdyfa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -598,7 +601,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#nzfczgowmq .gt_stub {
+#ualuxbdyfa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -611,7 +614,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_stub_row_group {
+#ualuxbdyfa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -625,15 +628,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: top;
 }
 
-#nzfczgowmq .gt_row_group_first td {
+#ualuxbdyfa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nzfczgowmq .gt_row_group_first th {
+#ualuxbdyfa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nzfczgowmq .gt_summary_row {
+#ualuxbdyfa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -643,16 +646,16 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_first_summary_row {
+#ualuxbdyfa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_first_summary_row.thick {
+#ualuxbdyfa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nzfczgowmq .gt_last_summary_row {
+#ualuxbdyfa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -662,7 +665,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_grand_summary_row {
+#ualuxbdyfa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -672,7 +675,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_first_grand_summary_row {
+#ualuxbdyfa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -682,7 +685,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_last_grand_summary_row_top {
+#ualuxbdyfa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -692,11 +695,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_striped {
+#ualuxbdyfa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nzfczgowmq .gt_table_body {
+#ualuxbdyfa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -705,7 +708,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_footnotes {
+#ualuxbdyfa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -719,7 +722,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_footnote {
+#ualuxbdyfa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -728,7 +731,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_sourcenotes {
+#ualuxbdyfa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -742,7 +745,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nzfczgowmq .gt_sourcenote {
+#ualuxbdyfa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -750,72 +753,72 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nzfczgowmq .gt_left {
+#ualuxbdyfa .gt_left {
   text-align: left;
 }
 
-#nzfczgowmq .gt_center {
+#ualuxbdyfa .gt_center {
   text-align: center;
 }
 
-#nzfczgowmq .gt_right {
+#ualuxbdyfa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nzfczgowmq .gt_font_normal {
+#ualuxbdyfa .gt_font_normal {
   font-weight: normal;
 }
 
-#nzfczgowmq .gt_font_bold {
+#ualuxbdyfa .gt_font_bold {
   font-weight: bold;
 }
 
-#nzfczgowmq .gt_font_italic {
+#ualuxbdyfa .gt_font_italic {
   font-style: italic;
 }
 
-#nzfczgowmq .gt_super {
+#ualuxbdyfa .gt_super {
   font-size: 65%;
 }
 
-#nzfczgowmq .gt_footnote_marks {
+#ualuxbdyfa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nzfczgowmq .gt_asterisk {
+#ualuxbdyfa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nzfczgowmq .gt_indent_1 {
+#ualuxbdyfa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nzfczgowmq .gt_indent_2 {
+#ualuxbdyfa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nzfczgowmq .gt_indent_3 {
+#ualuxbdyfa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nzfczgowmq .gt_indent_4 {
+#ualuxbdyfa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nzfczgowmq .gt_indent_5 {
+#ualuxbdyfa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nzfczgowmq .katex-display {
+#ualuxbdyfa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nzfczgowmq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ualuxbdyfa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -905,7 +908,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="step-2-the-plot-thickens">Step 2: The Plot Thickens</h2>
 <p>Our basic table works, but it’s not exactly reader-friendly. Those column names like <code>female_married</code> are functional but ugly. We want to group them under gender headers with clean sub-labels.</p>
 <p>“No problem,” you think, “I’ll just use <code>tab_spanner_delim()</code>!”</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempt with tab_spanner_delim()</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>spanners_attempt <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
@@ -917,23 +920,23 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>spanners_attempt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="wukhwfxugx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wukhwfxugx table {
+<div id="nwmojxwmez" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nwmojxwmez table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wukhwfxugx thead, #wukhwfxugx tbody, #wukhwfxugx tfoot, #wukhwfxugx tr, #wukhwfxugx td, #wukhwfxugx th {
+#nwmojxwmez thead, #nwmojxwmez tbody, #nwmojxwmez tfoot, #nwmojxwmez tr, #nwmojxwmez td, #nwmojxwmez th {
   border-style: none;
 }
 
-#wukhwfxugx p {
+#nwmojxwmez p {
   margin: 0;
   padding: 0;
 }
 
-#wukhwfxugx .gt_table {
+#nwmojxwmez .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -959,12 +962,12 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-left-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_caption {
+#nwmojxwmez .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wukhwfxugx .gt_title {
+#nwmojxwmez .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -976,7 +979,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-width: 0;
 }
 
-#wukhwfxugx .gt_subtitle {
+#nwmojxwmez .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -988,7 +991,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-width: 0;
 }
 
-#wukhwfxugx .gt_heading {
+#nwmojxwmez .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1000,13 +1003,13 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_bottom_border {
+#nwmojxwmez .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_col_headings {
+#nwmojxwmez .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1021,7 +1024,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_col_heading {
+#nwmojxwmez .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1041,7 +1044,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#wukhwfxugx .gt_column_spanner_outer {
+#nwmojxwmez .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1053,15 +1056,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 4px;
 }
 
-#wukhwfxugx .gt_column_spanner_outer:first-child {
+#nwmojxwmez .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wukhwfxugx .gt_column_spanner_outer:last-child {
+#nwmojxwmez .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wukhwfxugx .gt_column_spanner {
+#nwmojxwmez .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1073,11 +1076,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   width: 100%;
 }
 
-#wukhwfxugx .gt_spanner_row {
+#nwmojxwmez .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wukhwfxugx .gt_group_heading {
+#nwmojxwmez .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1103,7 +1106,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   text-align: left;
 }
 
-#wukhwfxugx .gt_empty_group_heading {
+#nwmojxwmez .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1118,15 +1121,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: middle;
 }
 
-#wukhwfxugx .gt_from_md > :first-child {
+#nwmojxwmez .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wukhwfxugx .gt_from_md > :last-child {
+#nwmojxwmez .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wukhwfxugx .gt_row {
+#nwmojxwmez .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1145,7 +1148,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#wukhwfxugx .gt_stub {
+#nwmojxwmez .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1158,7 +1161,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_stub_row_group {
+#nwmojxwmez .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1172,15 +1175,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: top;
 }
 
-#wukhwfxugx .gt_row_group_first td {
+#nwmojxwmez .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wukhwfxugx .gt_row_group_first th {
+#nwmojxwmez .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wukhwfxugx .gt_summary_row {
+#nwmojxwmez .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1190,16 +1193,16 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_first_summary_row {
+#nwmojxwmez .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_first_summary_row.thick {
+#nwmojxwmez .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wukhwfxugx .gt_last_summary_row {
+#nwmojxwmez .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1209,7 +1212,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_grand_summary_row {
+#nwmojxwmez .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1219,7 +1222,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_first_grand_summary_row {
+#nwmojxwmez .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1229,7 +1232,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_last_grand_summary_row_top {
+#nwmojxwmez .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1239,11 +1242,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_striped {
+#nwmojxwmez .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wukhwfxugx .gt_table_body {
+#nwmojxwmez .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1252,7 +1255,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_footnotes {
+#nwmojxwmez .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1266,7 +1269,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_footnote {
+#nwmojxwmez .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1275,7 +1278,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_sourcenotes {
+#nwmojxwmez .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1289,7 +1292,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#wukhwfxugx .gt_sourcenote {
+#nwmojxwmez .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1297,72 +1300,72 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#wukhwfxugx .gt_left {
+#nwmojxwmez .gt_left {
   text-align: left;
 }
 
-#wukhwfxugx .gt_center {
+#nwmojxwmez .gt_center {
   text-align: center;
 }
 
-#wukhwfxugx .gt_right {
+#nwmojxwmez .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wukhwfxugx .gt_font_normal {
+#nwmojxwmez .gt_font_normal {
   font-weight: normal;
 }
 
-#wukhwfxugx .gt_font_bold {
+#nwmojxwmez .gt_font_bold {
   font-weight: bold;
 }
 
-#wukhwfxugx .gt_font_italic {
+#nwmojxwmez .gt_font_italic {
   font-style: italic;
 }
 
-#wukhwfxugx .gt_super {
+#nwmojxwmez .gt_super {
   font-size: 65%;
 }
 
-#wukhwfxugx .gt_footnote_marks {
+#nwmojxwmez .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wukhwfxugx .gt_asterisk {
+#nwmojxwmez .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wukhwfxugx .gt_indent_1 {
+#nwmojxwmez .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wukhwfxugx .gt_indent_2 {
+#nwmojxwmez .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wukhwfxugx .gt_indent_3 {
+#nwmojxwmez .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wukhwfxugx .gt_indent_4 {
+#nwmojxwmez .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wukhwfxugx .gt_indent_5 {
+#nwmojxwmez .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wukhwfxugx .katex-display {
+#nwmojxwmez .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wukhwfxugx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nwmojxwmez div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1472,7 +1475,7 @@ male
 <h2 class="anchored" data-anchor-id="step-3-the-manual-labor-solution">Step 3: The Manual Labor Solution</h2>
 <p>This is where GT shows both its power and its complexity. To get full control, we need to manually create our spanners and relabel our columns. It’s more work, but it’s infinitely more flexible.</p>
 <p>Let’s break this down step by step:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The manual approach - more control, more code</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>custom_table <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
@@ -1508,23 +1511,23 @@ male
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>custom_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="pnvprtemlu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pnvprtemlu table {
+<div id="obbnoaphed" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#obbnoaphed table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pnvprtemlu thead, #pnvprtemlu tbody, #pnvprtemlu tfoot, #pnvprtemlu tr, #pnvprtemlu td, #pnvprtemlu th {
+#obbnoaphed thead, #obbnoaphed tbody, #obbnoaphed tfoot, #obbnoaphed tr, #obbnoaphed td, #obbnoaphed th {
   border-style: none;
 }
 
-#pnvprtemlu p {
+#obbnoaphed p {
   margin: 0;
   padding: 0;
 }
 
-#pnvprtemlu .gt_table {
+#obbnoaphed .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1550,12 +1553,12 @@ male
   border-left-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_caption {
+#obbnoaphed .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pnvprtemlu .gt_title {
+#obbnoaphed .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1567,7 +1570,7 @@ male
   border-bottom-width: 0;
 }
 
-#pnvprtemlu .gt_subtitle {
+#obbnoaphed .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1579,7 +1582,7 @@ male
   border-top-width: 0;
 }
 
-#pnvprtemlu .gt_heading {
+#obbnoaphed .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1591,13 +1594,13 @@ male
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_bottom_border {
+#obbnoaphed .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_col_headings {
+#obbnoaphed .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1612,7 +1615,7 @@ male
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_col_heading {
+#obbnoaphed .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1632,7 +1635,7 @@ male
   overflow-x: hidden;
 }
 
-#pnvprtemlu .gt_column_spanner_outer {
+#obbnoaphed .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1644,15 +1647,15 @@ male
   padding-right: 4px;
 }
 
-#pnvprtemlu .gt_column_spanner_outer:first-child {
+#obbnoaphed .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pnvprtemlu .gt_column_spanner_outer:last-child {
+#obbnoaphed .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pnvprtemlu .gt_column_spanner {
+#obbnoaphed .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1664,11 +1667,11 @@ male
   width: 100%;
 }
 
-#pnvprtemlu .gt_spanner_row {
+#obbnoaphed .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pnvprtemlu .gt_group_heading {
+#obbnoaphed .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1694,7 +1697,7 @@ male
   text-align: left;
 }
 
-#pnvprtemlu .gt_empty_group_heading {
+#obbnoaphed .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1709,15 +1712,15 @@ male
   vertical-align: middle;
 }
 
-#pnvprtemlu .gt_from_md > :first-child {
+#obbnoaphed .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pnvprtemlu .gt_from_md > :last-child {
+#obbnoaphed .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pnvprtemlu .gt_row {
+#obbnoaphed .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1736,7 +1739,7 @@ male
   overflow-x: hidden;
 }
 
-#pnvprtemlu .gt_stub {
+#obbnoaphed .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1749,7 +1752,7 @@ male
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_stub_row_group {
+#obbnoaphed .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1763,15 +1766,15 @@ male
   vertical-align: top;
 }
 
-#pnvprtemlu .gt_row_group_first td {
+#obbnoaphed .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pnvprtemlu .gt_row_group_first th {
+#obbnoaphed .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pnvprtemlu .gt_summary_row {
+#obbnoaphed .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1781,16 +1784,16 @@ male
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_first_summary_row {
+#obbnoaphed .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_first_summary_row.thick {
+#obbnoaphed .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pnvprtemlu .gt_last_summary_row {
+#obbnoaphed .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1800,7 +1803,7 @@ male
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_grand_summary_row {
+#obbnoaphed .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1810,7 +1813,7 @@ male
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_first_grand_summary_row {
+#obbnoaphed .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1820,7 +1823,7 @@ male
   border-top-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_last_grand_summary_row_top {
+#obbnoaphed .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1830,11 +1833,11 @@ male
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_striped {
+#obbnoaphed .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pnvprtemlu .gt_table_body {
+#obbnoaphed .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1843,7 +1846,7 @@ male
   border-bottom-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_footnotes {
+#obbnoaphed .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1857,7 +1860,7 @@ male
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_footnote {
+#obbnoaphed .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1866,7 +1869,7 @@ male
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_sourcenotes {
+#obbnoaphed .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1880,7 +1883,7 @@ male
   border-right-color: #D3D3D3;
 }
 
-#pnvprtemlu .gt_sourcenote {
+#obbnoaphed .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1888,72 +1891,72 @@ male
   padding-right: 5px;
 }
 
-#pnvprtemlu .gt_left {
+#obbnoaphed .gt_left {
   text-align: left;
 }
 
-#pnvprtemlu .gt_center {
+#obbnoaphed .gt_center {
   text-align: center;
 }
 
-#pnvprtemlu .gt_right {
+#obbnoaphed .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pnvprtemlu .gt_font_normal {
+#obbnoaphed .gt_font_normal {
   font-weight: normal;
 }
 
-#pnvprtemlu .gt_font_bold {
+#obbnoaphed .gt_font_bold {
   font-weight: bold;
 }
 
-#pnvprtemlu .gt_font_italic {
+#obbnoaphed .gt_font_italic {
   font-style: italic;
 }
 
-#pnvprtemlu .gt_super {
+#obbnoaphed .gt_super {
   font-size: 65%;
 }
 
-#pnvprtemlu .gt_footnote_marks {
+#obbnoaphed .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pnvprtemlu .gt_asterisk {
+#obbnoaphed .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pnvprtemlu .gt_indent_1 {
+#obbnoaphed .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pnvprtemlu .gt_indent_2 {
+#obbnoaphed .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pnvprtemlu .gt_indent_3 {
+#obbnoaphed .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pnvprtemlu .gt_indent_4 {
+#obbnoaphed .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pnvprtemlu .gt_indent_5 {
+#obbnoaphed .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pnvprtemlu .katex-display {
+#obbnoaphed .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pnvprtemlu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#obbnoaphed div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2062,7 +2065,7 @@ male
 </div>
 <p>Let’s dissect what’s happening here:</p>
 <p><strong>Step 1: Individual Gender Spanners</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*female*"</span>),</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"female_"</span>)</span>
@@ -2071,7 +2074,7 @@ male
 <p>This creates a spanner (column group) labeled “female” that covers all columns starting with “female_”. The <code>md()</code> function allows us to use markdown formatting – in this case, italics with the asterisks.</p>
 <p>The <code>starts_with()</code> function is a “tidy select” helper that selects columns based on their names. It’s much more reliable than typing out column names manually, especially when your column names follow a pattern.</p>
 <p><strong>Step 2: Overarching Spanner</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"**Gender**"</span>),</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"female_"</span>, <span class="st">"male_"</span>)),</span>
@@ -2080,7 +2083,7 @@ male
 </div>
 <p>This creates a higher-level spanner that encompasses both gender groups. The <code>columns</code> argument uses a vector of prefixes to select all columns that start with either “female_” or “male_”. The <code>id = "gender"</code> gives this spanner a unique identifier that we could reference later if needed.</p>
 <p><strong>Step 3: Column Label Customisation</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cols_label</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">country =</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>),</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ends_with</span>(<span class="st">"married"</span>) <span class="sc">~</span> <span class="st">"Married"</span>,</span>
@@ -2094,13 +2097,13 @@ male
 <li><code>ends_with("married") ~ "Married"</code>: This says “for any column that ends with ‘married’, rename it to ‘Married’”</li>
 </ul>
 <p>This pattern-based renaming is incredibly powerful. Instead of writing:</p>
-<div id="tbl-different-correlations" class="cell quarto-float anchored">
+<div id="tbl-different-correlations" class="cell slide-in quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-different-correlations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1
 </figcaption>
 <div aria-describedby="tbl-different-correlations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="sourceCode cell-code anchored" id="tbl-different-correlations"><pre class="sourceCode r cell code-with-copy"><code class="sourceCode r"><span id="tbl-different-correlations-1"><a href="#tbl-different-correlations-1" aria-hidden="true" tabindex="-1"></a>female_married <span class="ot">=</span> <span class="st">"Married"</span>,</span>
+<div class="sourceCode cell-code anchored" id="tbl-different-correlations"><pre class="sourceCode r cell slide-in code-with-copy"><code class="sourceCode r"><span id="tbl-different-correlations-1"><a href="#tbl-different-correlations-1" aria-hidden="true" tabindex="-1"></a>female_married <span class="ot">=</span> <span class="st">"Married"</span>,</span>
 <span id="tbl-different-correlations-2"><a href="#tbl-different-correlations-2" aria-hidden="true" tabindex="-1"></a>male_married <span class="ot">=</span> <span class="st">"Married"</span>,</span>
 <span id="tbl-different-correlations-3"><a href="#tbl-different-correlations-3" aria-hidden="true" tabindex="-1"></a>female_separated <span class="ot">=</span> <span class="st">"Separated"</span>,</span>
 <span id="tbl-different-correlations-4"><a href="#tbl-different-correlations-4" aria-hidden="true" tabindex="-1"></a>male_separated <span class="ot">=</span> <span class="st">"Separated"</span></span>
@@ -2113,7 +2116,7 @@ Table&nbsp;1
 <section id="step-4-the-na-problem-plot-twist" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-the-na-problem-plot-twist">Step 4: The NA Problem (Plot Twist!)</h2>
 <p>But wait, there’s more! Let’s add a total column to show the sum across relationship statuses:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding totals - first attempt</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>with_totals <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="sc">-</span>country))) <span class="sc">%&gt;%</span></span>
@@ -2130,7 +2133,7 @@ Table&nbsp;1
 <section id="step-5-the-na-solution" class="level2">
 <h2 class="anchored" data-anchor-id="step-5-the-na-solution">Step 5: The NA Solution</h2>
 <p>Let’s fix the NA problem properly:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The NA fix</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Replace NA with 0 - this makes sense for count data</span></span>
@@ -2142,7 +2145,7 @@ Table&nbsp;1
 </div>
 <p>This code introduces a powerful pattern:</p>
 <p><strong><code>across()</code> for Multiple Column Operations</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, .)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>across()</code> is a function that applies the same transformation to multiple columns. Let’s break it down:</p>
@@ -2159,7 +2162,7 @@ Table&nbsp;1
 <section id="step-6-the-full-solution-explained" class="level2">
 <h2 class="anchored" data-anchor-id="step-6-the-full-solution-explained">Step 6: The Full Solution Explained</h2>
 <p>Now let’s put it all together with detailed explanations and a little bit of flair:</p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our final, polished table</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>final_table <span class="ot">&lt;-</span> wvs_nona <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Create counts for each combination</span></span>
@@ -2223,19 +2226,20 @@ Table&nbsp;1
 <span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>final_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let me explain the final formatting steps:</p>
+<p>Admittedly, this code chunk is a lot more substantial than going with the standard <code>gt</code> table setup, but it certainly looks a lot more audience-ready and accessible</p>
+<p>Let me explain the final formatting steps so you can apply those changes to your own tables as well:</p>
 <p><strong>Visual Enhancement with <code>gt_plt_bar()</code></strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_plt_bar</span>(<span class="at">column =</span> total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function from the <code>gtExtras</code> package adds mini bar charts to the total column. It automatically scales the bars based on the values in the column, making it easy to visually compare totals across countries. The bars appear within the table cells themselves.</p>
 <p><strong>Footnotes for Attribution</strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_footnote</span>(<span class="fu">md</span>(<span class="st">"**Source: **&lt;br&gt;*World Value Survey (2024)*"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>tab_footnote()</code> adds a footnote to the table. The <code>&lt;br&gt;</code> is HTML for a line break, and again we’re using <code>md()</code> to enable markdown formatting for bold text and italics.</p>
 <p><strong>Theming with <code>gt_theme_espn()</code></strong></p>
-<div class="cell">
+<div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_theme_espn</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This applies a pre-built theme that mimics the ESPN sports network styling. The <code>gtExtras</code> package includes several pre-built themes that can dramatically change your table’s appearance with a single line of code. This is particularly helpful if you want to quickly apply a uniform style to all your tables in a presentation, report or publication.</p>

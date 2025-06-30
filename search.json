@@ -7,6 +7,20 @@
     "text": "This is the personal academic space of Daniel — researcher, educator, and author of R for Non-Programmers."
   },
   {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Taming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFourth Post\n\n\n\n\n\nWhen we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.\n\n\n\n\n\nJun 20, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Welcome to The Social Science Sofa.\nExplore posts, tutorials, and musings from the social science world.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFourth Post\n\n\n\n\n\nWhen we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.\n\n\n\n\n\nJun 20, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "blog/2025-06-30/multi-dimensional-gt-tables-r.html",
     "href": "blog/2025-06-30/multi-dimensional-gt-tables-r.html",
     "title": "Taming Multi-Dimensional Tables with gt",
@@ -67,7 +81,7 @@
     "href": "blog/2025-06-30/multi-dimensional-gt-tables-r.html#step-6-the-full-solution-explained",
     "title": "Taming Multi-Dimensional Tables with gt",
     "section": "Step 6: The Full Solution Explained",
-    "text": "Step 6: The Full Solution Explained\nNow let’s put it all together with detailed explanations and a little bit of flair:\n\n# Our final, polished table\nfinal_table &lt;- wvs_nona %&gt;%\n  # Step 1: Create counts for each combination\n  count(gender, country, relationship_status) %&gt;%\n  \n  # Step 2: Filter to our relationship statuses of interest\n  filter(relationship_status %in% c(\"married\", \"separated\", \"divorced\")) %&gt;%\n  \n  # Step 3: Reshape from long to wide format\n  pivot_wider(id_cols = country,\n              names_from = c(gender, relationship_status),\n              values_from = n) %&gt;%\n  \n  # Step 4: Handle NAs properly for count data\n  mutate(across(where(is.numeric), ~ if_else(is.na(.), 0, .))) %&gt;%\n  \n  # Step 5: Add row totals\n  mutate(total = rowSums(select(., -country))) %&gt;%\n  \n  # Step 6: Create the GT table\n  gt() %&gt;%\n  \n  # Step 7: Add headers\n  tab_header(\n    title = \"World Value Survey (WVS)\",\n    subtitle = \"Data extract from r4np\"\n  ) %&gt;%\n  \n  # Step 8: Create nested column spanners\n  tab_spanner(\n    label = md(\"*female*\"),\n    columns = starts_with(\"female_\")\n  ) %&gt;%\n  tab_spanner(\n    label = md(\"*male*\"),\n    columns = starts_with(\"male_\")\n  ) %&gt;%\n  tab_spanner(\n    label = md(\"**Gender**\"),\n    columns = starts_with(c(\"female_\", \"male_\")),\n    id = \"gender\"\n  ) %&gt;%\n  \n  # Step 9: Customise column labels\n  cols_label(\n    country = md(\"**Country**\"),\n    total = md(\"**Total**\"),\n    ends_with(\"married\") ~ \"married\",\n    ends_with(\"separated\") ~ \"separated\",\n    ends_with(\"divorced\") ~ \"divorced\"\n  ) %&gt;%\n  \n  # Step 10: Add visual elements\n  gt_plt_bar(column = total) %&gt;%\n  \n  # Step 11: Add footer information\n  tab_footnote(md(\"**Source:**&lt;br&gt;*World Value Survey (2024)*\")) %&gt;%\n  \n  # Step 12: Apply a theme\n  gt_theme_espn()\n\nfinal_table\n\nLet me explain the final formatting steps:\nVisual Enhancement with gt_plt_bar()\n\ngt_plt_bar(column = total)\n\nThis function from the gtExtras package adds mini bar charts to the total column. It automatically scales the bars based on the values in the column, making it easy to visually compare totals across countries. The bars appear within the table cells themselves.\nFootnotes for Attribution\n\ntab_footnote(md(\"**Source: **&lt;br&gt;*World Value Survey (2024)*\"))\n\ntab_footnote() adds a footnote to the table. The &lt;br&gt; is HTML for a line break, and again we’re using md() to enable markdown formatting for bold text and italics.\nTheming with gt_theme_espn()\n\ngt_theme_espn()\n\nThis applies a pre-built theme that mimics the ESPN sports network styling. The gtExtras package includes several pre-built themes that can dramatically change your table’s appearance with a single line of code. This is particularly helpful if you want to quickly apply a uniform style to all your tables in a presentation, report or publication."
+    "text": "Step 6: The Full Solution Explained\nNow let’s put it all together with detailed explanations and a little bit of flair:\n\n# Our final, polished table\nfinal_table &lt;- wvs_nona %&gt;%\n  # Step 1: Create counts for each combination\n  count(gender, country, relationship_status) %&gt;%\n  \n  # Step 2: Filter to our relationship statuses of interest\n  filter(relationship_status %in% c(\"married\", \"separated\", \"divorced\")) %&gt;%\n  \n  # Step 3: Reshape from long to wide format\n  pivot_wider(id_cols = country,\n              names_from = c(gender, relationship_status),\n              values_from = n) %&gt;%\n  \n  # Step 4: Handle NAs properly for count data\n  mutate(across(where(is.numeric), ~ if_else(is.na(.), 0, .))) %&gt;%\n  \n  # Step 5: Add row totals\n  mutate(total = rowSums(select(., -country))) %&gt;%\n  \n  # Step 6: Create the GT table\n  gt() %&gt;%\n  \n  # Step 7: Add headers\n  tab_header(\n    title = \"World Value Survey (WVS)\",\n    subtitle = \"Data extract from r4np\"\n  ) %&gt;%\n  \n  # Step 8: Create nested column spanners\n  tab_spanner(\n    label = md(\"*female*\"),\n    columns = starts_with(\"female_\")\n  ) %&gt;%\n  tab_spanner(\n    label = md(\"*male*\"),\n    columns = starts_with(\"male_\")\n  ) %&gt;%\n  tab_spanner(\n    label = md(\"**Gender**\"),\n    columns = starts_with(c(\"female_\", \"male_\")),\n    id = \"gender\"\n  ) %&gt;%\n  \n  # Step 9: Customise column labels\n  cols_label(\n    country = md(\"**Country**\"),\n    total = md(\"**Total**\"),\n    ends_with(\"married\") ~ \"married\",\n    ends_with(\"separated\") ~ \"separated\",\n    ends_with(\"divorced\") ~ \"divorced\"\n  ) %&gt;%\n  \n  # Step 10: Add visual elements\n  gt_plt_bar(column = total) %&gt;%\n  \n  # Step 11: Add footer information\n  tab_footnote(md(\"**Source:**&lt;br&gt;*World Value Survey (2024)*\")) %&gt;%\n  \n  # Step 12: Apply a theme\n  gt_theme_espn()\n\nfinal_table\n\nAdmittedly, this code chunk is a lot more substantial than going with the standard gt table setup, but it certainly looks a lot more audience-ready and accessible\nLet me explain the final formatting steps so you can apply those changes to your own tables as well:\nVisual Enhancement with gt_plt_bar()\n\ngt_plt_bar(column = total)\n\nThis function from the gtExtras package adds mini bar charts to the total column. It automatically scales the bars based on the values in the column, making it easy to visually compare totals across countries. The bars appear within the table cells themselves.\nFootnotes for Attribution\n\ntab_footnote(md(\"**Source: **&lt;br&gt;*World Value Survey (2024)*\"))\n\ntab_footnote() adds a footnote to the table. The &lt;br&gt; is HTML for a line break, and again we’re using md() to enable markdown formatting for bold text and italics.\nTheming with gt_theme_espn()\n\ngt_theme_espn()\n\nThis applies a pre-built theme that mimics the ESPN sports network styling. The gtExtras package includes several pre-built themes that can dramatically change your table’s appearance with a single line of code. This is particularly helpful if you want to quickly apply a uniform style to all your tables in a presentation, report or publication."
   },
   {
     "objectID": "blog/2025-06-30/multi-dimensional-gt-tables-r.html#why-this-approach-works",
@@ -91,17 +105,31 @@
     "text": "Want to Learn More?\n\nGT Package Documentation - Comprehensive guide with examples\nGT Extras Package - Additional functionality and themes\nR for Non-Programmers - If you want to strengthen your R fundamentals\n\nThe key to mastering gt (and R in general) is understanding the building blocks and how they combine. Once you grasp these patterns, you’ll find yourself creating publication-ready tables with confidence and in no time.\nHappy table-making!"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Welcome to The Social Science Sofa.\nExplore posts, tutorials, and musings from the social science world.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
+    "objectID": "blog/2025-06-20/fourth_post.html#introduction",
+    "href": "blog/2025-06-20/fourth_post.html#introduction",
+    "title": "Fourth Post",
+    "section": "✍️ Introduction",
+    "text": "✍️ Introduction\nWelcome! This post is a demonstration of how a typical Quarto blog post might look.\nIt includes headings, inline formatting, R code, a data visualisation, tables, and more.\nQuarto allows you to write in markdown, embed live code, and include beautiful, reproducible outputs — all in one place.\nWhether you’re documenting your research, writing tutorials, or just keeping notes, it gives you the flexibility of code and prose combined."
   },
   {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Taming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
+    "objectID": "blog/2025-06-20/fourth_post.html#lists",
+    "href": "blog/2025-06-20/fourth_post.html#lists",
+    "title": "Fourth Post",
+    "section": "📋 Lists",
+    "text": "📋 Lists\n\nUnordered list\n\nQuarto supports markdown out of the box\n\nCode can be executed and rendered inline\n\nYou can embed LaTeX, HTML, or call external files\n\n\n\nOrdered list\n\nInstall R and RStudio\n\nInstall Quarto CLI\n\nStart writing posts like this one"
+  },
+  {
+    "objectID": "blog/2025-06-20/fourth_post.html#a-quote-for-good-measure",
+    "href": "blog/2025-06-20/fourth_post.html#a-quote-for-good-measure",
+    "title": "Fourth Post",
+    "section": "💬 A Quote for Good Measure",
+    "text": "💬 A Quote for Good Measure\n\n“A picture is worth a thousand words. A good plot is worth even more in R.”\n— You, after adopting Quarto"
+  },
+  {
+    "objectID": "blog/2025-06-20/fourth_post.html#r-code-and-visualisation",
+    "href": "blog/2025-06-20/fourth_post.html#r-code-and-visualisation",
+    "title": "Fourth Post",
+    "section": "📊 R Code and Visualisation",
+    "text": "📊 R Code and Visualisation\nLet’s explore a classic dataset in R: mtcars. Below is a simple scatter plot showing how miles per gallon (mpg) relates to car weight (wt).\n\nlibrary(ggplot2)\n\nmtcars |&gt;\nggplot(aes(x = wt, y = mpg)) +\n  geom_point(color = \"#0072B2\", size = 3) +\n  labs(\n    title = \"MPG vs Weight\",\n    x = \"Weight (1000 lbs)\",\n    y = \"Miles per Gallon\",\n    caption = \"Figure 1. Scatterplot of fuel efficiency vs car weight using the mtcars dataset.\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nThis should slide in from below!"
   }
 ]
