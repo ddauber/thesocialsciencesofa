@@ -7,20 +7,6 @@
     "text": "This is the personal academic space of Daniel — researcher, educator, and author of R for Non-Programmers."
   },
   {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Taming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFourth Post\n\n\n\n\n\nWhen we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.\n\n\n\n\n\nJun 20, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Welcome to The Social Science Sofa.\nExplore posts, tutorials, and musings from the social science world.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFourth Post\n\n\n\n\n\nWhen we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.When we write about programming in R, we sometimes forget that it is not just about coding, but about where it leads us.\n\n\n\n\n\nJun 20, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "blog/2025-06-30/multi-dimensional-gt-tables-r.html",
     "href": "blog/2025-06-30/multi-dimensional-gt-tables-r.html",
     "title": "Taming Multi-Dimensional Tables with gt",
@@ -105,31 +91,17 @@
     "text": "Want to Learn More?\n\nGT Package Documentation - Comprehensive guide with examples\nGT Extras Package - Additional functionality and themes\nR for Non-Programmers - If you want to strengthen your R fundamentals\n\nThe key to mastering gt (and R in general) is understanding the building blocks and how they combine. Once you grasp these patterns, you’ll find yourself creating publication-ready tables with confidence and in no time.\nHappy table-making!"
   },
   {
-    "objectID": "blog/2025-06-20/fourth_post.html#introduction",
-    "href": "blog/2025-06-20/fourth_post.html#introduction",
-    "title": "Fourth Post",
-    "section": "✍️ Introduction",
-    "text": "✍️ Introduction\nWelcome! This post is a demonstration of how a typical Quarto blog post might look.\nIt includes headings, inline formatting, R code, a data visualisation, tables, and more.\nQuarto allows you to write in markdown, embed live code, and include beautiful, reproducible outputs — all in one place.\nWhether you’re documenting your research, writing tutorials, or just keeping notes, it gives you the flexibility of code and prose combined."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Welcome to The Social Science Sofa.\nExplore posts, tutorials, and musings from the social science world.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "blog/2025-06-20/fourth_post.html#lists",
-    "href": "blog/2025-06-20/fourth_post.html#lists",
-    "title": "Fourth Post",
-    "section": "📋 Lists",
-    "text": "📋 Lists\n\nUnordered list\n\nQuarto supports markdown out of the box\n\nCode can be executed and rendered inline\n\nYou can embed LaTeX, HTML, or call external files\n\n\n\nOrdered list\n\nInstall R and RStudio\n\nInstall Quarto CLI\n\nStart writing posts like this one"
-  },
-  {
-    "objectID": "blog/2025-06-20/fourth_post.html#a-quote-for-good-measure",
-    "href": "blog/2025-06-20/fourth_post.html#a-quote-for-good-measure",
-    "title": "Fourth Post",
-    "section": "💬 A Quote for Good Measure",
-    "text": "💬 A Quote for Good Measure\n\n“A picture is worth a thousand words. A good plot is worth even more in R.”\n— You, after adopting Quarto"
-  },
-  {
-    "objectID": "blog/2025-06-20/fourth_post.html#r-code-and-visualisation",
-    "href": "blog/2025-06-20/fourth_post.html#r-code-and-visualisation",
-    "title": "Fourth Post",
-    "section": "📊 R Code and Visualisation",
-    "text": "📊 R Code and Visualisation\nLet’s explore a classic dataset in R: mtcars. Below is a simple scatter plot showing how miles per gallon (mpg) relates to car weight (wt).\n\nlibrary(ggplot2)\n\nmtcars |&gt;\nggplot(aes(x = wt, y = mpg)) +\n  geom_point(color = \"#0072B2\", size = 3) +\n  labs(\n    title = \"MPG vs Weight\",\n    x = \"Weight (1000 lbs)\",\n    y = \"Miles per Gallon\",\n    caption = \"Figure 1. Scatterplot of fuel efficiency vs car weight using the mtcars dataset.\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nThis should slide in from below!"
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Taming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
   }
 ]
