@@ -1,15 +1,15 @@
 ---
-title: "Taming Multi-Dimensional Tables with `gt`"
-description: ""
+title: "The Secret Weapon Every Researcher Needs (But Nobody Talks About)"
+description: "Learning a programming language like R isn't about becoming a computer scientist, it's about becoming a better researcher. Discover how coding skills expand your analytical toolkit, improve your thinking, help you spot hidden patterns, and future-proof your research career in an increasingly data-driven world."
 author: "Daniel Dauber"
-date: 2025-06-30
+date: 2025-07-07
 categories: [R, research methods, programming, social sciences]
 draft: true
-image: "multi-dimensional-gt-tables-r.jpg"
+image: "why-learn-r-programming.jpg"
 ---
 
 ::: slide-in
-<img src="multi-dimensional-gt-tables-r.jpg" alt="MPG vs weight plot" width="100%">
+<img src="why-learn-r-programming.jpg" alt="MPG vs weight plot" width="100%">
 :::
 
 Picture this: You're knee-deep in your latest research project, wrestling with data that refuses to behave, when a colleague mentions they've just automated their entire analysis pipeline and created interactive visualisations that would make *The Economist* jealous. Meanwhile, you're still clicking through your favourite statistics software menus wondering if there's a better way.
@@ -131,7 +131,7 @@ You will feel stupid at first. Your code will break. You'll spend hours debuggin
 Begin with simple tasks you already do. Import a dataset. Calculate some descriptive statistics. Create a basic plot. Build confidence before attempting anything fancy.
 
 **4. Join the Community**
-The R community is remarkably welcoming. Follow #RStats on X, join R User Groups like [RStudio Community](https://community.rstudio.com) [TidyTuesday](https://www.tidytuesday.com) and [R-Ladies](https://rladies.org), and participate in other online forums deducated to R. Programming isn't a solitary activity – it's deeply social.
+The R community is remarkably welcoming. Follow #RStats on X, join R User Groups like [RStudio Community](https://community.rstudio.com), [TidyTuesday](https://www.tidytuesday.com) and [R-Ladies](https://rladies.org), and participate in other online forums dedicated to R. Programming isn't a solitary activity – it's deeply social.
 
 **5. Focus on Your Research**
 Don't get caught up in becoming a "real programmer." Learn what you need to advance your research, then learn more when you need it.
