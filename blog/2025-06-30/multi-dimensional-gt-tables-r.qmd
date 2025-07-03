@@ -33,6 +33,8 @@ If you want to follow along, you can get the dataset from the [`r4np` package](h
 ```{r}
 #| label: setup
 #| class: slide-in
+#| echo: true
+#| message: false
 
 # Install if you haven't already
 # install.packages("r4np")
