@@ -7,6 +7,20 @@
     "text": "This is the personal academic space of Daniel — researcher, educator, and author of R for Non-Programmers."
   },
   {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Taming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Welcome to The Social Science Sofa.\nExplore posts, tutorials, and musings from the social science world.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "blog/2025-06-30/multi-dimensional-gt-tables-r.html",
     "href": "blog/2025-06-30/multi-dimensional-gt-tables-r.html",
     "title": "Taming Multi-Dimensional Tables with gt",
@@ -89,19 +103,5 @@
     "title": "Taming Multi-Dimensional Tables with gt",
     "section": "Want to Learn More?",
     "text": "Want to Learn More?\n\nGT Package Documentation - Comprehensive guide with examples\nGT Extras Package - Additional functionality and themes\nR for Non-Programmers - If you want to strengthen your R fundamentals\n\nThe key to mastering gt (and R in general) is understanding the building blocks and how they combine. Once you grasp these patterns, you’ll find yourself creating publication-ready tables with confidence and in no time.\nHappy table-making!"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "Welcome to The Social Science Sofa.\nExplore posts, tutorials, and musings from the social science world.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Taming Multi-Dimensional Tables with gt\n\n\n\n\n\nLearn how to create multi-dimensional tables in R using the GT package. This step-by-step tutorial covers the challenges of nested column headers, handling NA values in count data, and moving beyond tab_spanner_delim() for full customisation control. Perfect for R users wanting to create publication-ready tables with complex structures.\n\n\n\n\n\nJun 30, 2025\n\n\n\n\n\n\nNo matching items"
   }
 ]

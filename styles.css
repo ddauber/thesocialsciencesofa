@@ -1,18 +1,27 @@
+/* ========================================================================
+   BASE STYLES & TYPOGRAPHY
+   ======================================================================== */
+
 /* Base font and text */
 body {
   font-family: 'Lato', sans-serif;
-  font-weight: 400;
+  font-weight: 400; 700; 900;
   color: #222222;
   background-color: #ffffff;
   line-height: 1.6;
   padding-bottom: 200px;
 }
 
+/* Code blocks use Fira Code monospace font */
 .sourceCode {
   font-family: 'Fira Code', monospace;
 }
 
-/* Default: show both */
+/* ========================================================================
+   NAVBAR BRAND & LOGO
+   ======================================================================== */
+
+/* Default: show both logo text and site name */
 .navbar-brand .logo-text {
   font-family: 'Source Code Pro', monospace;
   font-weight: 400;
@@ -23,14 +32,18 @@ body {
   font-weight: 400;
 }
 
-/* On small screens: hide the name */
+/* On small screens: hide the site name to save space */
 @media (max-width: 640px) {
   .navbar-brand .site-name {
     display: none;
   }
 }
 
-/* Blog post card container */
+/* ========================================================================
+   BLOG POST CARDS
+   ======================================================================== */
+
+/* Blog post card container with hover effects */
 .quarto-post {
   background-color: white;
   /*
@@ -54,7 +67,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* Post thumbnail */
+/* Post thumbnail with consistent aspect ratio */
 .quarto-post .thumbnail-image {
   aspect-ratio: 16/9;
   border-radius: 8px;
@@ -64,27 +77,27 @@ body {
   margin-bottom: 0rem;
 }
 
-/* Post title */
+/* Post title styling */
 .quarto-post .listing-title {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
 }
 
-/* Post date */
+/* Post date styling */
 .quarto-post .listing-date {
   font-size: 0.875rem;
   color: #888888;
   margin-bottom: 0.75rem;
 }
 
-/* Post summary */
+/* Post summary/description styling */
 .quarto-post .listing-description {
   font-size: 1rem;
   color: #444;
 }
 
-/* Post categories */
+/* Post categories styling */
 .quarto-post .listing-categories .category {
   display: inline-block;
   background: #eef1f6;
@@ -96,8 +109,11 @@ body {
   margin-top: 0.5rem;
 }
 
+/* ========================================================================
+   NAVBAR STYLING
+   ======================================================================== */
 
-/* Navbar container */
+/* Navbar container with translucent background */
 .navbar {
   background-color: rgba(255, 255, 255, 0.96); /* light and slightly translucent */
   border-bottom: 1px solid #e6e6e6;
@@ -107,30 +123,51 @@ body {
   transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
-/* Navbar links */
+/* Navbar links base styling */
 .navbar-nav .nav-link {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 0.95rem;
-  color: #333;
+  color: #222222;
   padding: 0.5rem 1rem;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  position: relative; /* Required for the animated underline */
 }
 
-/* On hover */
-.navbar-nav .nav-link:hover {
-  color: #345;
-  background-color: rgba(0, 85, 255, 0.05); /* subtle highlight */
-  border-radius: 6px;
+/* ========================================================================
+   ANIMATED UNDERLINE EFFECT
+   ======================================================================== */
+
+/* Animated underline that appears on hover - starts from left with overshoot */
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #222222;
+  transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.45);
+  border-radius: 0;
+  transform-origin: left;
 }
 
-/* Active page (optional) */
+/* On hover: expand underline from left to right with bounce effect */
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* ========================================================================
+   NAVBAR HOVER & ACTIVE STATES
+   ======================================================================== */
+
+/* Active page styling */
 .navbar-nav .nav-link.active {
-  color: #345;
-  font-weight: 600;
+  font-weight: 900;
+  color: #222222;
+
 }
 
-/* Brand/logo */
+/* Brand/logo styling */
 .navbar-brand {
   font-weight: 600;
   font-size: 1.1rem;
@@ -138,13 +175,17 @@ body {
   color: #000;
 }
 
-/* Base animation settings */
+/* ========================================================================
+   SCROLL ANIMATIONS
+   ======================================================================== */
+
+/* Base animation settings using CSS custom properties */
 :root {
   --anim-duration: 0.6s;
   --anim-ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* General hidden state */
+/* General hidden state for all animated elements */
 .slide-in,
 .slide-in-left,
 .slide-in-right,
@@ -154,7 +195,7 @@ body {
   will-change: opacity, transform;
 }
 
-/* Slide-in from bottom */
+/* Slide-in from bottom animation */
 .slide-in {
   transform: translateY(40px);
   transition: opacity var(--anim-duration) var(--anim-ease),
@@ -166,7 +207,7 @@ body {
   transform: translateY(0);
 }
 
-/* Slide-in from left */
+/* Slide-in from left animation */
 .slide-in-left {
   transform: translateX(-40px);
   transition: opacity var(--anim-duration) var(--anim-ease),
@@ -178,7 +219,7 @@ body {
   transform: translateX(0);
 }
 
-/* Slide-in from right */
+/* Slide-in from right animation */
 .slide-in-right {
   transform: translateX(40px);
   transition: opacity var(--anim-duration) var(--anim-ease),
@@ -190,7 +231,7 @@ body {
   transform: translateX(0);
 }
 
-/* Fade-in only */
+/* Fade-in only animation */
 .fade-in {
   transition: opacity var(--anim-duration) var(--anim-ease);
 }
@@ -199,7 +240,7 @@ body {
   opacity: 1;
 }
 
-/* Scale-in */
+/* Scale-in animation */
 .scale-in {
   transform: scale(0.95);
   transition: opacity var(--anim-duration) var(--anim-ease),
@@ -211,7 +252,11 @@ body {
   transform: scale(1);
 }
 
-/* Optional staggered animation */
+/* ========================================================================
+   STAGGERED ANIMATION DELAYS
+   ======================================================================== */
+
+/* Optional staggered animation for multiple elements */
 .slide-in:nth-of-type(1),
 .slide-in-left:nth-of-type(1),
 .slide-in-right:nth-of-type(1),
@@ -243,7 +288,11 @@ body {
 .fade-in:nth-of-type(5),
 .scale-in:nth-of-type(5) { transition-delay: 0.4s; }
 
-/* Accessibility: Disable animation if user prefers reduced motion */
+/* ========================================================================
+   ACCESSIBILITY
+   ======================================================================== */
+
+/* Disable animation if user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .slide-in,
   .slide-in-left,
