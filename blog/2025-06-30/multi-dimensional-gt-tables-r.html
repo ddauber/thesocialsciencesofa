@@ -273,25 +273,13 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <div class="cell slide-in">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install if you haven't already</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("r4np")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtExtras)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(r4np)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The dataset we'll use</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wvs_nona)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtExtras)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(r4np)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The dataset we'll use</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wvs_nona)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   country gender   age relationship_status freedom_of_choice satisfaction
@@ -311,13 +299,13 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <p>Let’s start with what seems like a straightforward task: create a table showing the count of married, separated, and divorced people by gender across countries.</p>
 <p>First, we need to count the combinations of our three variables:</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create our base data</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>table_data <span class="ot">&lt;-</span> wvs_nona <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, country, relationship_status) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relationship_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"married"</span>, <span class="st">"separated"</span>, <span class="st">"divorced"</span>))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a peek</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create our base data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>table_data <span class="ot">&lt;-</span> wvs_nona <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, country, relationship_status) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relationship_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"married"</span>, <span class="st">"separated"</span>, <span class="st">"divorced"</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a peek</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   gender country relationship_status     n
@@ -334,13 +322,13 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <p>This gives us a “long” format dataset where each row represents one combination of country, gender, and relationship status, with the count in the <code>n</code> column.</p>
 <p>Now we need to reshape this data to make it suitable for a table. We want countries as rows and the gender-relationship combinations as columns:</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape for table format</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> table_data <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> country,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> <span class="fu">c</span>(gender, relationship_status),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wide_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape for table format</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> table_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> country,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> <span class="fu">c</span>(gender, relationship_status),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wide_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 7
   country female_married female_separated female_divorced male_married
@@ -363,33 +351,33 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <p>The result is columns with names like <code>female_married</code>, <code>male_divorced</code>, etc. R automatically combines the values from <code>gender</code> and <code>relationship_status</code> with an underscore.</p>
 <p>Now let’s create our first GT table:</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our first attempt</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>basic_table <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Relationship Status by Gender and Country"</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>basic_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our first attempt</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>basic_table <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Relationship Status by Gender and Country"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>basic_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ualuxbdyfa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ualuxbdyfa table {
+<div id="halhwuxlqt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#halhwuxlqt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ualuxbdyfa thead, #ualuxbdyfa tbody, #ualuxbdyfa tfoot, #ualuxbdyfa tr, #ualuxbdyfa td, #ualuxbdyfa th {
+#halhwuxlqt thead, #halhwuxlqt tbody, #halhwuxlqt tfoot, #halhwuxlqt tr, #halhwuxlqt td, #halhwuxlqt th {
   border-style: none;
 }
 
-#ualuxbdyfa p {
+#halhwuxlqt p {
   margin: 0;
   padding: 0;
 }
 
-#ualuxbdyfa .gt_table {
+#halhwuxlqt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -415,12 +403,12 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-left-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_caption {
+#halhwuxlqt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ualuxbdyfa .gt_title {
+#halhwuxlqt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -432,7 +420,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-width: 0;
 }
 
-#ualuxbdyfa .gt_subtitle {
+#halhwuxlqt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -444,7 +432,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-width: 0;
 }
 
-#ualuxbdyfa .gt_heading {
+#halhwuxlqt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -456,13 +444,13 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_bottom_border {
+#halhwuxlqt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_col_headings {
+#halhwuxlqt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -477,7 +465,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_col_heading {
+#halhwuxlqt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -497,7 +485,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#ualuxbdyfa .gt_column_spanner_outer {
+#halhwuxlqt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -509,15 +497,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 4px;
 }
 
-#ualuxbdyfa .gt_column_spanner_outer:first-child {
+#halhwuxlqt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ualuxbdyfa .gt_column_spanner_outer:last-child {
+#halhwuxlqt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ualuxbdyfa .gt_column_spanner {
+#halhwuxlqt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -529,11 +517,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   width: 100%;
 }
 
-#ualuxbdyfa .gt_spanner_row {
+#halhwuxlqt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ualuxbdyfa .gt_group_heading {
+#halhwuxlqt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -559,7 +547,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   text-align: left;
 }
 
-#ualuxbdyfa .gt_empty_group_heading {
+#halhwuxlqt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -574,15 +562,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: middle;
 }
 
-#ualuxbdyfa .gt_from_md > :first-child {
+#halhwuxlqt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ualuxbdyfa .gt_from_md > :last-child {
+#halhwuxlqt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ualuxbdyfa .gt_row {
+#halhwuxlqt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -601,7 +589,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#ualuxbdyfa .gt_stub {
+#halhwuxlqt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -614,7 +602,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#ualuxbdyfa .gt_stub_row_group {
+#halhwuxlqt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -628,15 +616,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: top;
 }
 
-#ualuxbdyfa .gt_row_group_first td {
+#halhwuxlqt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ualuxbdyfa .gt_row_group_first th {
+#halhwuxlqt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ualuxbdyfa .gt_summary_row {
+#halhwuxlqt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -646,16 +634,16 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#ualuxbdyfa .gt_first_summary_row {
+#halhwuxlqt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_first_summary_row.thick {
+#halhwuxlqt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ualuxbdyfa .gt_last_summary_row {
+#halhwuxlqt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -665,7 +653,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_grand_summary_row {
+#halhwuxlqt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -675,7 +663,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#ualuxbdyfa .gt_first_grand_summary_row {
+#halhwuxlqt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -685,7 +673,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_last_grand_summary_row_top {
+#halhwuxlqt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -695,11 +683,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_striped {
+#halhwuxlqt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ualuxbdyfa .gt_table_body {
+#halhwuxlqt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -708,7 +696,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_footnotes {
+#halhwuxlqt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -722,7 +710,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_footnote {
+#halhwuxlqt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -731,7 +719,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#ualuxbdyfa .gt_sourcenotes {
+#halhwuxlqt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -745,7 +733,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#ualuxbdyfa .gt_sourcenote {
+#halhwuxlqt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -753,72 +741,72 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#ualuxbdyfa .gt_left {
+#halhwuxlqt .gt_left {
   text-align: left;
 }
 
-#ualuxbdyfa .gt_center {
+#halhwuxlqt .gt_center {
   text-align: center;
 }
 
-#ualuxbdyfa .gt_right {
+#halhwuxlqt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ualuxbdyfa .gt_font_normal {
+#halhwuxlqt .gt_font_normal {
   font-weight: normal;
 }
 
-#ualuxbdyfa .gt_font_bold {
+#halhwuxlqt .gt_font_bold {
   font-weight: bold;
 }
 
-#ualuxbdyfa .gt_font_italic {
+#halhwuxlqt .gt_font_italic {
   font-style: italic;
 }
 
-#ualuxbdyfa .gt_super {
+#halhwuxlqt .gt_super {
   font-size: 65%;
 }
 
-#ualuxbdyfa .gt_footnote_marks {
+#halhwuxlqt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ualuxbdyfa .gt_asterisk {
+#halhwuxlqt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ualuxbdyfa .gt_indent_1 {
+#halhwuxlqt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ualuxbdyfa .gt_indent_2 {
+#halhwuxlqt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ualuxbdyfa .gt_indent_3 {
+#halhwuxlqt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ualuxbdyfa .gt_indent_4 {
+#halhwuxlqt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ualuxbdyfa .gt_indent_5 {
+#halhwuxlqt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ualuxbdyfa .katex-display {
+#halhwuxlqt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ualuxbdyfa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#halhwuxlqt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -909,34 +897,34 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
 <p>Our basic table works, but it’s not exactly reader-friendly. Those column names like <code>female_married</code> are functional but ugly. We want to group them under gender headers with clean sub-labels.</p>
 <p>“No problem,” you think, “I’ll just use <code>tab_spanner_delim()</code>!”</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempt with tab_spanner_delim()</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>spanners_attempt <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Relationship Status by Gender and Country"</span>  </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner_delim</span>(<span class="at">delim =</span> <span class="st">"_"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>spanners_attempt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempt with tab_spanner_delim()</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>spanners_attempt <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Relationship Status by Gender and Country"</span>  </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner_delim</span>(<span class="at">delim =</span> <span class="st">"_"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>spanners_attempt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="nwmojxwmez" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nwmojxwmez table {
+<div id="jsdyepcoeu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jsdyepcoeu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nwmojxwmez thead, #nwmojxwmez tbody, #nwmojxwmez tfoot, #nwmojxwmez tr, #nwmojxwmez td, #nwmojxwmez th {
+#jsdyepcoeu thead, #jsdyepcoeu tbody, #jsdyepcoeu tfoot, #jsdyepcoeu tr, #jsdyepcoeu td, #jsdyepcoeu th {
   border-style: none;
 }
 
-#nwmojxwmez p {
+#jsdyepcoeu p {
   margin: 0;
   padding: 0;
 }
 
-#nwmojxwmez .gt_table {
+#jsdyepcoeu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -962,12 +950,12 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-left-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_caption {
+#jsdyepcoeu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nwmojxwmez .gt_title {
+#jsdyepcoeu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -979,7 +967,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-width: 0;
 }
 
-#nwmojxwmez .gt_subtitle {
+#jsdyepcoeu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -991,7 +979,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-width: 0;
 }
 
-#nwmojxwmez .gt_heading {
+#jsdyepcoeu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1003,13 +991,13 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_bottom_border {
+#jsdyepcoeu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_col_headings {
+#jsdyepcoeu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1024,7 +1012,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_col_heading {
+#jsdyepcoeu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1044,7 +1032,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#nwmojxwmez .gt_column_spanner_outer {
+#jsdyepcoeu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1056,15 +1044,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 4px;
 }
 
-#nwmojxwmez .gt_column_spanner_outer:first-child {
+#jsdyepcoeu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nwmojxwmez .gt_column_spanner_outer:last-child {
+#jsdyepcoeu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nwmojxwmez .gt_column_spanner {
+#jsdyepcoeu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1076,11 +1064,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   width: 100%;
 }
 
-#nwmojxwmez .gt_spanner_row {
+#jsdyepcoeu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nwmojxwmez .gt_group_heading {
+#jsdyepcoeu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1106,7 +1094,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   text-align: left;
 }
 
-#nwmojxwmez .gt_empty_group_heading {
+#jsdyepcoeu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1121,15 +1109,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: middle;
 }
 
-#nwmojxwmez .gt_from_md > :first-child {
+#jsdyepcoeu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nwmojxwmez .gt_from_md > :last-child {
+#jsdyepcoeu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nwmojxwmez .gt_row {
+#jsdyepcoeu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1148,7 +1136,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#nwmojxwmez .gt_stub {
+#jsdyepcoeu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1161,7 +1149,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nwmojxwmez .gt_stub_row_group {
+#jsdyepcoeu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1175,15 +1163,15 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   vertical-align: top;
 }
 
-#nwmojxwmez .gt_row_group_first td {
+#jsdyepcoeu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nwmojxwmez .gt_row_group_first th {
+#jsdyepcoeu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nwmojxwmez .gt_summary_row {
+#jsdyepcoeu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1193,16 +1181,16 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nwmojxwmez .gt_first_summary_row {
+#jsdyepcoeu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_first_summary_row.thick {
+#jsdyepcoeu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nwmojxwmez .gt_last_summary_row {
+#jsdyepcoeu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1212,7 +1200,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_grand_summary_row {
+#jsdyepcoeu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1222,7 +1210,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nwmojxwmez .gt_first_grand_summary_row {
+#jsdyepcoeu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1232,7 +1220,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-top-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_last_grand_summary_row_top {
+#jsdyepcoeu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1242,11 +1230,11 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_striped {
+#jsdyepcoeu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nwmojxwmez .gt_table_body {
+#jsdyepcoeu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1255,7 +1243,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_footnotes {
+#jsdyepcoeu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1269,7 +1257,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_footnote {
+#jsdyepcoeu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1278,7 +1266,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nwmojxwmez .gt_sourcenotes {
+#jsdyepcoeu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1292,7 +1280,7 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#nwmojxwmez .gt_sourcenote {
+#jsdyepcoeu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1300,72 +1288,72 @@ gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#nwmojxwmez .gt_left {
+#jsdyepcoeu .gt_left {
   text-align: left;
 }
 
-#nwmojxwmez .gt_center {
+#jsdyepcoeu .gt_center {
   text-align: center;
 }
 
-#nwmojxwmez .gt_right {
+#jsdyepcoeu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nwmojxwmez .gt_font_normal {
+#jsdyepcoeu .gt_font_normal {
   font-weight: normal;
 }
 
-#nwmojxwmez .gt_font_bold {
+#jsdyepcoeu .gt_font_bold {
   font-weight: bold;
 }
 
-#nwmojxwmez .gt_font_italic {
+#jsdyepcoeu .gt_font_italic {
   font-style: italic;
 }
 
-#nwmojxwmez .gt_super {
+#jsdyepcoeu .gt_super {
   font-size: 65%;
 }
 
-#nwmojxwmez .gt_footnote_marks {
+#jsdyepcoeu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nwmojxwmez .gt_asterisk {
+#jsdyepcoeu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nwmojxwmez .gt_indent_1 {
+#jsdyepcoeu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nwmojxwmez .gt_indent_2 {
+#jsdyepcoeu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nwmojxwmez .gt_indent_3 {
+#jsdyepcoeu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nwmojxwmez .gt_indent_4 {
+#jsdyepcoeu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nwmojxwmez .gt_indent_5 {
+#jsdyepcoeu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nwmojxwmez .katex-display {
+#jsdyepcoeu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nwmojxwmez div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jsdyepcoeu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1476,58 +1464,58 @@ male
 <p>This is where GT shows both its power and its complexity. To get full control, we need to manually create our spanners and relabel our columns. It’s more work, but it’s infinitely more flexible.</p>
 <p>Let’s break this down step by step:</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The manual approach - more control, more code</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>custom_table <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Data extract from r4np"</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Create individual gender spanners</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*female*"</span>),</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"female_"</span>)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*male*"</span>), </span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"male_"</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Create an overarching gender spanner</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"**Gender**"</span>),</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"female_"</span>, <span class="st">"male_"</span>)),</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">"gender"</span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 3: Customise individual column labels</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>),</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"married"</span>) <span class="sc">~</span> <span class="st">"Married"</span>,</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"separated"</span>) <span class="sc">~</span> <span class="st">"Separated"</span>, </span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"divorced"</span>) <span class="sc">~</span> <span class="st">"Divorced"</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>custom_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The manual approach - more control, more code</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>custom_table <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Data extract from r4np"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Create individual gender spanners</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*female*"</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"female_"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*male*"</span>), </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"male_"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Create an overarching gender spanner</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"**Gender**"</span>),</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"female_"</span>, <span class="st">"male_"</span>)),</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">"gender"</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 3: Customise individual column labels</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>),</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"married"</span>) <span class="sc">~</span> <span class="st">"Married"</span>,</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"separated"</span>) <span class="sc">~</span> <span class="st">"Separated"</span>, </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"divorced"</span>) <span class="sc">~</span> <span class="st">"Divorced"</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>custom_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="obbnoaphed" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#obbnoaphed table {
+<div id="nfdxjxfbum" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nfdxjxfbum table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#obbnoaphed thead, #obbnoaphed tbody, #obbnoaphed tfoot, #obbnoaphed tr, #obbnoaphed td, #obbnoaphed th {
+#nfdxjxfbum thead, #nfdxjxfbum tbody, #nfdxjxfbum tfoot, #nfdxjxfbum tr, #nfdxjxfbum td, #nfdxjxfbum th {
   border-style: none;
 }
 
-#obbnoaphed p {
+#nfdxjxfbum p {
   margin: 0;
   padding: 0;
 }
 
-#obbnoaphed .gt_table {
+#nfdxjxfbum .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1553,12 +1541,12 @@ male
   border-left-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_caption {
+#nfdxjxfbum .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#obbnoaphed .gt_title {
+#nfdxjxfbum .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1570,7 +1558,7 @@ male
   border-bottom-width: 0;
 }
 
-#obbnoaphed .gt_subtitle {
+#nfdxjxfbum .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1582,7 +1570,7 @@ male
   border-top-width: 0;
 }
 
-#obbnoaphed .gt_heading {
+#nfdxjxfbum .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1594,13 +1582,13 @@ male
   border-right-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_bottom_border {
+#nfdxjxfbum .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_col_headings {
+#nfdxjxfbum .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1615,7 +1603,7 @@ male
   border-right-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_col_heading {
+#nfdxjxfbum .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1635,7 +1623,7 @@ male
   overflow-x: hidden;
 }
 
-#obbnoaphed .gt_column_spanner_outer {
+#nfdxjxfbum .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1647,15 +1635,15 @@ male
   padding-right: 4px;
 }
 
-#obbnoaphed .gt_column_spanner_outer:first-child {
+#nfdxjxfbum .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#obbnoaphed .gt_column_spanner_outer:last-child {
+#nfdxjxfbum .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#obbnoaphed .gt_column_spanner {
+#nfdxjxfbum .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1667,11 +1655,11 @@ male
   width: 100%;
 }
 
-#obbnoaphed .gt_spanner_row {
+#nfdxjxfbum .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#obbnoaphed .gt_group_heading {
+#nfdxjxfbum .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1697,7 +1685,7 @@ male
   text-align: left;
 }
 
-#obbnoaphed .gt_empty_group_heading {
+#nfdxjxfbum .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1712,15 +1700,15 @@ male
   vertical-align: middle;
 }
 
-#obbnoaphed .gt_from_md > :first-child {
+#nfdxjxfbum .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#obbnoaphed .gt_from_md > :last-child {
+#nfdxjxfbum .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#obbnoaphed .gt_row {
+#nfdxjxfbum .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1739,7 +1727,7 @@ male
   overflow-x: hidden;
 }
 
-#obbnoaphed .gt_stub {
+#nfdxjxfbum .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1752,7 +1740,7 @@ male
   padding-right: 5px;
 }
 
-#obbnoaphed .gt_stub_row_group {
+#nfdxjxfbum .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1766,15 +1754,15 @@ male
   vertical-align: top;
 }
 
-#obbnoaphed .gt_row_group_first td {
+#nfdxjxfbum .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#obbnoaphed .gt_row_group_first th {
+#nfdxjxfbum .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#obbnoaphed .gt_summary_row {
+#nfdxjxfbum .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1784,16 +1772,16 @@ male
   padding-right: 5px;
 }
 
-#obbnoaphed .gt_first_summary_row {
+#nfdxjxfbum .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_first_summary_row.thick {
+#nfdxjxfbum .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#obbnoaphed .gt_last_summary_row {
+#nfdxjxfbum .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1803,7 +1791,7 @@ male
   border-bottom-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_grand_summary_row {
+#nfdxjxfbum .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1813,7 +1801,7 @@ male
   padding-right: 5px;
 }
 
-#obbnoaphed .gt_first_grand_summary_row {
+#nfdxjxfbum .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1823,7 +1811,7 @@ male
   border-top-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_last_grand_summary_row_top {
+#nfdxjxfbum .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1833,11 +1821,11 @@ male
   border-bottom-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_striped {
+#nfdxjxfbum .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#obbnoaphed .gt_table_body {
+#nfdxjxfbum .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1846,7 +1834,7 @@ male
   border-bottom-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_footnotes {
+#nfdxjxfbum .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1860,7 +1848,7 @@ male
   border-right-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_footnote {
+#nfdxjxfbum .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1869,7 +1857,7 @@ male
   padding-right: 5px;
 }
 
-#obbnoaphed .gt_sourcenotes {
+#nfdxjxfbum .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1883,7 +1871,7 @@ male
   border-right-color: #D3D3D3;
 }
 
-#obbnoaphed .gt_sourcenote {
+#nfdxjxfbum .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1891,72 +1879,72 @@ male
   padding-right: 5px;
 }
 
-#obbnoaphed .gt_left {
+#nfdxjxfbum .gt_left {
   text-align: left;
 }
 
-#obbnoaphed .gt_center {
+#nfdxjxfbum .gt_center {
   text-align: center;
 }
 
-#obbnoaphed .gt_right {
+#nfdxjxfbum .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#obbnoaphed .gt_font_normal {
+#nfdxjxfbum .gt_font_normal {
   font-weight: normal;
 }
 
-#obbnoaphed .gt_font_bold {
+#nfdxjxfbum .gt_font_bold {
   font-weight: bold;
 }
 
-#obbnoaphed .gt_font_italic {
+#nfdxjxfbum .gt_font_italic {
   font-style: italic;
 }
 
-#obbnoaphed .gt_super {
+#nfdxjxfbum .gt_super {
   font-size: 65%;
 }
 
-#obbnoaphed .gt_footnote_marks {
+#nfdxjxfbum .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#obbnoaphed .gt_asterisk {
+#nfdxjxfbum .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#obbnoaphed .gt_indent_1 {
+#nfdxjxfbum .gt_indent_1 {
   text-indent: 5px;
 }
 
-#obbnoaphed .gt_indent_2 {
+#nfdxjxfbum .gt_indent_2 {
   text-indent: 10px;
 }
 
-#obbnoaphed .gt_indent_3 {
+#nfdxjxfbum .gt_indent_3 {
   text-indent: 15px;
 }
 
-#obbnoaphed .gt_indent_4 {
+#nfdxjxfbum .gt_indent_4 {
   text-indent: 20px;
 }
 
-#obbnoaphed .gt_indent_5 {
+#nfdxjxfbum .gt_indent_5 {
   text-indent: 25px;
 }
 
-#obbnoaphed .katex-display {
+#nfdxjxfbum .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#obbnoaphed div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nfdxjxfbum div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2066,30 +2054,30 @@ male
 <p>Let’s dissect what’s happening here:</p>
 <p><strong>Step 1: Individual Gender Spanners</strong></p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*female*"</span>),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"female_"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*female*"</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"female_"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This creates a spanner (column group) labeled “female” that covers all columns starting with “female_”. The <code>md()</code> function allows us to use markdown formatting – in this case, italics with the asterisks.</p>
 <p>The <code>starts_with()</code> function is a “tidy select” helper that selects columns based on their names. It’s much more reliable than typing out column names manually, especially when your column names follow a pattern.</p>
 <p><strong>Step 2: Overarching Spanner</strong></p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"**Gender**"</span>),</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"female_"</span>, <span class="st">"male_"</span>)),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"gender"</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"**Gender**"</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"female_"</span>, <span class="st">"male_"</span>)),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"gender"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This creates a higher-level spanner that encompasses both gender groups. The <code>columns</code> argument uses a vector of prefixes to select all columns that start with either “female_” or “male_”. The <code>id = "gender"</code> gives this spanner a unique identifier that we could reference later if needed.</p>
 <p><strong>Step 3: Column Label Customisation</strong></p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cols_label</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">country =</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>),</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ends_with</span>(<span class="st">"married"</span>) <span class="sc">~</span> <span class="st">"Married"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ends_with</span>(<span class="st">"separated"</span>) <span class="sc">~</span> <span class="st">"Separated"</span>, </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ends_with</span>(<span class="st">"divorced"</span>) <span class="sc">~</span> <span class="st">"Divorced"</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cols_label</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">country =</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ends_with</span>(<span class="st">"married"</span>) <span class="sc">~</span> <span class="st">"Married"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ends_with</span>(<span class="st">"separated"</span>) <span class="sc">~</span> <span class="st">"Separated"</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ends_with</span>(<span class="st">"divorced"</span>) <span class="sc">~</span> <span class="st">"Divorced"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here’s where the magic happens. <code>cols_label()</code> lets us rename columns, but it also supports conditional renaming using the <code>~</code> formula syntax.</p>
 <ul>
@@ -2117,14 +2105,14 @@ Table&nbsp;1
 <h2 class="anchored" data-anchor-id="step-4-the-na-problem-plot-twist">Step 4: The NA Problem (Plot Twist!)</h2>
 <p>But wait, there’s more! Let’s add a total column to show the sum across relationship statuses:</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding totals - first attempt</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>with_totals <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="sc">-</span>country))) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ... rest of our formatting code</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">total =</span> <span class="fu">md</span>(<span class="st">"**Total**"</span>))</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>with_totals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding totals - first attempt</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>with_totals <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="sc">-</span>country))) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ... rest of our formatting code</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">total =</span> <span class="fu">md</span>(<span class="st">"**Total**"</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>with_totals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s break down that <code>mutate()</code> line: - <code>select(., -country)</code>: Selects all columns except <code>country</code> (the <code>.</code> refers to the current data frame) - <code>rowSums()</code>: Sums across columns for each row - <code>mutate(total = ...)</code>: Creates a new column called <code>total</code> with these row sums</p>
 <p>You might notice some countries have suspiciously low totals or <code>NA</code> values. That’s because <code>rowSums()</code> doesn’t handle <code>NA</code> values the way you might expect – if any value in a row is <code>NA</code>, the entire sum becomes <code>NA</code>.</p>
@@ -2134,19 +2122,19 @@ Table&nbsp;1
 <h2 class="anchored" data-anchor-id="step-5-the-na-solution">Step 5: The NA Solution</h2>
 <p>Let’s fix the NA problem properly:</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The NA fix</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Replace NA with 0 - this makes sense for count data</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, .))) <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Now rowSums will work properly</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="sc">-</span>country)))</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clean_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The NA fix</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Replace NA with 0 - this makes sense for count data</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, .))) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Now rowSums will work properly</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="sc">-</span>country)))</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clean_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code introduces a powerful pattern:</p>
 <p><strong><code>across()</code> for Multiple Column Operations</strong></p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, .)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, .)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>across()</code> is a function that applies the same transformation to multiple columns. Let’s break it down:</p>
 <ul>
@@ -2163,84 +2151,84 @@ Table&nbsp;1
 <h2 class="anchored" data-anchor-id="step-6-the-full-solution-explained">Step 6: The Full Solution Explained</h2>
 <p>Now let’s put it all together with detailed explanations and a little bit of flair:</p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our final, polished table</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>final_table <span class="ot">&lt;-</span> wvs_nona <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Create counts for each combination</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, country, relationship_status) <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Filter to our relationship statuses of interest</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relationship_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"married"</span>, <span class="st">"separated"</span>, <span class="st">"divorced"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 3: Reshape from long to wide format</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> country,</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> <span class="fu">c</span>(gender, relationship_status),</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 4: Handle NAs properly for count data</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, .))) <span class="sc">%&gt;%</span></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 5: Add row totals</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="sc">-</span>country))) <span class="sc">%&gt;%</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 6: Create the GT table</span></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 7: Add headers</span></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Data extract from r4np"</span></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 8: Create nested column spanners</span></span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*female*"</span>),</span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"female_"</span>)</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*male*"</span>),</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"male_"</span>)</span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"**Gender**"</span>),</span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"female_"</span>, <span class="st">"male_"</span>)),</span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">"gender"</span></span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 9: Customise column labels</span></span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>),</span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">md</span>(<span class="st">"**Total**"</span>),</span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"married"</span>) <span class="sc">~</span> <span class="st">"married"</span>,</span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"separated"</span>) <span class="sc">~</span> <span class="st">"separated"</span>,</span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"divorced"</span>) <span class="sc">~</span> <span class="st">"divorced"</span></span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 10: Add visual elements</span></span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_plt_bar</span>(<span class="at">column =</span> total) <span class="sc">%&gt;%</span></span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 11: Add footer information</span></span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(<span class="fu">md</span>(<span class="st">"**Source:**&lt;br&gt;*World Value Survey (2024)*"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 12: Apply a theme</span></span>
-<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_theme_espn</span>()</span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>final_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our final, polished table</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>final_table <span class="ot">&lt;-</span> wvs_nona <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Create counts for each combination</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, country, relationship_status) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Filter to our relationship statuses of interest</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relationship_status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"married"</span>, <span class="st">"separated"</span>, <span class="st">"divorced"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 3: Reshape from long to wide format</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> country,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> <span class="fu">c</span>(gender, relationship_status),</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 4: Handle NAs properly for count data</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, .))) <span class="sc">%&gt;%</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 5: Add row totals</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., <span class="sc">-</span>country))) <span class="sc">%&gt;%</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 6: Create the GT table</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 7: Add headers</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"World Value Survey (WVS)"</span>,</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Data extract from r4np"</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 8: Create nested column spanners</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*female*"</span>),</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"female_"</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"*male*"</span>),</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="st">"male_"</span>)</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">md</span>(<span class="st">"**Gender**"</span>),</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"female_"</span>, <span class="st">"male_"</span>)),</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">"gender"</span></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 9: Customise column labels</span></span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">md</span>(<span class="st">"**Country**"</span>),</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">md</span>(<span class="st">"**Total**"</span>),</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"married"</span>) <span class="sc">~</span> <span class="st">"married"</span>,</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"separated"</span>) <span class="sc">~</span> <span class="st">"separated"</span>,</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ends_with</span>(<span class="st">"divorced"</span>) <span class="sc">~</span> <span class="st">"divorced"</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 10: Add visual elements</span></span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_plt_bar</span>(<span class="at">column =</span> total) <span class="sc">%&gt;%</span></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 11: Add footer information</span></span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(<span class="fu">md</span>(<span class="st">"**Source:**&lt;br&gt;*World Value Survey (2024)*"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 12: Apply a theme</span></span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_theme_espn</span>()</span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>final_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Admittedly, this code chunk is a lot more substantial than going with the standard <code>gt</code> table setup, but it certainly looks a lot more audience-ready and accessible</p>
 <p>Let me explain the final formatting steps so you can apply those changes to your own tables as well:</p>
 <p><strong>Visual Enhancement with <code>gt_plt_bar()</code></strong></p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_plt_bar</span>(<span class="at">column =</span> total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_plt_bar</span>(<span class="at">column =</span> total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function from the <code>gtExtras</code> package adds mini bar charts to the total column. It automatically scales the bars based on the values in the column, making it easy to visually compare totals across countries. The bars appear within the table cells themselves.</p>
 <p><strong>Footnotes for Attribution</strong></p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_footnote</span>(<span class="fu">md</span>(<span class="st">"**Source: **&lt;br&gt;*World Value Survey (2024)*"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_footnote</span>(<span class="fu">md</span>(<span class="st">"**Source: **&lt;br&gt;*World Value Survey (2024)*"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>tab_footnote()</code> adds a footnote to the table. The <code>&lt;br&gt;</code> is HTML for a line break, and again we’re using <code>md()</code> to enable markdown formatting for bold text and italics.</p>
 <p><strong>Theming with <code>gt_theme_espn()</code></strong></p>
 <div class="cell slide-in">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_theme_espn</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_theme_espn</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This applies a pre-built theme that mimics the ESPN sports network styling. The <code>gtExtras</code> package includes several pre-built themes that can dramatically change your table’s appearance with a single line of code. This is particularly helpful if you want to quickly apply a uniform style to all your tables in a presentation, report or publication.</p>
 </section>
