@@ -2,7 +2,7 @@
 title: "The Secret Weapon Every Researcher Needs (But Nobody Talks About)"
 description: "Learning a programming language like R isn't about becoming a computer scientist, it's about becoming a better researcher. Discover how coding skills expand your analytical toolkit, improve your thinking, help you spot hidden patterns, and future-proof your research career in an increasingly data-driven world."
 author: "Daniel Dauber"
-date: 2025-07-07
+date: 2025-07-14
 categories: [R, research methods, programming, social sciences]
 draft: true
 image: "why-learn-r-programming.jpg"
