@@ -2,7 +2,7 @@
 title: "Beyond the Splash Screen: Customising Your RStudio Startup Experience"
 description: "Transform your RStudio startup from bland to brilliant with `.Rprofile` customisation. Learn how to add ASCII art, motivational quotes, colourful dashboards, and live weather updates — all without slowing down your workflow. This guide is fun, practical, and packed with code to personalise your R experience to your hearts content."
 author: "Daniel Dauber"
-date: 2025-07-14
+date: 2025-07-7
 categories: [R, RStudio, Productivity, Customisation]
 draft: false
 image: "custom_rprofile.jpg"
