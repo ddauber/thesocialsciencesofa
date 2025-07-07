@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Daniel Dauber">
+<meta name="dcterms.date" content="2025-07-14">
+<meta name="description" content="Transform your RStudio startup from bland to brilliant with .Rprofile customisation. Learn how to add ASCII art, motivational quotes, colourful dashboards, and live weather updates — all without slowing down your workflow. This guide is fun, practical, and packed with code to personalise your R experience to your hearts content.">
+
+<title>Social Science Sofa |  [___] - Beyond the Splash Screen: Customising Your RStudio Startup Experience</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-T3MQH2G66G"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-T3MQH2G66G', { 'anonymize_ip': true});
+</script>
+<link rel="icon" type="image/png" href="../../favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="../../favicon/favicon.svg">
+<link rel="shortcut icon" href="../../favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../favicon/site.webmanifest">
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="Social Science Sofa |  [___] - Beyond the Splash Screen: Customising Your RStudio Startup Experience">
+<meta property="og:description" content="Transform your RStudio startup from bland to brilliant with .Rprofile customisation. Learn how to add ASCII art, motivational quotes, colourful dashboards, and live weather updates — all without slowing down your workflow. This guide is fun, practical, and packed with code to personalise your R experience to your hearts content.">
+<meta property="og:image" content="https://thesocialsciencesofa.com/favicon/social_card.png">
+<meta property="og:url" content="https://thesocialsciencesofa.com/">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Social Science Sofa |  [___] - Beyond the Splash Screen: Customising Your RStudio Startup Experience">
+<meta name="twitter:description" content="Transform your RStudio startup from bland to brilliant with .Rprofile customisation. Learn how to add ASCII art, motivational quotes, colourful dashboards, and live weather updates — all without slowing down your workflow. This guide is fun, practical, and packed with code to personalise your R experience to your hearts content.">
+<meta name="twitter:image" content="https://thesocialsciencesofa.com/favicon/social_card.png">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title"><span class="site-name">Social Science Sofa | </span> <span class="logo-text">[___]</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://r4np.com" target="_blank"> 
+<span class="menu-text">R4NP Book</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://danieldauber.com" target="_blank"> <i class="bi bi-person-circle" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ddauber" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://x.com/daniel_dauber" target="_blank"> <i class="bi bi-twitter-x" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/danieldauber.bsky.social" target="_blank"> <i class="bi bi-bluesky" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/danieldauber/" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Beyond the Splash Screen: Customising Your RStudio Startup Experience</h1>
+                  <div>
+        <div class="description">
+          Transform your RStudio startup from bland to brilliant with <code>.Rprofile</code> customisation. Learn how to add ASCII art, motivational quotes, colourful dashboards, and live weather updates — all without slowing down your workflow. This guide is fun, practical, and packed with code to personalise your R experience to your hearts content.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">RStudio</div>
+                <div class="quarto-category">Productivity</div>
+                <div class="quarto-category">Customisation</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Daniel Dauber </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 14, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;family=Fredoka:wght@300..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Quicksand:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+
+
+<div class="slide-in">
+<p><img src="custom_rprofile.jpg" alt="RStudio Console showing ASCII art that says: I am your teacher" width="100%"></p>
+</div>
+<p>Picture this: It is 9 am on a Monday morning. You are clutching your third cup of coffee, staring at your screen with the grim determination of someone about to wrangle a particularly unruly dataset. You double-click RStudio, and… <em>yawn</em>… the same old splash screen appears. Again. For the 1,247th time this year.</p>
+<p>What if I told you that startup moment could be transformed from mundane to magical? What if, instead of that generic loading screen, you could be greeted by ASCII art masterpieces, live weather updates, or daily doses of inspiration? What if your R session could start with the digital equivalent of a warm hug and a gentle “you’ve got this” whisper?</p>
+<p>Today, we are diving deep into the wonderful world of <code>.Rprofile</code> customisation – a journey that will not make you a better analyst (sorry!), but will absolutely make your daily R experience more delightful. And let us be honest, in a world where we spend half our lives debugging code or trying to understand why our regressions do not approve of our hypotheses, we need all the delight we can get.</p>
+<section id="the-quick-start-guide-for-those-with-little-time" class="level2">
+<h2 class="anchored" data-anchor-id="the-quick-start-guide-for-those-with-little-time">The Quick Start Guide for Those With Little Time</h2>
+<p>Before we embark on this grand adventure, let us get you up and running with something simple and quick. Here is how to get started in less than two minutes:</p>
+<section id="step-1-find-your-.rprofile" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-find-your-.rprofile">Step 1: Find Your .Rprofile</h3>
+<p>The <code>.Rprofile</code> file is like your home’s welcome mat, but for R. It lives in your home directory and is invisible by default (hence the mysterious dot).</p>
+<p>In RStudio, run this command to open your <code>.Rprofile</code>:</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_profile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2-add-your-first-customisation" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-add-your-first-customisation">Step 2: Add Your First customisation</h3>
+<p>Copy and paste this magical incantation into your <code>.Rprofile</code>:</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The secret sauce for RStudio customisation</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setHook</span>(<span class="st">"rstudio.sessionInit"</span>, <span class="cf">function</span>(newSession) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clear the console for a fresh start</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Your first personalised message</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Welcome back, data wizard! ✨"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Today's forecast: 100% chance of insights!"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"append"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3-restart-and-marvel" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-restart-and-marvel">Step 3: Restart and Marvel</h3>
+<p>Save the file, restart RStudio, and watch the magic happen. You have just taken your first step into a larger world of customisation possibilities. If all you want is a custom message, this does the trick. If you want something more intriguing and exciting, then read on.</p>
+<p><strong>The Technical Bit</strong>: Everything that follows in this post should go between those curly braces where you see the messages. The <code>setHook("rstudio.sessionInit", ...) {...}</code> wrapper is the key that makes everything work in RStudio. It is like telling RStudio “hey, run this code every time you start up.” I will show you the inner code for clarity, but remember to wrap it in the <code>setHook()</code> structure. In short: You always start from this template:</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setHook</span>(<span class="st">"rstudio.sessionInit"</span>, <span class="cf">function</span>(newSession) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Put your custom .Rprofile code chunk here</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># to customise your startup experience of RStudio.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">action =</span> <span class="st">"append"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="understanding-the-.rprofile-document" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-.rprofile-document">Understanding the <code>.Rprofile</code> document</h2>
+<p>Think of <code>.Rprofile</code> as your personal R butler – the kind that remembers exactly how you like your workspace arranged and greets you with a knowing nod every morning. This file contains R code that runs automatically when R starts, allowing you to set up your digital domain exactly how you like it.</p>
+<p>But here is where it gets interesting: regular <code>.Rprofile</code> tricks work fine in base R, but RStudio is a different beast entirely. The <code>setHook()</code> function is your secret weapon for RStudio customisation. It is like having a backstage pass to RStudio’s startup sequence.</p>
+<p>The beauty of this approach is that it is completely non-destructive. If you mess something up, just delete the problematic code and restart. No harm, no foul, no need to reinstall anything.</p>
+<p>Let us look at some customisation options that might fit your bill.</p>
+</section>
+<section id="the-minimalists-approach-simple-clean-and-fast" class="level2">
+<h2 class="anchored" data-anchor-id="the-minimalists-approach-simple-clean-and-fast">The Minimalist’s Approach: Simple, clean and fast</h2>
+<p>Let us begin with the zen of startup customisation. Sometimes, the most powerful thing you can do is…nothing. Well, almost nothing.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The art of digital minimalism</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This single line clears your console, giving you a pristine workspace to begin your analytical adventures. It might seem trivial – after all, it is just one keystroke saved. However, there is something deeply satisfying about starting with a clean slate.</p>
+<p>I assume that this saves me approximately 0.5 seconds per RStudio session. Assuming I only restart an R Session once each day (very unlikely), over a year, that is roughly 3 minutes of my life back. Will this 3 minutes change the world? Probably not. Will it give me a tiny hit of dopamine every morning? Absolutely.</p>
+<p>But more importantly, it is a statement. It says, “I care about my digital environment enough to make it exactly how I want it.” And that, my friend, is the first step toward true customisation mastery.</p>
+</section>
+<section id="the-art-of-digital-hospitality-crafting-your-welcome-message" class="level2">
+<h2 class="anchored" data-anchor-id="the-art-of-digital-hospitality-crafting-your-welcome-message">The Art of Digital Hospitality: Crafting Your Welcome Message</h2>
+<p>Now that you have mastered the zen of console clearing, let us add some personality to your startup routine. Custom messages are where the real fun begins – it is like having a conversation with your computer, except your computer actually says something encouraging for once. The below code is what I use for several years now. A bit boring for some, but plenty for me.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear the console</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display a welcome message</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Here we go again! 👨‍💻"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="01_rprofile_welcome_message.jpg" alt="Console Output showing the message: Here we go again! It also show an emoji of a person behind a laptop." width="100%"></p>
+</div>
+<p>The <code>message()</code> function is perfect for this because it is specifically designed for informational output. Unlike <code>print()</code> or <code>cat()</code>, it has a certain gravitas – it is the difference between whispering and speaking with conviction.</p>
+<p>But why stop at generic encouragement? This is your chance to inject some personality into your R sessions. Maybe you are the type who needs a gentle reminder that correlation does not imply causation. Perhaps you are working on a specific project and need daily motivation to finish that analysis. Or maybe you just want to remind yourself that you are awesome at what you do.</p>
+<p>The key is making it personal. After all, you are the only one who will see this message (and maybe your students/colleagues), so make it count.</p>
+</section>
+<section id="the-canvas-of-code-ascii-art-adventures" class="level2">
+<h2 class="anchored" data-anchor-id="the-canvas-of-code-ascii-art-adventures">The Canvas of Code: ASCII Art Adventures</h2>
+<p>Here is where we throw caution to the wind and embrace our inner artist. ASCII art might seem frivolous, but there is something wonderfully subversive about turning your serious data analysis environment into a canvas for creative expression.</p>
+<p>Let us start with something appropriately R-themed:</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ASCII art R logo</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>r_logo <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">  ██████╗</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">  ██╔══██╗</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">  ██████╔╝</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">  ██╔══██╗</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">  ██║  ██║</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ╚═╝  ╚═╝</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(r_logo)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Welcome to the R universe! 🚀"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Time to wrangle some data!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="02_rprofile_ascii_art_r.jpg" alt="Console Output showing the R logo as ASCII art." width="100%"></p>
+</div>
+<p>The <code>cat()</code> function is your ASCII art best friend because it prints text exactly as you have formatted it. No automatic line breaks, no unwanted spacing – just pure, unadulterated artistic expression.</p>
+<p>But why stop at simple logos when you can create entire startup experiences? For those brave enough to venture into the realm of epic ASCII art, here is something that will make your colleagues either deeply impressed or deeply concerned about your priorities.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ASCII art Star Wars inspired message</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>message_art <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st"> __</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">|  |</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">|  |</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">|  |</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">|  |</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">|__|</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">     ___      .___  ___.</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">    /   </span><span class="sc">\\</span><span class="st">     |   </span><span class="sc">\\</span><span class="st">/   |</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">   /  ^  </span><span class="sc">\\</span><span class="st">    |  </span><span class="sc">\\</span><span class="st">  /  |</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">  /  /_</span><span class="sc">\\</span><span class="st">  </span><span class="sc">\\</span><span class="st">   |  |</span><span class="sc">\\</span><span class="st">/|  |</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="st"> /  _____  </span><span class="sc">\\</span><span class="st">  |  |  |  |</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">/__/     </span><span class="sc">\\</span><span class="st">__</span><span class="sc">\\</span><span class="st"> |__|  |__|</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="st">____    ____  ______    __    __  .______</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span><span class="st">   </span><span class="sc">\\</span><span class="st">  /   / /  __  </span><span class="sc">\\</span><span class="st">  |  |  |  | |   _  </span><span class="sc">\\</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="st"> </span><span class="sc">\\</span><span class="st">   </span><span class="sc">\\</span><span class="st">/   / |  |  |  | |  |  |  | |  |_)  |</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="st">  </span><span class="sc">\\</span><span class="st">_    _/  |  |  |  | |  |  |  | |      /</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="st">    |  |    |  `--'  | |  `--'  | |  |</span><span class="sc">\\</span><span class="st">  </span><span class="sc">\\</span><span class="st">----.</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="st">    |__|     </span><span class="sc">\\</span><span class="st">______/   </span><span class="sc">\\</span><span class="st">______/  | _| `._____|</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="st">.___________. _______     ___       ______  __    __   _______ .______</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="st">|           ||   ____|   /   </span><span class="sc">\\</span><span class="st">     /      ||  |  |  | |   ____||   _  </span><span class="sc">\\</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="st">`---|  |----`|  |__     /  ^  </span><span class="sc">\\</span><span class="st">   |  ,----'|  |__|  | |  |__   |  |_)  |</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="st">    |  |     |   __|   /  /_</span><span class="sc">\\</span><span class="st">  </span><span class="sc">\\</span><span class="st">  |  |     |   __   | |   __|  |      /</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="st">    |  |     |  |____ /  _____  </span><span class="sc">\\</span><span class="st"> |  `----.|  |  |  | |  |____ |  |</span><span class="sc">\\</span><span class="st">  </span><span class="sc">\\</span><span class="st">----.</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="st">    |__|     |_______/__/     </span><span class="sc">\\</span><span class="st">__</span><span class="sc">\\</span><span class="st"> </span><span class="sc">\\</span><span class="st">______||__|  |__| |_______|| _| `._____|</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(message_art)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">   Welcome to the dark side! </span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="03_rprofile_ascii_art_i_am_your_teacher.jpg" alt="Console Output showing ASCII art that says: I am your teacher." width="100%"></p>
+</div>
+<p>I created this using <a href="https://www.asciiart.eu/text-to-ascii-art">ASCII Art Generator</a>, which is an absolutely fantastic rabbit hole to fall down when you should be working.</p>
+</section>
+<section id="the-information-station-building-your-personal-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="the-information-station-building-your-personal-dashboard">The Information Station: Building Your Personal Dashboard</h2>
+<p>Let us shift gears from artistic to informational. What if your startup screen could give you a quick overview of your current R environment? Think of it as your personal mission control – a heads-up display for your analytical adventures.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># System information</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  🖥️ SYSTEM STATUS REPORT"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  📅 Date: "</span>, <span class="fu">Sys.Date</span>())</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  ⏰ Time: "</span>, <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"╭────────────────────────────────────────────╮"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  🔧 R Version: "</span>, R.version.string)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  💻 Platform: "</span>, R.version<span class="sc">$</span>platform)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  ──────────────────────────────────────────"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  📁 Working Directory: "</span>, <span class="fu">basename</span>(<span class="fu">getwd</span>()))</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  📦 Attached Packages: "</span>, <span class="fu">sum</span>(<span class="fu">grepl</span>(<span class="st">"^package:"</span>, <span class="fu">search</span>())))</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"╰────────────────────────────────────────────╯"</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  Ready for data analysis! 🎯"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="04_rprofile_system_info_01.jpg" alt="Console Output showing system information." width="100%"></p>
+</div>
+<p>This creates a neat little status report that tells you everything you need to know about your current R environment. The <code>R.version.string</code> gives you your R version, <code>R.version$platform</code> tells you what system you are running on, and <code>basename(getwd())</code> shows just the name of your current working directory without the full path (because nobody needs to see <code>/Users/YourName/Documents/Projects/That_Analysis_You_Started_Six_Months_Ago_But_Never_Finished</code>).</p>
+<p>The <code>sum(grepl("^package:", search()))</code> is a neat little trick to count attached packages. The <code>search()</code> function lists all kinds of objects, including loaded packages. Therefore, we have to make sure we only count objects that relate to loaded packages. The <code>grepl()</code> function is an important one to remember if you work with character vectors frequently. It allows us to look for patterns in text, in our case this is <code>package:</code>. Learning how to use <code>grepl()</code> is certainly an essential skill everyone should tackle at some point in their R journey.</p>
+<p>Here is an example of the unfiltered <code>search()</code> output:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">search</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] ".GlobalEnv"        "package:stats"     "package:graphics" 
+[4] "package:grDevices" "package:utils"     "package:datasets" 
+[7] "package:methods"   "Autoloads"         "package:base"     </code></pre>
+</div>
+</div>
+</section>
+<section id="the-technicolor-dream-adding-color-to-your-console" class="level2">
+<h2 class="anchored" data-anchor-id="the-technicolor-dream-adding-color-to-your-console">The Technicolor Dream: Adding Color to Your Console</h2>
+<p>Our status report is functional, but let us be honest, it is about as exciting as watching paint dry in grayscale. Time to add some color to our console world using the magnificent <code>crayon</code> package.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for required packages</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"crayon"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (pkg <span class="cf">in</span> required) {</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"❗ Package '"</span>, pkg, <span class="st">"' is not installed. Please install it with install.packages(</span><span class="sc">\"</span><span class="st">"</span>, pkg, <span class="st">"</span><span class="sc">\"</span><span class="st">)"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load colors</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"crayon"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  bold <span class="ot">&lt;-</span> crayon<span class="sc">::</span>bold</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  blue <span class="ot">&lt;-</span> crayon<span class="sc">::</span>blue</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  green <span class="ot">&lt;-</span> crayon<span class="sc">::</span>green</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  magenta <span class="ot">&lt;-</span> crayon<span class="sc">::</span>magenta</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  cyan <span class="ot">&lt;-</span> crayon<span class="sc">::</span>cyan</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  yellow <span class="ot">&lt;-</span> crayon<span class="sc">::</span>yellow</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  bold <span class="ot">&lt;-</span> blue <span class="ot">&lt;-</span> green <span class="ot">&lt;-</span> magenta <span class="ot">&lt;-</span> cyan <span class="ot">&lt;-</span> yellow <span class="ot">&lt;-</span> identity</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">bold</span>(<span class="fu">blue</span>(<span class="st">"  🖥️ SYSTEM STATUS REPORT"</span>)))</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">yellow</span>(<span class="st">"  📅 Date: "</span>), <span class="fu">Sys.Date</span>())</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">yellow</span>(<span class="st">"  ⏰ Time: "</span>), <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">cyan</span>(<span class="st">"╭────────────────────────────────────────────╮"</span>))</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  🔧 R Version: "</span>, <span class="fu">green</span>(R.version.string))</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  💻 Platform: "</span>, <span class="fu">green</span>(R.version<span class="sc">$</span>platform))</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">cyan</span>(<span class="st">"  ──────────────────────────────────────────"</span>))</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  📁 Working Directory: "</span>, <span class="fu">magenta</span>(<span class="fu">basename</span>(<span class="fu">getwd</span>())))</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"  📦 Attached Packages: "</span>, <span class="fu">magenta</span>(<span class="fu">sum</span>(<span class="fu">grepl</span>(<span class="st">"^package:"</span>, <span class="fu">search</span>()))))</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">cyan</span>(<span class="st">"╰────────────────────────────────────────────╯"</span>))</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">bold</span>(<span class="fu">green</span>(<span class="st">"  Ready for data analysis! 🎯"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="05_rprofile_system_info_02.jpg" alt="Console Output showing system information in colours." width="100%"></p>
+</div>
+<p>Notice how we are being responsible developers here? We check for package availability using <code>requireNamespace()</code> with <code>quietly = TRUE</code> to avoid annoying error messages. The <code>identity</code> function is our safety net. It is like having a backup plan that just returns whatever you give it, effectively removing color formatting when crayon is not available.</p>
+<p>This is the kind of defensive programming that separates the experienced programmers from novices. Your <code>.Rprofile</code> should enhance your experience, not break it when a package goes missing.</p>
+</section>
+<section id="the-palette-master-creating-your-signature-style" class="level2">
+<h2 class="anchored" data-anchor-id="the-palette-master-creating-your-signature-style">The Palette Master: Creating Your Signature Style</h2>
+<p>For those who want complete control over their aesthetic destiny, let us create custom color schemes using RGB values. This is where you can really make your startup screen uniquely yours.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for required packages</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"crayon"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (pkg <span class="cf">in</span> required) {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"❗ Package '"</span>, pkg, <span class="st">"' is not installed. Please install it with install.packages(</span><span class="sc">\"</span><span class="st">"</span>, pkg, <span class="st">"</span><span class="sc">\"</span><span class="st">)"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"crayon"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create custom RGB styles (values between 0–255)</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  title_col     <span class="ot">&lt;-</span> crayon<span class="sc">::</span><span class="fu">make_style</span>(<span class="fu">rgb</span>(<span class="dv">55</span>, <span class="dv">114</span>, <span class="dv">156</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>))</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  label_col     <span class="ot">&lt;-</span> crayon<span class="sc">::</span><span class="fu">make_style</span>(<span class="fu">rgb</span>(<span class="dv">55</span>, <span class="dv">114</span>, <span class="dv">156</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>))</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  value_col     <span class="ot">&lt;-</span> crayon<span class="sc">::</span><span class="fu">make_style</span>(<span class="fu">rgb</span>(<span class="dv">233</span>, <span class="dv">228</span>, <span class="dv">222</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>))</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  section_col   <span class="ot">&lt;-</span> crayon<span class="sc">::</span><span class="fu">make_style</span>(<span class="fu">rgb</span>(<span class="dv">165</span>, <span class="dv">93</span>, <span class="dv">53</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>))</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  bold <span class="ot">&lt;-</span> crayon<span class="sc">::</span>bold</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fallback to identity if crayon is unavailable</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  title_col <span class="ot">&lt;-</span> label_col <span class="ot">&lt;-</span> value_col <span class="ot">&lt;-</span> section_col <span class="ot">&lt;-</span> bold <span class="ot">&lt;-</span> identity</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">bold</span>(<span class="fu">title_col</span>(<span class="st">"  🖥️ SYSTEM STATUS REPORT"</span>)))</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">label_col</span>(<span class="st">"  📅 Date: "</span>), <span class="fu">value_col</span>(<span class="fu">Sys.Date</span>()))</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">label_col</span>(<span class="st">"  ⏰ Time: "</span>), <span class="fu">value_col</span>(<span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>)))</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">section_col</span>(<span class="st">"╭────────────────────────────────────────────╮"</span>))</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">label_col</span>(<span class="st">"  🔧 R Version: "</span>), <span class="fu">value_col</span>(R.version.string))</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">label_col</span>(<span class="st">"  💻 Platform: "</span>), <span class="fu">value_col</span>(R.version<span class="sc">$</span>platform))</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">section_col</span>(<span class="st">"  ──────────────────────────────────────────"</span>))</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">label_col</span>(<span class="st">"  📁 Working Directory: "</span>), <span class="fu">value_col</span>(<span class="fu">basename</span>(<span class="fu">getwd</span>())))</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">label_col</span>(<span class="st">"  📦 Attached Packages: "</span>), <span class="fu">value_col</span>(<span class="fu">sum</span>(<span class="fu">grepl</span>(<span class="st">"^package:"</span>, <span class="fu">search</span>()))))</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">section_col</span>(<span class="st">"╰────────────────────────────────────────────╯"</span>))</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">""</span>)</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">bold</span>(<span class="fu">value_col</span>(<span class="st">"  Ready for data analysis! 🚀"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="06_rprofile_system_info_03.jpg" alt="Console Output showing system information in custom-themed colours." width="100%"></p>
+</div>
+<p>This approach gives you complete control over your color scheme. You can match your favorite color palette, align with your company’s branding, or just create something that makes you smile every morning. The <code>make_style()</code> function accepts RGB values, so you can be as precise as you want with your color choices.</p>
+<p>Pro tip: Use an online color picker to find the perfect RGB values for your palette. There is something deeply satisfying about having a perfectly curated color scheme that is uniquely yours. <a href="https://pinterest.com">Pinterest</a> is usually where I get my colour palette inspirations from.</p>
+</section>
+<section id="the-weather-station-the-power-of-apis" class="level2">
+<h2 class="anchored" data-anchor-id="the-weather-station-the-power-of-apis">The Weather Station: The power of APIs</h2>
+<p>So far, we have been working with static, local information. But what if we could break free from the confines of our computer and connect with the wider world? What if your startup screen could tell you whether you will need an umbrella for your lunch break or not?</p>
+<p>Welcome to the world of dynamic content. Here is how to turn your R startup into a personal weather station:</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\014</span><span class="st">"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Attempt to fetch and display weather information</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tryCatch</span>({</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for required packages</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"httr"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (pkg <span class="cf">in</span> required) {</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">message</span>(<span class="st">"❗ Package '"</span>, pkg, <span class="st">"' is not installed. Please install it with install.packages(</span><span class="sc">\"</span><span class="st">"</span>, pkg, <span class="st">"</span><span class="sc">\"</span><span class="st">)"</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fetch weather data from wttr.in API</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This format provides a compact weather summary</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  response <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'https://wttr.in/London?format=%l%0A%c%0A%t%20|%20Temperature%0A%f%20|%20Real%20Feel%0A%20%h%20%20|%20Humidity%0A'</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    httr<span class="sc">::</span><span class="fu">timeout</span>(<span class="dv">10</span>))</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if the API request was successful</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (httr<span class="sc">::</span><span class="fu">status_code</span>(response) <span class="sc">==</span> <span class="dv">200</span>) {</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display the weather information</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(httr<span class="sc">::</span><span class="fu">content</span>(response, <span class="st">"text"</span>))</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Log any HTTP errors</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Weather service returned code: "</span>, httr<span class="sc">::</span><span class="fu">status_code</span>(response))</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>}, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Handle any errors gracefully without breaking RStudio startup</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Weather fetch error: "</span>, e<span class="sc">$</span>message)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="07_rprofile_weather_api.jpg" alt="Console showing the current weather in London. In particular, it shows the temperature, real feel and humidity." width="100%"></p>
+</div>
+<p>This code uses the fantastic <a href="https://wttr.in/">wttr.in</a> service, which provides weather data with a delightfully simple API. The service will automatically detect your location based on your IP address, or you can specify a city by changing “London” to your preferred location.</p>
+<p>The <code>GET()</code> function from the <code>httr</code> packages makes the HTTP request, and we set a timeout to prevent your startup from hanging if the weather service is having a bad day. The <code>tryCatch()</code> wrapper is our safety net as it ensures that if something goes wrong with the weather fetch, your RStudio startup will not crash and burn.</p>
+<p>Notice how we are building in resilience here. The internet is a fickle beast, and APIs can fail. Good startup customisation code should degrade gracefully when things go wrong.</p>
+</section>
+<section id="the-daily-sage-wisdom-at-your-fingertips" class="level2">
+<h2 class="anchored" data-anchor-id="the-daily-sage-wisdom-at-your-fingertips">The Daily Sage: Wisdom at Your Fingertips</h2>
+<p>Weather is practical, but what about feeding your soul? Let us add some daily inspiration to your startup routine, because sometimes, the difference between a good day and a great day is a perfectly timed dose of wisdom.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure required packages are available</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"httr"</span>, <span class="st">"jsonlite"</span>, <span class="st">"glue"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (pkg <span class="cf">in</span> required) {</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"❗ Package '"</span>, pkg, <span class="st">"' is not installed. Please install it with install.packages(</span><span class="sc">\"</span><span class="st">"</span>, pkg, <span class="st">"</span><span class="sc">\"</span><span class="st">)"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch and display quote of the day</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tryCatch</span>({</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(<span class="st">"https://zenquotes.io/api/random"</span>, httr<span class="sc">::</span><span class="fu">timeout</span>(<span class="dv">5</span>))</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (httr<span class="sc">::</span><span class="fu">status_code</span>(res) <span class="sc">==</span> <span class="dv">200</span>) {</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    raw_txt <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">content</span>(res, <span class="st">"text"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Parse and extract quote</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    quote_data <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(raw_txt)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    quote <span class="ot">&lt;-</span> quote_data<span class="sc">$</span>q</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    author <span class="ot">&lt;-</span> quote_data<span class="sc">$</span>a</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">'</span><span class="sc">\n</span><span class="st">🧠 Quote of the Day:</span><span class="sc">\n</span><span class="st">"{quote}" — {author}</span><span class="sc">\n</span><span class="st">'</span>))</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Quote service returned code: "</span>, httr<span class="sc">::</span><span class="fu">status_code</span>(res))</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>}, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Quote fetch error: "</span>, e<span class="sc">$</span>message)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="slide-in">
+<p><img src="08_rprofile_quote_of_the_day.jpg" alt="Console showing a random quote of the day retrieved from zenquotes.io" width="100%"></p>
+</div>
+<p>This example introduces some new friends to our toolkit: - <code>jsonlite</code>: For parsing JSON responses with elegance - <code>glue</code>: String interpolation that actually makes sense (unlike <code>paste()</code>)</p>
+<p>The <a href="https://zenquotes.io/">ZenQuotes API</a> is a gem – it provides inspirational quotes without requiring API keys or complex authentication. The <code>jsonlite::fromJSON()</code> function parses the JSON response, and we extract the quote and author fields.</p>
+<p>Notice how we are building in backup wisdom for when the API fails? Having a plan B for when technology lets you down is never a bad idea.</p>
+</section>
+<section id="the-perils-of-paradise-what-could-go-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="the-perils-of-paradise-what-could-go-wrong">The Perils of Paradise: What Could Go Wrong?</h2>
+<p>Before you go completely overboard with dynamic content (and trust me, the temptation is real), let us talk about the trade-offs. Every paradise has its serpents, and startup customisation is no exception.</p>
+<p><strong>The Network Dependency Dilemma</strong>: All those beautiful dynamic features only work when you are connected to the internet. Work from a coffee shop with spotty WiFi? You might stare at error messages instead of inspiring quotes. The solution? Always include fallback content for offline scenarios.</p>
+<p><strong>The Speed Trap</strong>: Fetching external data adds latency to your startup. While we are talking seconds, not minutes, some users prefer their R sessions to start faster than you can say “statistical significance”. Consider your personal patience levels when adding network-dependent features.</p>
+<p><strong>The API Reliability Roulette</strong>: Third-party services can go down, change their APIs, or start requiring authentication. Always wrap your API calls in error handling, and do not let a broken quote service break your entire R startup experience.</p>
+<p><strong>The Rate Limit Reality</strong>: Some APIs have rate limits. If you are the type who starts R sessions every five minutes while debugging, you might hit these limits. Choose your APIs wisely, and do not abuse the free tiers.</p>
+</section>
+<section id="the-infinite-possibility-engine-where-dreams-become-code" class="level2">
+<h2 class="anchored" data-anchor-id="the-infinite-possibility-engine-where-dreams-become-code">The Infinite Possibility Engine: Where Dreams Become Code</h2>
+<p>The examples we have explored are just the tip of the iceberg. Your <code>.Rprofile</code> is a canvas limited only by your imagination and your tolerance for startup complexity. Here are some ideas to fuel your creativity:</p>
+<p><strong>The Project Detective</strong>: Write code that examines your current working directory and provides project-specific information. Working on a machine learning project? Get a reminder of your model’s latest performance. Analyzing survey data? See a quick summary of your response rates.</p>
+<p><strong>The Package Sentinel</strong>: Create a system that checks for outdated packages and gently reminds you to update them. No more surprises when that function you have been using for months suddenly breaks because of a breaking change in a dependency.</p>
+<p><strong>The Git Whisperer</strong>: If you are working with version control, display the current branch and repository status. Are you on <code>main</code> when you should be on <code>develop</code>? Your startup screen can save you from committing to the wrong branch.</p>
+<p><strong>The Calendar Oracle</strong>: Connect to your calendar API and display upcoming meetings or deadlines. Nothing says “professional data scientist” like having your startup screen remind you about that 2 pm stakeholder meeting.</p>
+<p><strong>The Motivation Engine</strong>: Create a rotating set of personal motivational messages tailored to your current challenges. Working on a particularly difficult analysis? Let your startup screen be your cheerleader.</p>
+<p>You might also explore the <a href="https://cran.r-project.org/web/packages/cowsay/index.html">cowsay package</a> for ASCII animals that can deliver your messages (because everything is better when a cow says it), or investigate APIs that require authentication for more personalised data.</p>
+</section>
+<section id="the-wisdom-of-experience-key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="the-wisdom-of-experience-key-takeaways">The Wisdom of Experience: Key Takeaways</h2>
+<p>From our journey through the world of RStudio customisation, you should now possess:</p>
+<ol type="1">
+<li><p><strong>The Foundation</strong>: Understanding how <code>.Rprofile</code> and <code>setHook()</code> work together to create startup magic</p></li>
+<li><p><strong>The Art of Progression</strong>: Building from simple console clearing to complex, dynamic content displays</p></li>
+<li><p><strong>The Defensive Mindset</strong>: Using <code>tryCatch()</code> and <code>requireNamespace()</code> to create robust code that enhances rather than breaks your workflow</p></li>
+<li><p><strong>The Dependency Dance</strong>: Managing package requirements and providing graceful fallbacks</p></li>
+<li><p><strong>The Network Navigator</strong>: Integrating external APIs while handling the unpredictable nature of the internet</p></li>
+<li><p><strong>The String Sculptor</strong>: Using <code>glue</code> for readable formatting and <code>crayon</code> for colorful output</p></li>
+<li><p><strong>The Balance Master</strong>: Understanding the trade-offs between functionality and simplicity, online features and offline reliability</p></li>
+</ol>
+</section>
+<section id="the-final-word-why-this-matters" class="level2">
+<h2 class="anchored" data-anchor-id="the-final-word-why-this-matters">The Final Word: Why This Matters</h2>
+<p>Customising your <code>.Rprofile</code> will not make you a better data scientist. It will not improve your statistical modeling skills or make your visualisations more insightful. What it will do is make your daily R experience more personal, more delightful, and more uniquely yours.</p>
+<p>In a world where we spend countless hours staring at screens, fighting with data, and debugging code, these small moments of joy matter. They are the difference between viewing your tools as cold, impersonal utilities and seeing them as extensions of your personality and creativity.</p>
+<p>The key is finding the right balance for your workflow. Some days you will want the full ASCII art, weather report, and inspirational quote experience. On other days, you will appreciate the simple elegance of a cleared console and a friendly greeting.</p>
+<p>Your <code>.Rprofile</code> is yours to customise. Make it reflect who you are, what you care about, and what makes you smile. In the end, we are not just researchers, analysts and students, we are humans who happen to love working with data. And sometimes, a little personality in our tools can make all the difference.</p>
+</section>
+<section id="sources-used-and-further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="sources-used-and-further-reading">Sources used and further reading</h2>
+<p><strong>R Packages Used:</strong></p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/crayon/index.html">crayon</a> | Transform your console into a rainbow</li>
+<li><a href="https://cran.r-project.org/web/packages/httr/index.html">httr</a> | Your bridge to the web</li>
+<li><a href="https://cran.r-project.org/web/packages/jsonlite/index.html">jsonlite</a> | JSON parsing that does not hurt your brain</li>
+<li><a href="https://cran.r-project.org/web/packages/glue/index.html">glue</a> | String interpolation for civilized humans</li>
+<li><a href="https://cran.r-project.org/web/packages/cowsay/index.html">cowsay</a> | Because ASCII animals make everything better</li>
+</ul>
+<p><strong>APIs and Services for Dynamic Content:</strong></p>
+<ul>
+<li><a href="https://github.com/chubin/wttr.in">wttr.in</a> | Weather data without the API key hassle</li>
+<li><a href="https://zenquotes.io/">ZenQuotes</a> | Daily wisdom for your soul</li>
+<li><a href="https://www.asciiart.eu/text-to-ascii-art">ASCII Art Generator</a> | Turn text into art</li>
+</ul>
+<p><strong>Essential R Resources:</strong></p>
+<ul>
+<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Startup.html">R Startup Documentation</a> - The official word on R startup</li>
+<li><a href="https://r4np.com">R for Non-Programmers</a> - Comprehensive R learning for everyone</li>
+</ul>
+<p>Happy customising, and may your R sessions be forever more delightful! 🎯✨</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  console.log('Animation script loaded!');
+
+  const slideIns = document.querySelectorAll(".slide-in, .slide-in-left, .slide-in-right, .fade-in, .scale-in");
+  console.log('Found elements to animate:', slideIns.length);
+
+  // Check if user prefers reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    slideIns.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        console.log('Element intersecting:', entry.isIntersecting);
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          console.log('Added visible class to element');
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    }
+  );
+
+  slideIns.forEach(el => observer.observe(el));
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
