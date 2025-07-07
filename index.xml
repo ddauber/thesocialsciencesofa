@@ -10,7 +10,7 @@
 <atom:link href="https://thesocialsciencesofa.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>The Social Science Sofa is your cosy corner for data visualisation, R programming, and research insights—where complex ideas recline into clarity.</description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Sun, 13 Jul 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 06 Jul 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Beyond the Splash Screen: Customising Your RStudio Startup Experience</title>
   <dc:creator>Daniel Dauber</dc:creator>
@@ -1695,7 +1695,7 @@ font-style: inherit;">$</span>message)</span>
   <category>Productivity</category>
   <category>Customisation</category>
   <guid>https://thesocialsciencesofa.com/blog/2025-07-07/rprofile_customisation.html</guid>
-  <pubDate>Sun, 13 Jul 2025 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 06 Jul 2025 23:00:00 GMT</pubDate>
   <media:content url="https://thesocialsciencesofa.com/blog/2025-07-07/custom_rprofile.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
