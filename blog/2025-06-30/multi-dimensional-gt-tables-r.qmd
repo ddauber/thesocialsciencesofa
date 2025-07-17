@@ -9,7 +9,7 @@ image: "multi-dimensional-gt-tables-r.jpg"
 ---
 
 ::: slide-in
-<img src="multi-dimensional-gt-tables-r.jpg" alt="MPG vs weight plot" width="100%">
+<img src="multi-dimensional-gt-tables-r.jpg" alt="A screenshot of a cleanly formatted multi-dimensional table created with the gt package." width="100%">
 :::
 
 Creating beautiful tables in R has never been easier thanks to the [`gt` package](https://gt.rstudio.com/). But what happens when your "simple" table suddenly needs three dimensions? That's when things get interesting – and by interesting, I mean frustratingly complex.
