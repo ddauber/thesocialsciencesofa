@@ -10,7 +10,152 @@
 <atom:link href="https://thesocialsciencesofa.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>The Social Science Sofa is your cosy corner for data visualisation, R programming, and research insights—where complex ideas recline into clarity.</description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Sun, 06 Jul 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 13 Jul 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>The Secret Weapon Every Researcher Could Harness</title>
+  <dc:creator>Daniel Dauber</dc:creator>
+  <link>https://thesocialsciencesofa.com/blog/2025-07-14/why-learn-r-programming.html</link>
+  <description><![CDATA[ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;family=Fredoka:wght@300..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Quicksand:wght@300..700&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+
+
+<div class="slide-in">
+<p><img src="https://thesocialsciencesofa.com/blog/2025-07-14/why-learn-r-programming.jpg" alt="Showing a person sitting at their desk with a pencil in their hand creating a table on a piece of paper. The monitor next to them has some code on the screen in a stylised way." width="100%"></p>
+</div>
+<p>You’re knee-deep in your latest research project, wrestling with data that refuses to behave, when a colleague mentions they’ve just automated their entire analysis pipeline and created interactive visualisations that would make <em>The Economist</em> jealous. Meanwhile, you’re still clicking through your favourite statistics software menus wondering if there’s a better way.</p>
+<p>There is. And it’s probably not what you think.</p>
+<p>The secret weapon isn’t a fancy new statistical method or expensive software. It’s learning to speak the language of computers, specifically, learning a programming language like R. Before you roll your eyes and mutter “I’m a researcher, not a programmer,” hear me out.</p>
+<section id="the-uncomfortable-truth-about-modern-research" class="level2">
+<h2 class="anchored" data-anchor-id="the-uncomfortable-truth-about-modern-research">The Uncomfortable Truth About Modern Research</h2>
+<p>Let’s be honest, the research landscape is changing faster than a politician’s promises. New analytical methods emerge monthly, data sets grow larger and more complex, and the pressure to produce reproducible, transparent research has never been higher.</p>
+<p>Yet many of us are still using the same tools we learned in graduate school, clicking through the same menu systems, and wondering why our research feels… limited.</p>
+<p>Don’t get me wrong. There’s nothing inherently wrong with traditional statistical software. SPSS, and its cousins have served researchers well for decades. But here’s the thing: they’re like driving a reliable family saloon when you could be piloting a sports car.</p>
+</section>
+<section id="why-most-researchers-avoid-programming-and-why-theyre-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="why-most-researchers-avoid-programming-and-why-theyre-wrong">Why Most Researchers Avoid Programming (And Why They’re Wrong)</h2>
+<p>The resistance is understandable. Learning a programming language feels like learning Ancient Greek when you just want to analyse your survey data. It’s intimidating, time-consuming, and frankly, most of us didn’t sign up for a computer science degree.</p>
+<p>But here’s what nobody tells you: <strong>you don’t need to become a programmer to benefit from programming.</strong></p>
+<p>Think of it like learning to drive. You don’t need to understand internal combustion engines to get from point A to point B. Similarly, you don’t need to become the next coding wizard to dramatically improve your research capabilities.</p>
+</section>
+<section id="the-hidden-benefits-nobody-mentions" class="level2">
+<h2 class="anchored" data-anchor-id="the-hidden-benefits-nobody-mentions">The Hidden Benefits Nobody Mentions</h2>
+<p>In short, there are 5 main benefits (and probably some more that just won’t come to my mind right now), that could make you a more productive, and maybe even better, researcher.</p>
+<section id="your-analytical-toolbox-becomes-infinite" class="level3">
+<h3 class="anchored" data-anchor-id="your-analytical-toolbox-becomes-infinite">1. Your Analytical Toolbox Becomes Infinite</h3>
+<p>Traditional software is like shopping at a small corner shop – you get the basics, but selection is often limited. Programming languages like R are like having access to the world’s largest free supermarket.</p>
+<p>Need to run a cutting-edge machine learning algorithm published last week? There’s probably an R package for that. Want to try a new visualisation technique you saw in <em>Nature</em>? Someone’s likely coded it up and shared it freely.</p>
+<p>The R ecosystem contains over 38,000 packages on CRAN alone (at the time of writing this blog), covering everything from social network analysis to text mining to geospatial statistics. It’s like having thousands of statistical consultants working for you, for free, 24/7.</p>
+<div class="cell slide-in">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">options</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repos =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">CRAN =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://cran.r-project.org"</span>))</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">available.packages</span>())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 380664</code></pre>
+</div>
+</div>
+<p>Let me share a story from when I was still beginning to learn R:</p>
+<p>I once attended a brilliant guest talk where the researchers had downloaded and coded over 200 tweets for a content analysis study. It was meticulous, careful work and the findings were genuinely impressive. However, when I asked how they scraped and cleaned the Twitter (now X) data, their response was: “Oh, we just did it manually.”</p>
+<p>I was stunned. That must have taken weeks. At the time, I had just learned how to pull down over half a million tweets for a separate project with a few lines of code.</p>
+<p>I wasn’t smarter. I just had a better toolbox. Programming didn’t just save me time, but it let me focus on the fun part: analysing the data and making sense of it.</p>
+</section>
+<section id="it-rewires-your-brain-in-a-good-way" class="level3">
+<h3 class="anchored" data-anchor-id="it-rewires-your-brain-in-a-good-way">2. It Rewires Your Brain (In a Good Way)</h3>
+<p>Here’s something they don’t teach in methodology courses: programming fundamentally changes how you think about problems.</p>
+<p>Programming languages are ruthlessly logical. Write unclear code, and your computer will politely refuse to cooperate. This forces you to break complex problems into smaller, manageable pieces, which is a skill that transfers beautifully to research design.</p>
+<p>I’ve noticed this with my own students. Those who learn programming often become better at:</p>
+<ul>
+<li><strong>Conceptual thinking</strong>: Breaking complex theories into testable components</li>
+<li><strong>Abstract reasoning</strong>: Moving from specific observations to general principles</li>
+<li><strong>Problem decomposition</strong>: Tackling large research questions systematically</li>
+</ul>
+<p>It’s like cross-training for your brain. You come for the data analysis, but you leave with enhanced cognitive abilities.</p>
+</section>
+<section id="you-see-patterns-others-miss" class="level3">
+<h3 class="anchored" data-anchor-id="you-see-patterns-others-miss">3. You See Patterns Others Miss</h3>
+<p>When you’re not limited by pre-built menu options, you start exploring your data differently. You ask questions that wouldn’t occur to you in traditional software because the tools to answer them are suddenly available.</p>
+<p>For example, one of my former PhD students was cleaning their survey data in R and inpsected missing data using the handy <code>naniar</code> package. This package is specialised in exploring patterns of missing data visually and computationally with often just one line of code. By plotting missing data and sorting all observations based on their missing data, my PhD student found that significant jumps in missing data coincided with page breaks in the survey, i.e.&nbsp;every time a participant was asked to continue to the next page, some participants simply stopped completing the questionnaire.</p>
+<div class="slide-in">
+<p><img src="https://thesocialsciencesofa.com/blog/2025-07-14/missing_data_pattern.jpg" alt="Plot of missing data showing a incremental increases in missing data at each page break of the questionnaire." width="100%"></p>
+</div>
+<p>Traditional software would never have prompted them to look at this, because data cleaning often happens outside the analytical software and most of the time not visually. However, with programming tools and R packages that visualise patterns quickly and easily, it became a natural extension of the analysis. Those response patterns ended up affecting how my student treated missing data and ended up with a much more robust analysis because of it.</p>
+</section>
+<section id="your-research-becomes-bulletproof" class="level3">
+<h3 class="anchored" data-anchor-id="your-research-becomes-bulletproof">4. Your Research Becomes Bulletproof</h3>
+<p>Reproducibility crisis, anyone? When your entire analysis exists as code, reproducing your results becomes trivial. No more “I think I clicked this menu option, but I can’t remember which settings I used.”</p>
+<p>Every step of your analysis is documented, shareable, and verifiable. Your future self (and your collaborators) will thank you when you need to revisit the analysis six months later. However, do not think that only applies to R programming. Back in the days I created SPSS scripts to keep track of everything and rerun analysis with updated datasets as necessary. This was a huge help and if you enjoy working with SPSS you should definitely look into this (if you haven’t already).</p>
+</section>
+<section id="the-compound-interest-effect" class="level3">
+<h3 class="anchored" data-anchor-id="the-compound-interest-effect">5. The Compound Interest Effect</h3>
+<p>Here’s the kicker: once you learn one programming language, learning others becomes exponentially easier. The core concepts like variables, functions, loops, data structures, etc., are universal.</p>
+<p>If you asked me, maybe start with R for statistics, then maybe Python for machine learning, JavaScript for web-based visualisations, or SQL for database management. Each new language builds on the foundation of the previous ones and you can do even more things.</p>
+<p>It’s like learning Roman languages. Once you understand Latin roots, Italian, Spanish, and French become much more accessible.</p>
+</section>
+</section>
+<section id="but-what-about-the-learning-curve" class="level2">
+<h2 class="anchored" data-anchor-id="but-what-about-the-learning-curve">But What About the Learning Curve?</h2>
+<p>Let’s address the elephant in the room: learning programming takes time and effort. There’s no sugar-coating this.</p>
+<p>But here’s the perspective shift that helped me: <strong>you’re not learning programming for programming’s sake. You’re learning it to become a better researcher.</strong>. Having skills others might not have also gives you the opportunity to work on more projects where your programming expertise is highly valued - even beyond your own discipline.</p>
+<p>Every hour you invest in learning R is an hour that will pay dividends across every future project. It’s not overhead. It’s infrastructure.</p>
+<p>And honestly? The learning curve isn’t as steep as you think, not the least because there are so many learning materials and communities out there. You don’t need to master every aspect of a programming language to benefit from it. Learning enough R to clean data, run basic analyses, and create visualisations might take a few focused weeks. Learning enough to revolutionise your research might take a few months. After a year of using programming languages for your research you might never look back and only wonder: What else can I do now?</p>
+<p>Compare that to the time you’d spend manually manipulating data in spreadsheets over the course of your career, and the investment becomes a no-brainer. It was for me.</p>
+</section>
+<section id="the-social-science-resistance" class="level2">
+<h2 class="anchored" data-anchor-id="the-social-science-resistance">The Social Science Resistance</h2>
+<p>Programming languages remain surprisingly uncommon in many social science fields, although they do gain momentum. While our colleagues in psychology and economics have largely embraced R and Python, other disciplines lag behind.</p>
+<p>This presents an opportunity. Being one of the first in your field to adopt these tools can give you a significant competitive advantage. You’ll be able to: - Tackle research questions others can’t - Analyse data types others avoid - Produce more compelling visualisations - Collaborate more easily with interdisciplinary teams</p>
+</section>
+<section id="starting-your-journey-practical-steps" class="level2">
+<h2 class="anchored" data-anchor-id="starting-your-journey-practical-steps">Starting Your Journey: Practical Steps</h2>
+<p>If I’ve convinced you to take the plunge, here’s how to begin:</p>
+<p><strong>1. Choose Your First Language Wisely</strong> For social science researchers, R is typically the best starting point. It’s designed for statistics, has a huge and wonderfully inclusive community, and excels at the tasks you’ll do most often.</p>
+<p><strong>2. Embrace the Beginner’s Mindset</strong> You will feel stupid at first. Your code will break. You’ll spend hours debugging what turns out to be a missing comma. This is normal and temporary. And hey, have you heard of ChatGPT? It can help with debugging your code.</p>
+<p><strong>3. Start Small, Think Big</strong> Begin with simple tasks you already do. Import a dataset. Calculate some descriptive statistics. Create a basic plot. Build confidence before attempting anything fancy.</p>
+<p><strong>4. Join the Community</strong> The R community is remarkably welcoming. Follow #RStats on X, join R User Groups like <a href="https://community.rstudio.com">RStudio Community</a>, <a href="https://www.tidytuesday.com">TidyTuesday</a> and <a href="https://rladies.org">R-Ladies</a>, and participate in other online forums dedicated to R. Programming isn’t a solitary activity – it’s deeply social.</p>
+<p><strong>5. Focus on Your Research</strong> Don’t get caught up in becoming a “real programmer”. Learn what you need to advance your research, then learn more when you need it. One day you look back at all the projects you completed using programming languages and find that you actually have become a “real programmer” - whatever that means to you.</p>
+</section>
+<section id="the-bottom-line" class="level2">
+<h2 class="anchored" data-anchor-id="the-bottom-line">The Bottom Line</h2>
+<p>Learning a programming language won’t make you a computer scientist, but it will make you a more capable, creative, and confident researcher.</p>
+<p>In an era where data is everywhere and analytical methods evolve rapidly, the ability to adapt your tools to your questions (rather than adapting your questions to your tools) is invaluable.</p>
+<p>The researchers who thrive in the coming decades won’t necessarily be those with the most domain expertise but those who can combine domain expertise with computational thinking.</p>
+<p>Your future research self is waiting. The only question is: are you ready to meet them?</p>
+<hr>
+<p><strong>Ready to start your programming journey?</strong></p>
+<p>Check out <a href="https://r4np.com">R for Non-Programmers</a> for a gentle introduction designed specifically for researchers who want to harness the power of programming without the computer science degree.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>research methods</category>
+  <category>programming</category>
+  <category>social sciences</category>
+  <guid>https://thesocialsciencesofa.com/blog/2025-07-14/why-learn-r-programming.html</guid>
+  <pubDate>Sun, 13 Jul 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://thesocialsciencesofa.com/blog/2025-07-14/why-learn-r-programming.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Beyond the Splash Screen: Customising Your RStudio Startup Experience</title>
   <dc:creator>Daniel Dauber</dc:creator>
@@ -1714,7 +1859,7 @@ font-style: inherit;">$</span>message)</span>
 
 
 <div class="slide-in">
-<p><img src="https://thesocialsciencesofa.com/blog/2025-06-30/multi-dimensional-gt-tables-r.jpg" alt="MPG vs weight plot" width="100%"></p>
+<p><img src="https://thesocialsciencesofa.com/blog/2025-06-30/multi-dimensional-gt-tables-r.jpg" alt="A screenshot of a cleanly formatted multi-dimensional table created with the gt package." width="100%"></p>
 </div>
 <p>Creating beautiful tables in R has never been easier thanks to the <a href="https://gt.rstudio.com/"><code>gt</code> package</a>. But what happens when your “simple” table suddenly needs three dimensions? That’s when things get interesting – and by interesting, I mean frustratingly complex.</p>
 <p>Today, we’ll walk through creating a multi-dimensional table that displays relationship status by gender across different countries. We’ll start simple and work our way up to the challenges that make you question your life choices (and then solve them, of course).</p>
@@ -1899,23 +2044,23 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
 <span id="cb7-8"></span>
 <span id="cb7-9">basic_table</span></code></pre></div>
 <div class="cell-output-display">
-<div id="halhwuxlqt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#halhwuxlqt table {
+<div id="tbqxewwjlu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tbqxewwjlu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#halhwuxlqt thead, #halhwuxlqt tbody, #halhwuxlqt tfoot, #halhwuxlqt tr, #halhwuxlqt td, #halhwuxlqt th {
+#tbqxewwjlu thead, #tbqxewwjlu tbody, #tbqxewwjlu tfoot, #tbqxewwjlu tr, #tbqxewwjlu td, #tbqxewwjlu th {
   border-style: none;
 }
 
-#halhwuxlqt p {
+#tbqxewwjlu p {
   margin: 0;
   padding: 0;
 }
 
-#halhwuxlqt .gt_table {
+#tbqxewwjlu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1941,12 +2086,12 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-left-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_caption {
+#tbqxewwjlu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#halhwuxlqt .gt_title {
+#tbqxewwjlu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1958,7 +2103,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-width: 0;
 }
 
-#halhwuxlqt .gt_subtitle {
+#tbqxewwjlu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1970,7 +2115,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-top-width: 0;
 }
 
-#halhwuxlqt .gt_heading {
+#tbqxewwjlu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1982,13 +2127,13 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_bottom_border {
+#tbqxewwjlu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_col_headings {
+#tbqxewwjlu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2003,7 +2148,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_col_heading {
+#tbqxewwjlu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2023,7 +2168,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   overflow-x: hidden;
 }
 
-#halhwuxlqt .gt_column_spanner_outer {
+#tbqxewwjlu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2035,15 +2180,15 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 4px;
 }
 
-#halhwuxlqt .gt_column_spanner_outer:first-child {
+#tbqxewwjlu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#halhwuxlqt .gt_column_spanner_outer:last-child {
+#tbqxewwjlu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#halhwuxlqt .gt_column_spanner {
+#tbqxewwjlu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2055,11 +2200,11 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   width: 100%;
 }
 
-#halhwuxlqt .gt_spanner_row {
+#tbqxewwjlu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#halhwuxlqt .gt_group_heading {
+#tbqxewwjlu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2085,7 +2230,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   text-align: left;
 }
 
-#halhwuxlqt .gt_empty_group_heading {
+#tbqxewwjlu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2100,15 +2245,15 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   vertical-align: middle;
 }
 
-#halhwuxlqt .gt_from_md > :first-child {
+#tbqxewwjlu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#halhwuxlqt .gt_from_md > :last-child {
+#tbqxewwjlu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#halhwuxlqt .gt_row {
+#tbqxewwjlu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2127,7 +2272,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   overflow-x: hidden;
 }
 
-#halhwuxlqt .gt_stub {
+#tbqxewwjlu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2140,7 +2285,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#halhwuxlqt .gt_stub_row_group {
+#tbqxewwjlu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2154,15 +2299,15 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   vertical-align: top;
 }
 
-#halhwuxlqt .gt_row_group_first td {
+#tbqxewwjlu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#halhwuxlqt .gt_row_group_first th {
+#tbqxewwjlu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#halhwuxlqt .gt_summary_row {
+#tbqxewwjlu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2172,16 +2317,16 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#halhwuxlqt .gt_first_summary_row {
+#tbqxewwjlu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_first_summary_row.thick {
+#tbqxewwjlu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#halhwuxlqt .gt_last_summary_row {
+#tbqxewwjlu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2191,7 +2336,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_grand_summary_row {
+#tbqxewwjlu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2201,7 +2346,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#halhwuxlqt .gt_first_grand_summary_row {
+#tbqxewwjlu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2211,7 +2356,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-top-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_last_grand_summary_row_top {
+#tbqxewwjlu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2221,11 +2366,11 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_striped {
+#tbqxewwjlu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#halhwuxlqt .gt_table_body {
+#tbqxewwjlu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2234,7 +2379,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_footnotes {
+#tbqxewwjlu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2248,7 +2393,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_footnote {
+#tbqxewwjlu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2257,7 +2402,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#halhwuxlqt .gt_sourcenotes {
+#tbqxewwjlu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2271,7 +2416,7 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#halhwuxlqt .gt_sourcenote {
+#tbqxewwjlu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2279,72 +2424,72 @@ font-style: inherit;">"Relationship Status by Gender and Country"</span></span>
   padding-right: 5px;
 }
 
-#halhwuxlqt .gt_left {
+#tbqxewwjlu .gt_left {
   text-align: left;
 }
 
-#halhwuxlqt .gt_center {
+#tbqxewwjlu .gt_center {
   text-align: center;
 }
 
-#halhwuxlqt .gt_right {
+#tbqxewwjlu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#halhwuxlqt .gt_font_normal {
+#tbqxewwjlu .gt_font_normal {
   font-weight: normal;
 }
 
-#halhwuxlqt .gt_font_bold {
+#tbqxewwjlu .gt_font_bold {
   font-weight: bold;
 }
 
-#halhwuxlqt .gt_font_italic {
+#tbqxewwjlu .gt_font_italic {
   font-style: italic;
 }
 
-#halhwuxlqt .gt_super {
+#tbqxewwjlu .gt_super {
   font-size: 65%;
 }
 
-#halhwuxlqt .gt_footnote_marks {
+#tbqxewwjlu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#halhwuxlqt .gt_asterisk {
+#tbqxewwjlu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#halhwuxlqt .gt_indent_1 {
+#tbqxewwjlu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#halhwuxlqt .gt_indent_2 {
+#tbqxewwjlu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#halhwuxlqt .gt_indent_3 {
+#tbqxewwjlu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#halhwuxlqt .gt_indent_4 {
+#tbqxewwjlu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#halhwuxlqt .gt_indent_5 {
+#tbqxewwjlu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#halhwuxlqt .katex-display {
+#tbqxewwjlu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#halhwuxlqt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tbqxewwjlu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2474,23 +2619,23 @@ font-style: inherit;">"_"</span>)</span>
 <span id="cb8-9"></span>
 <span id="cb8-10">spanners_attempt</span></code></pre></div>
 <div class="cell-output-display">
-<div id="jsdyepcoeu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jsdyepcoeu table {
+<div id="kcwsensuft" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kcwsensuft table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jsdyepcoeu thead, #jsdyepcoeu tbody, #jsdyepcoeu tfoot, #jsdyepcoeu tr, #jsdyepcoeu td, #jsdyepcoeu th {
+#kcwsensuft thead, #kcwsensuft tbody, #kcwsensuft tfoot, #kcwsensuft tr, #kcwsensuft td, #kcwsensuft th {
   border-style: none;
 }
 
-#jsdyepcoeu p {
+#kcwsensuft p {
   margin: 0;
   padding: 0;
 }
 
-#jsdyepcoeu .gt_table {
+#kcwsensuft .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2516,12 +2661,12 @@ font-style: inherit;">"_"</span>)</span>
   border-left-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_caption {
+#kcwsensuft .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jsdyepcoeu .gt_title {
+#kcwsensuft .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2533,7 +2678,7 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-width: 0;
 }
 
-#jsdyepcoeu .gt_subtitle {
+#kcwsensuft .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2545,7 +2690,7 @@ font-style: inherit;">"_"</span>)</span>
   border-top-width: 0;
 }
 
-#jsdyepcoeu .gt_heading {
+#kcwsensuft .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2557,13 +2702,13 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_bottom_border {
+#kcwsensuft .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_col_headings {
+#kcwsensuft .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2578,7 +2723,7 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_col_heading {
+#kcwsensuft .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2598,7 +2743,7 @@ font-style: inherit;">"_"</span>)</span>
   overflow-x: hidden;
 }
 
-#jsdyepcoeu .gt_column_spanner_outer {
+#kcwsensuft .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2610,15 +2755,15 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 4px;
 }
 
-#jsdyepcoeu .gt_column_spanner_outer:first-child {
+#kcwsensuft .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jsdyepcoeu .gt_column_spanner_outer:last-child {
+#kcwsensuft .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jsdyepcoeu .gt_column_spanner {
+#kcwsensuft .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2630,11 +2775,11 @@ font-style: inherit;">"_"</span>)</span>
   width: 100%;
 }
 
-#jsdyepcoeu .gt_spanner_row {
+#kcwsensuft .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jsdyepcoeu .gt_group_heading {
+#kcwsensuft .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2660,7 +2805,7 @@ font-style: inherit;">"_"</span>)</span>
   text-align: left;
 }
 
-#jsdyepcoeu .gt_empty_group_heading {
+#kcwsensuft .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2675,15 +2820,15 @@ font-style: inherit;">"_"</span>)</span>
   vertical-align: middle;
 }
 
-#jsdyepcoeu .gt_from_md > :first-child {
+#kcwsensuft .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jsdyepcoeu .gt_from_md > :last-child {
+#kcwsensuft .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jsdyepcoeu .gt_row {
+#kcwsensuft .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2702,7 +2847,7 @@ font-style: inherit;">"_"</span>)</span>
   overflow-x: hidden;
 }
 
-#jsdyepcoeu .gt_stub {
+#kcwsensuft .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2715,7 +2860,7 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#jsdyepcoeu .gt_stub_row_group {
+#kcwsensuft .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2729,15 +2874,15 @@ font-style: inherit;">"_"</span>)</span>
   vertical-align: top;
 }
 
-#jsdyepcoeu .gt_row_group_first td {
+#kcwsensuft .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jsdyepcoeu .gt_row_group_first th {
+#kcwsensuft .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jsdyepcoeu .gt_summary_row {
+#kcwsensuft .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2747,16 +2892,16 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#jsdyepcoeu .gt_first_summary_row {
+#kcwsensuft .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_first_summary_row.thick {
+#kcwsensuft .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jsdyepcoeu .gt_last_summary_row {
+#kcwsensuft .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2766,7 +2911,7 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_grand_summary_row {
+#kcwsensuft .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2776,7 +2921,7 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#jsdyepcoeu .gt_first_grand_summary_row {
+#kcwsensuft .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2786,7 +2931,7 @@ font-style: inherit;">"_"</span>)</span>
   border-top-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_last_grand_summary_row_top {
+#kcwsensuft .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2796,11 +2941,11 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_striped {
+#kcwsensuft .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jsdyepcoeu .gt_table_body {
+#kcwsensuft .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2809,7 +2954,7 @@ font-style: inherit;">"_"</span>)</span>
   border-bottom-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_footnotes {
+#kcwsensuft .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2823,7 +2968,7 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_footnote {
+#kcwsensuft .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2832,7 +2977,7 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#jsdyepcoeu .gt_sourcenotes {
+#kcwsensuft .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2846,7 +2991,7 @@ font-style: inherit;">"_"</span>)</span>
   border-right-color: #D3D3D3;
 }
 
-#jsdyepcoeu .gt_sourcenote {
+#kcwsensuft .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2854,72 +2999,72 @@ font-style: inherit;">"_"</span>)</span>
   padding-right: 5px;
 }
 
-#jsdyepcoeu .gt_left {
+#kcwsensuft .gt_left {
   text-align: left;
 }
 
-#jsdyepcoeu .gt_center {
+#kcwsensuft .gt_center {
   text-align: center;
 }
 
-#jsdyepcoeu .gt_right {
+#kcwsensuft .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jsdyepcoeu .gt_font_normal {
+#kcwsensuft .gt_font_normal {
   font-weight: normal;
 }
 
-#jsdyepcoeu .gt_font_bold {
+#kcwsensuft .gt_font_bold {
   font-weight: bold;
 }
 
-#jsdyepcoeu .gt_font_italic {
+#kcwsensuft .gt_font_italic {
   font-style: italic;
 }
 
-#jsdyepcoeu .gt_super {
+#kcwsensuft .gt_super {
   font-size: 65%;
 }
 
-#jsdyepcoeu .gt_footnote_marks {
+#kcwsensuft .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jsdyepcoeu .gt_asterisk {
+#kcwsensuft .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jsdyepcoeu .gt_indent_1 {
+#kcwsensuft .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jsdyepcoeu .gt_indent_2 {
+#kcwsensuft .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jsdyepcoeu .gt_indent_3 {
+#kcwsensuft .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jsdyepcoeu .gt_indent_4 {
+#kcwsensuft .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jsdyepcoeu .gt_indent_5 {
+#kcwsensuft .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jsdyepcoeu .katex-display {
+#kcwsensuft .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jsdyepcoeu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kcwsensuft div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3181,23 +3326,23 @@ font-style: inherit;">"Divorced"</span></span>
 <span id="cb9-33"></span>
 <span id="cb9-34">custom_table</span></code></pre></div>
 <div class="cell-output-display">
-<div id="nfdxjxfbum" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nfdxjxfbum table {
+<div id="mwkiyqhhud" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mwkiyqhhud table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nfdxjxfbum thead, #nfdxjxfbum tbody, #nfdxjxfbum tfoot, #nfdxjxfbum tr, #nfdxjxfbum td, #nfdxjxfbum th {
+#mwkiyqhhud thead, #mwkiyqhhud tbody, #mwkiyqhhud tfoot, #mwkiyqhhud tr, #mwkiyqhhud td, #mwkiyqhhud th {
   border-style: none;
 }
 
-#nfdxjxfbum p {
+#mwkiyqhhud p {
   margin: 0;
   padding: 0;
 }
 
-#nfdxjxfbum .gt_table {
+#mwkiyqhhud .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3223,12 +3368,12 @@ font-style: inherit;">"Divorced"</span></span>
   border-left-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_caption {
+#mwkiyqhhud .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nfdxjxfbum .gt_title {
+#mwkiyqhhud .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3240,7 +3385,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-width: 0;
 }
 
-#nfdxjxfbum .gt_subtitle {
+#mwkiyqhhud .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3252,7 +3397,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-top-width: 0;
 }
 
-#nfdxjxfbum .gt_heading {
+#mwkiyqhhud .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3264,13 +3409,13 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_bottom_border {
+#mwkiyqhhud .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_col_headings {
+#mwkiyqhhud .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3285,7 +3430,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_col_heading {
+#mwkiyqhhud .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3305,7 +3450,7 @@ font-style: inherit;">"Divorced"</span></span>
   overflow-x: hidden;
 }
 
-#nfdxjxfbum .gt_column_spanner_outer {
+#mwkiyqhhud .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3317,15 +3462,15 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 4px;
 }
 
-#nfdxjxfbum .gt_column_spanner_outer:first-child {
+#mwkiyqhhud .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nfdxjxfbum .gt_column_spanner_outer:last-child {
+#mwkiyqhhud .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nfdxjxfbum .gt_column_spanner {
+#mwkiyqhhud .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3337,11 +3482,11 @@ font-style: inherit;">"Divorced"</span></span>
   width: 100%;
 }
 
-#nfdxjxfbum .gt_spanner_row {
+#mwkiyqhhud .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nfdxjxfbum .gt_group_heading {
+#mwkiyqhhud .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3367,7 +3512,7 @@ font-style: inherit;">"Divorced"</span></span>
   text-align: left;
 }
 
-#nfdxjxfbum .gt_empty_group_heading {
+#mwkiyqhhud .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3382,15 +3527,15 @@ font-style: inherit;">"Divorced"</span></span>
   vertical-align: middle;
 }
 
-#nfdxjxfbum .gt_from_md > :first-child {
+#mwkiyqhhud .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nfdxjxfbum .gt_from_md > :last-child {
+#mwkiyqhhud .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nfdxjxfbum .gt_row {
+#mwkiyqhhud .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3409,7 +3554,7 @@ font-style: inherit;">"Divorced"</span></span>
   overflow-x: hidden;
 }
 
-#nfdxjxfbum .gt_stub {
+#mwkiyqhhud .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3422,7 +3567,7 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#nfdxjxfbum .gt_stub_row_group {
+#mwkiyqhhud .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3436,15 +3581,15 @@ font-style: inherit;">"Divorced"</span></span>
   vertical-align: top;
 }
 
-#nfdxjxfbum .gt_row_group_first td {
+#mwkiyqhhud .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nfdxjxfbum .gt_row_group_first th {
+#mwkiyqhhud .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nfdxjxfbum .gt_summary_row {
+#mwkiyqhhud .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3454,16 +3599,16 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#nfdxjxfbum .gt_first_summary_row {
+#mwkiyqhhud .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_first_summary_row.thick {
+#mwkiyqhhud .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nfdxjxfbum .gt_last_summary_row {
+#mwkiyqhhud .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3473,7 +3618,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_grand_summary_row {
+#mwkiyqhhud .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3483,7 +3628,7 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#nfdxjxfbum .gt_first_grand_summary_row {
+#mwkiyqhhud .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3493,7 +3638,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-top-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_last_grand_summary_row_top {
+#mwkiyqhhud .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3503,11 +3648,11 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_striped {
+#mwkiyqhhud .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nfdxjxfbum .gt_table_body {
+#mwkiyqhhud .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3516,7 +3661,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-bottom-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_footnotes {
+#mwkiyqhhud .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3530,7 +3675,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_footnote {
+#mwkiyqhhud .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3539,7 +3684,7 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#nfdxjxfbum .gt_sourcenotes {
+#mwkiyqhhud .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3553,7 +3698,7 @@ font-style: inherit;">"Divorced"</span></span>
   border-right-color: #D3D3D3;
 }
 
-#nfdxjxfbum .gt_sourcenote {
+#mwkiyqhhud .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3561,72 +3706,72 @@ font-style: inherit;">"Divorced"</span></span>
   padding-right: 5px;
 }
 
-#nfdxjxfbum .gt_left {
+#mwkiyqhhud .gt_left {
   text-align: left;
 }
 
-#nfdxjxfbum .gt_center {
+#mwkiyqhhud .gt_center {
   text-align: center;
 }
 
-#nfdxjxfbum .gt_right {
+#mwkiyqhhud .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nfdxjxfbum .gt_font_normal {
+#mwkiyqhhud .gt_font_normal {
   font-weight: normal;
 }
 
-#nfdxjxfbum .gt_font_bold {
+#mwkiyqhhud .gt_font_bold {
   font-weight: bold;
 }
 
-#nfdxjxfbum .gt_font_italic {
+#mwkiyqhhud .gt_font_italic {
   font-style: italic;
 }
 
-#nfdxjxfbum .gt_super {
+#mwkiyqhhud .gt_super {
   font-size: 65%;
 }
 
-#nfdxjxfbum .gt_footnote_marks {
+#mwkiyqhhud .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nfdxjxfbum .gt_asterisk {
+#mwkiyqhhud .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nfdxjxfbum .gt_indent_1 {
+#mwkiyqhhud .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nfdxjxfbum .gt_indent_2 {
+#mwkiyqhhud .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nfdxjxfbum .gt_indent_3 {
+#mwkiyqhhud .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nfdxjxfbum .gt_indent_4 {
+#mwkiyqhhud .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nfdxjxfbum .gt_indent_5 {
+#mwkiyqhhud .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nfdxjxfbum .katex-display {
+#mwkiyqhhud .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nfdxjxfbum div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mwkiyqhhud div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/2025-07-14/why-learn-r-programming.html",
       "/blog/2025-07-07/rprofile_customisation.html",
       "/blog/2025-06-30/multi-dimensional-gt-tables-r.html"
     ]
@@ -9,6 +10,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/2025-07-14/why-learn-r-programming.html",
       "/blog/2025-07-07/rprofile_customisation.html",
       "/blog/2025-06-30/multi-dimensional-gt-tables-r.html"
     ]
