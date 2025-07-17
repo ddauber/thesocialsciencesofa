@@ -1,0 +1,145 @@
+---
+title: "I Built 350+ Interactive R Exercises for Absolute Beginners... Here's Why and How"
+description: "Creating hands-on, beginner-friendly R tutorials that make statistics and coding accessible through interactive exercises, knowledge checks, and real-world case studies using learnr and gradethis."
+author: "Daniel Dauber"
+date: 2025-07-17
+categories: [R, education, interactive tutorials, learnr, statistics]
+draft: true
+image: "r4np_r_package_learnr_tutorials.jpg"
+---
+
+::: slide-in
+<img src="r4np_r_package_learnr_tutorials.jpg" alt="R for Non-Programmers interactive exercises" width="100%">
+:::
+
+Here is a little confession: When I started writing [R for Non-Programmers](https://r4np.com), my goal was simple: Demystify R for my students and colleagues who didn’t see themselves as coders. The feedback was incredible. But one thing became clear: hands-on, interactive practice is what really helps people learn and not just some words printed on a piece of paper (or digital screen).
+
+That's exactly why I created 350+ exercises for my book [R for Non-Programmers](https://r4np.com). What started as a simple supplement for my students turned into a comprehensive learning system that's changing how my students learn R, statistics and quantitative methods.
+
+## Why I Created The `r4np` package
+
+Let me be honest: there's never enough time in a research methods class. You're juggling methodology, statistical concepts, coding syntax, and that inevitable "Why does my code not work?" moment – all while the clock ticks away your precious lecture time.
+
+::: slide-in
+<img src="01_r4np_package_website.jpg" alt="A screenshot of an example exercise in the r4np package which shows custom feedback based on the mistake a learner made." width="100%">
+:::
+
+The biggest challenge for students with no background in statistics or coding is understanding that a coding language is actually a *language* – not just a technical tool. The `tidyverse` is particularly suited to make R feel conversational rather than mechanical. But as is the case with every foreign language: Only practice makes perfect.
+
+Many of my students use the R4NP book to get a head start before class, rather than scrambling to keep up during lectures. But even with plenty of in-class practice, there's never enough time for those crucial extra exercises that cement understanding. That's where interactive, self-paced exercises become invaluable as the perfect companion for bridging classroom learning with independent practice.
+
+## What's Included: A Numbers Game
+
+The `r4np` R package includes useful functions, datasets, and of course, the tutorials. One aspect I'm particularly proud of is the `ntest()` and `ntest_by()` functions, which effectively allow you to run normality tests in batches. Ever had that problem of having 20 groups and 5 variables to run group comparisons? Well, happy times – we don't have to run a 100 group comparisons manually anymore, but I still painfully remember those days when I had to do that, long before I learned R.
+
+The tutorials are organised by chapter, making it easy to pick up where you left off. In total, I created:
+
+- **205 Knowledge Checks**: Quick quizzes to test understanding
+- **139 Coding Practices**: Hands-on R exercises with instant feedback
+- **14 Case Studies**: Real-world scenarios and applied challenges
+
+Here's how each type works:
+
+**Knowledge Checks** are focused questions that verify understanding before moving to coding. Think: "Which of these is not a tidyverse package?" or "What does statistical significance mean?" They reinforce the "why" and "what" before the "how."
+
+**Coding Practices** are hands-on exercises that appear right after concepts are introduced. These turn ideas into code, building step-by-step from basic to advanced through active practice.
+
+**Case Studies** are comprehensive projects that integrate multiple concepts through realistic scenarios involving data cleaning, analysis, and interpretation. Students tackle open-ended problems and think like data analysts.
+
+::: slide-in
+<img src="02_r4np_example_exercise_triptych.jpg" alt="Three images composed together which show the three different types of exercises." width="100%">
+:::
+
+## Behind the Scenes: The Technical Magic
+
+The `learnr` package powers all interactive activities, enabling both multiple choice questions and live coding exercises. But the real game-changer is `gradethis`, which transforms how we provide feedback on coding practices.
+
+::: slide-in
+<img src="03_r4np_example_exercise_feedback.jpg" alt="A screenshot of an example exercise in the r4np package which shows custom feedback based on the mistake a learner made." width="100%">
+:::
+
+Here's the challenge: How do you automatically check if student code is correct when there are multiple ways to solve the same problem? Traditional approaches compare code character-by-character, but `gradethis` lets you check specific aspects of the solution instead.
+
+Consider this regression example:
+
+```{r}
+#| label: learnr-solution-cde
+#| eval: false
+#| class: slide-in
+
+# Solution code
+model1 <- lm(recovery_days ~ severity, data = patients_clean)
+summary(model1)
+```
+
+```{r}
+#| label: gradethis-custom-grading-feedback
+#| eval: false
+#| class: slide-in
+
+# Custom grading function using the gradethis R package
+grade_this({
+  code_text <- paste(deparse(.user_code), collapse = " ")
+  if (!grepl("lm\\s*\\(", code_text) ||
+      !grepl("recovery_days\\s*~\\s*severity", code_text)) {
+    fail("Did you fit the model recovery_days ~ severity?")
+  }
+  if (!grepl("summary", code_text)) {
+    fail("Did you output the regression summary?")
+  }
+  pass("Good! Model 1 includes only severity as a predictor.")
+})
+```
+
+Instead of generic "something is wrong" messages, students get specific guidance: `Did you fit the model recovery_days ~ severity?` This targeted feedback is crucial for beginners who need direction, not just correction.
+
+The trade-off? This approach easily doubled development time since I had to anticipate common mistakes and craft appropriate responses. But watching students debug their code with confidence instead of frustration made every extra hour worthwhile.
+
+## A Peek at the Content: Real-World Learning
+
+The case studies are where everything comes together. These aren't "run this code and see what happens" exercises – they're realistic scenarios that mirror actual data analysis workflows.
+
+**[SCREENSHOT SUGGESTION: Multi-panel screenshot showing a complete case study journey - maybe the student satisfaction analysis with: 1) initial data inspection, 2) assumption testing with ntest(), 3) visualization creation, 4) results interpretation]**
+
+Take the student satisfaction analysis from the mixed methods chapter. Students don't just run a t-test and call it done. They:
+
+- Inspect the data for outliers and missing values
+- Test statistical assumptions using those handy `ntest()` functions
+- Create meaningful visualizations to understand the data
+- Interpret findings and discuss limitations
+- Consider the practical significance of their results
+
+This mirrors real-world analysis: messy data, multiple decision points, and the need to communicate findings clearly. By the end, students have experienced the full analytical process, not just isolated statistical tests.
+
+## How to Access & Use: Getting Started
+
+The book lives at [r4np.com](https://r4np.com), with the package documentation at [https://ddauber.github.io/r4np/](https://ddauber.github.io/r4np/) and source code at [https://github.com/ddauber/r4np](https://github.com/ddauber/r4np).
+
+**[SCREENSHOT SUGGESTION: Step-by-step visual guide showing: 1) installing the package, 2) running install_r4np(), 3) launching a tutorial, 4) the tutorial interface]**
+
+Getting started takes three simple steps (or maybe only one if you complete the first two already):
+
+```r
+# 1. Install the package
+remotes::install_github("ddauber/r4np")
+
+# 2. Install all required dependencies
+r4np::install_r4np()
+
+# 3. Launch any chapter tutorial
+learnr::run_tutorial("ex_r_basics", package = "r4np")
+```
+
+The exercises are self-contained and can be tackled in any order that matches your learning goals. Whether you're a complete beginner or strengthening your foundation, you can jump in wherever makes sense.
+
+## What's Next: More R Adventures Ahead
+
+A new book is already in the works, focusing on one of my favourite aspects of data analysis – but no spoilers yet!
+
+Based on our feedback, I'll continue refining these exercises and adding new content. There's always room for improvement, and I'm excited to see which areas resonate most with learners.
+
+---
+
+**Ready to dive in?** Head over to [r4np.com](https://r4np.com) and start your R journey with interactive exercises. Whether you're a complete beginner or looking to strengthen your foundation, there's something here for everyone.
+
+*Happy coding!*
